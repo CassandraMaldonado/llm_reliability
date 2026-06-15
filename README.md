@@ -2,7 +2,7 @@
 
 **Monitor. Analyze. Navigate. Guard. Observe. Score.**
 
-An open-source, production-grade platform for LLM evaluation, observability, and reliability. MANGOS combines the best ideas from LangSmith, DeepEval, Weights & Biases, Datadog, and Arize Phoenix into a single self-hostable stack.
+An open-source, production-grade platform for LLM evaluation, observability and reliability. It combines the best ideas from LangSmith, DeepEval, W&B, Datadog and Arize Phoenix into a single  stack.
 
 ---
 
