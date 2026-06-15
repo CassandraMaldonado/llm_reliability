@@ -11,8 +11,8 @@ An open-source, production-grade platform for LLM evaluation, observability and 
 | Capability | Details |
 |---|---|
 | **Experiment tracking** | A/B test prompts, models, and providers. Compare runs side-by-side with automatic winner detection. |
-| **Automated evaluation** | 7 built-in metrics (answer relevance, faithfulness, hallucination, toxicity, semantic similarity, context relevance) via LLM-as-judge + local sentence-transformers. |
-| **RAG pipeline analysis** | Retrieval precision/recall, groundedness, answer correctness. Compare embedding models, chunk sizes, and retrieval strategies head-to-head. |
+| **Automated evaluation** | 7 metrics (answer relevance, faithfulness, hallucination, toxicity, semantic similarity, context relevance) via LLM and local sentence transformers. |
+| **RAG pipeline analysis** | Retrieval precision/recall, groundedness, answer correctness. Compare embedding models, chunk sizes and retrieval strategies head-to-head. |
 | **Production tracing** | Instrument any LLM call in 3 lines via the Python SDK. Captures latency, cost, token counts, and user feedback. |
 | **Statistical drift detection** | KS test + Z-score anomaly detection on latency, cost, and quality metrics. Alerts fire before users notice. |
 | **Alert engine** | Configurable rules with webhook dispatch (Slack, PagerDuty, OpsGenie, anything). |
