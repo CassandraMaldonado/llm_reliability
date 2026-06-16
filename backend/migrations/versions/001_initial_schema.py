@@ -17,10 +17,9 @@ branch_labels = None
 depends_on = None
 
 
+# Org table: this is the main root table for multi-tenancy.
+
 def upgrade() -> None:
-    # ─────────────────────────────────────────
-    # ORGANIZATIONS  (multi-tenancy root)
-    # ─────────────────────────────────────────
     op.create_table(
         "organizations",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
