@@ -1,14 +1,12 @@
-"""
-MANGOS — Initial Database Schema
-Alembic migration: 001_initial_schema
+# This is the first Alembic migration.
 
-Design notes:
-- All tables use UUID primary keys (not serial ints) for distributed safety
-- organization_id on every tenant table enables future multi-tenancy
-- JSONB columns used for flexible metadata / parameters without sacrificing queryability
-- created_at / updated_at on every table (audit trail)
-- Soft deletes via deleted_at (never hard-delete experiment data)
-"""
+# What’s going on here:
+# - Using UUIDs for primary keys instead of integers so it’s safer if we scale or distribute later.
+- Every table will include organization_id so we can support multiple orgs (multi-tenancy)
+- JSONB columns let us store flexible data (like configs or metadata) without breaking structure
+- created_at / updated_at are included everywhere to track changes over time
+- deleted_at is used for soft deletes (we don’t want to permanently lose experiment data)
+
 
 from alembic import op
 import sqlalchemy as sa
