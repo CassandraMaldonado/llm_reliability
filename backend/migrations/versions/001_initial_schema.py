@@ -2,11 +2,9 @@
 
 # What’s going on here:
 # - Using UUIDs for primary keys instead of integers so it’s safer if we scale or distribute later.
-- Every table will include organization_id so we can support multiple orgs (multi-tenancy)
-- JSONB columns let us store flexible data (like configs or metadata) without breaking structure
-- created_at / updated_at are included everywhere to track changes over time
-- deleted_at is used for soft deletes (we don’t want to permanently lose experiment data)
-
+# - JSONB columns let us store flexible data (like configs or metadata) without breaking the structure.
+# - created_at / updated_at are included everywhere to track changes over time.
+# - deleted_at is used for soft deletes.
 
 from alembic import op
 import sqlalchemy as sa
