@@ -1,0 +1,54 @@
+# requirements.txt — Production dependencies
+# Pin exact versions for reproducibility (critical in ML/AI systems where
+# library updates can change evaluation behavior or introduce regressions)
+
+# ── Web Framework ─────────────────────────────────────────────────────────────
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+gunicorn==23.0.0
+python-multipart==0.0.12        # Form data parsing (file uploads)
+httpx==0.27.2                   # Async HTTP client (LLM API calls + testing)
+
+# ── Database & ORM ────────────────────────────────────────────────────────────
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0                 # Async PostgreSQL driver (required for async SQLAlchemy)
+alembic==1.13.3                 # Database migrations
+psycopg2-binary==2.9.10         # Sync driver (needed by Alembic CLI)
+
+# ── Caching & Task Queue ───────────────────────────────────────────────────────
+redis[hiredis]==5.1.1           # Redis client (hiredis = C parser, faster)
+celery[redis]==5.4.0            # Async task queue
+flower==2.0.1                   # Celery monitoring UI
+
+# ── Validation & Settings ─────────────────────────────────────────────────────
+pydantic==2.9.2
+pydantic-settings==2.5.2        # .env file support for Pydantic v2
+email-validator==2.2.0
+
+# ── Authentication ────────────────────────────────────────────────────────────
+python-jose[cryptography]==3.3.0  # JWT tokens
+passlib[bcrypt]==1.7.4           # Password hashing
+
+# ── ML / Evaluation ──────────────────────────────────────────────────────────
+deepeval==1.4.7                 # LLM eval framework (metrics + datasets)
+sentence-transformers==3.2.1   # Local embedding models (semantic similarity)
+torch==2.4.1 ; platform_machine != "arm64"  # PyTorch (CPU, not GPU in API server)
+torch==2.4.1 ; platform_machine == "arm64"  # ARM (Apple Silicon) build
+numpy==2.1.2
+scipy==1.14.1                   # Statistical tests (KS test for drift detection)
+scikit-learn==1.5.2             # Utility metrics, preprocessing
+transformers==4.45.2            # HuggingFace models
+
+# ── LLM Provider SDKs ─────────────────────────────────────────────────────────
+openai==1.52.0
+anthropic==0.37.1
+google-generativeai==0.8.3
+
+# ── Logging & Observability ───────────────────────────────────────────────────
+structlog==24.4.0               # Structured logging (JSON in prod)
+sentry-sdk[fastapi]==2.17.0    # Error tracking (Sentry integration)
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+python-dateutil==2.9.0
+pytz==2024.2
+tenacity==9.0.0                 # Retry logic with exponential backoff
