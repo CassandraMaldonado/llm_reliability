@@ -32,9 +32,8 @@ def upgrade() -> None:
         sa.Column("deleted_at", sa.DateTime(timezone=True), nullable=True),
     )
 
-    # ─────────────────────────────────────────
-    # USERS
-    # ─────────────────────────────────────────
+
+# Users.
     op.create_table(
         "users",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
@@ -49,9 +48,8 @@ def upgrade() -> None:
         sa.Column("updated_at", sa.DateTime(timezone=True), onupdate=sa.func.now()),
     )
 
-    # ─────────────────────────────────────────
-    # API KEYS  (programmatic access)
-    # ─────────────────────────────────────────
+
+# API Keys.
     op.create_table(
         "api_keys",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
