@@ -27,9 +27,8 @@ target_metadata = Base.metadata
 def get_url() -> str:
     return settings.DATABASE_URL
 
-
+# without a live database connection.
 def run_migrations_offline() -> None:
-    """Run migrations without a live database connection (generates SQL)."""
     url = get_url()
     context.configure(
         url=url,
