@@ -398,23 +398,22 @@ def upgrade() -> None:
     op.create_index("ix_experiment_runs_experiment", "experiment_runs", ["experiment_id"])
     op.create_index("ix_experiment_runs_status", "experiment_runs", ["status", "organization_id"])
 
-    # Alerts
+    # alerts.
     op.create_index("ix_alerts_org_status", "alerts", ["organization_id", "status"])
     op.create_index("ix_alerts_rule_triggered", "alerts", ["rule_id", "triggered_at"])
 
-    # Dataset rows
+    # dataset rows.
     op.create_index("ix_dataset_rows_dataset", "dataset_rows", ["dataset_id", "row_index"])
 
-    # RAG evaluations
+    # RAG evaluations.
     op.create_index("ix_rag_evals_run", "rag_evaluations", ["run_id"])
 
-    # Drift reports
+    # drift reports.
     op.create_index("ix_drift_reports_org_model_metric", "drift_reports",
                     ["organization_id", "model_name", "metric_name", "detected_at"])
 
 
 def downgrade() -> None:
-    # Drop in reverse dependency order
     tables = [
         "drift_reports", "alerts", "alert_rules", "monitoring_metrics",
         "rag_evaluations", "evaluation_results", "llm_traces",
