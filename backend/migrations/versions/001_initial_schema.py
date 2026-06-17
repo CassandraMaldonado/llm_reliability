@@ -33,7 +33,7 @@ def upgrade() -> None:
     )
 
 
-# Users.
+# users.
     op.create_table(
         "users",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
@@ -49,7 +49,7 @@ def upgrade() -> None:
     )
 
 
-# API Keys.
+# API keys.
     op.create_table(
         "api_keys",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
@@ -65,9 +65,7 @@ def upgrade() -> None:
         sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
     )
 
-    # ─────────────────────────────────────────
-    # PROJECTS  (logical grouping of experiments)
-    # ─────────────────────────────────────────
+# projects.
     op.create_table(
         "projects",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
