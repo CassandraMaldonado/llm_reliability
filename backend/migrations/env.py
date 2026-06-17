@@ -1,11 +1,8 @@
-"""\
-Alembic async migration environment.
+# Alembic async migration environment.
 
-Key configuration:
-- Uses asyncio.run() to wrap async Alembic calls (Alembic is sync by default)
-- Imports all models so Alembic can detect schema changes via autogenerate
-- DATABASE_URL from environment (not hardcoded) for 12-factor app compliance
-"""
+# -Imports all models so Alembic can detect schema changes via autogenerate.
+# - DATABASE_URL from environment for 12-factor app compliance.
+
 import asyncio
 from logging.config import fileConfig
 
