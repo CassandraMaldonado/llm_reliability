@@ -14,7 +14,7 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 from app.core.config import settings
 from app.core.database import Base
 
-# Import all models so Alembic autogenerate can detect them
+# models so Alembic autogenerate can detect them.
 import app.models  # noqa: F401
 
 config = context.config
