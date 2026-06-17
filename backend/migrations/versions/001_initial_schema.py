@@ -80,9 +80,9 @@ def upgrade() -> None:
         sa.Column("deleted_at", sa.DateTime(timezone=True), nullable=True),
     )
 
-    # ─────────────────────────────────────────
-    # EXPERIMENTS  (a named study comparing prompts/models)
-    # ─────────────────────────────────────────
+
+# experiments.  (a named study comparing prompts/models)
+
     op.create_table(
         "experiments",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
