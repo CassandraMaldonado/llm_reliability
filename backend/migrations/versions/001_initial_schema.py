@@ -81,8 +81,7 @@ def upgrade() -> None:
     )
 
 
-# experiments.  (a named study comparing prompts/models)
-
+# experiments.
     op.create_table(
         "experiments",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
@@ -100,9 +99,8 @@ def upgrade() -> None:
         sa.Column("deleted_at", sa.DateTime(timezone=True), nullable=True),
     )
 
-    # ─────────────────────────────────────────
-    # EXPERIMENT RUNS  (one run = one full eval pass with a config)
-    # ─────────────────────────────────────────
+
+# EXPERIMENT RUNS  (one run = one full eval pass with a config)
     op.create_table(
         "experiment_runs",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
