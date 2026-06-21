@@ -1,0 +1,113 @@
+"""
+app/repositories/base.py
+
+Generic base repository implementing common CRUD patterns.
+
+Repository Pattern Rationale:
+- Services call repositories, never SQLAlchemy directly
+- Enables swap to a different ORM or DB without touching business logic
+- Makes unit testing trivial: mock the repository, test the service
+- Single place for all DB-level concerns (pagination, soft-delete filtering)
+
+Enterprise usage: every major Python backend at scale (Instagram, Dropbox)
+separates data access from business logic. Django ORM is the anti-pattern —
+it bleeds into views. We avoid that here.
+"""
+import uuid
+from typing import Generic, List, Optional, Tuple, Type, TypeVar
+
+from sqlalchemy import select, func, and_
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.core.database import Base
+
+ModelType = TypeVar("ModelType", bound=Base)
+
+
+class BaseRepository(Generic[ModelType]):
+    """
+    Generic repository providing standard CRUD + pagination.
+    Subclass and set `model = YourModel`.
+    """
+
+    model: Type[ModelType]
+
+    def __init__(self, session: AsyncSession):
+        self.session = session
+
+    async def get_by_id(self, id: uuid.UUID, org_id: uuid.UUID) -> Optional[ModelType]:
+        """Get by primary key, scoped to org (row-level tenancy)."""
+        result = await self.session.execute(
+            select(self.model).where(
+                and_(
+                    self.model.id == id,
+                    self.model.organization_id == org_id,
+                )
+            )
+        )
+        return result.scalar_one_or_none()
+
+    async def list(
+        self,
+        org_id: uuid.UUID,
+        offset: int = 0,
+        limit: int = 20,
+        **filters,
+    ) -> Tuple[List[ModelType], int]:
+        """Return (items, total_count) for pagination."""
+        conditions = [self.model.organization_id == org_id]
+
+        # Apply soft-delete filter if model supports it
+        if hasattr(self.model, "deleted_at"):
+            conditions.append(self.model.deleted_at.is_(None))
+
+        # Apply additional filters
+        for key, value in filters.items():
+            if value is not None and hasattr(self.model, key):
+                conditions.append(getattr(self.model, key) == value)
+
+        where_clause = and_(*conditions)
+
+        # Count query
+        count_result = await self.session.execute(
+            select(func.count()).select_from(self.model).where(where_clause)
+        )
+        total = count_result.scalar_one()
+
+        # Data query
+        result = await self.session.execute(
+            select(self.model)
+            .where(where_clause)
+            .order_by(self.model.created_at.desc())
+            .offset(offset)
+            .limit(limit)
+        )
+        items = list(result.scalars().all())
+
+        return items, total
+
+    async def create(self, obj: ModelType) -> ModelType:
+        self.session.add(obj)
+        await self.session.flush()  # flush to get DB-generated values (id, created_at)
+        await self.session.refresh(obj)
+        return obj
+
+    async def update(self, obj: ModelType, **updates) -> ModelType:
+        for key, value in updates.items():
+            if value is not None:
+                setattr(obj, key, value)
+        await self.session.flush()
+        await self.session.refresh(obj)
+        return obj
+
+    async def soft_delete(self, obj: ModelType) -> ModelType:
+        """Mark as deleted without removing from DB — preserves audit trail."""
+        from datetime import datetime, timezone
+        obj.deleted_at = datetime.now(timezone.utc)
+        await self.session.flush()
+        return obj
+
+    async def hard_delete(self, obj: ModelType) -> None:
+        """Permanent delete. Only use for non-critical data (e.g. temp files)."""
+        await self.session.delete(obj)
+        await self.session.flush()
