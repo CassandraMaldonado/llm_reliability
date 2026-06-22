@@ -44,16 +44,14 @@ class Settings(BaseSettings):
     CELERY_TASK_TIMEOUT_SECONDS: int = 1800  # 30 min max per eval task
     CELERY_MAX_RETRIES: int = 3
 
-    # ── LLM Providers ────────────────────────────────────────────────────────
+    # LLMs.
     OPENAI_API_KEY: Optional[str] = None
     ANTHROPIC_API_KEY: Optional[str] = None
     GOOGLE_API_KEY: Optional[str] = None
     COHERE_API_KEY: Optional[str] = None
     HUGGINGFACE_API_TOKEN: Optional[str] = None
 
-    # ── Evaluator model (used to score outputs) ───────────────────────────────
-    # Enterprise note: Use a separate, cheaper model as evaluator to save cost.
-    # GPT-4o-mini is a great evaluator model — fast and cost-effective.
+    # evaluator model.
     EVALUATOR_PROVIDER: str = "openai"
     EVALUATOR_MODEL: str = "gpt-4o-mini"
 
