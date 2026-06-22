@@ -1,13 +1,7 @@
-"""
-app/core/config.py
+# Application settings and configuration.
 
-Central configuration via Pydantic Settings.
-All config comes from environment variables — never hardcoded.
-
-Enterprise pattern: 12-factor app compliance.
-Pydantic Settings validates at startup, catching missing secrets immediately
-rather than at runtime when a user hits the affected endpoint.
-"""
+# Pydantic validates required settings when the app starts, helping catch missing or invalid values early before they cause issues at runtime.
+    
 from functools import lru_cache
 from typing import List, Optional
 from pydantic import field_validator, PostgresDsn, RedisDsn
