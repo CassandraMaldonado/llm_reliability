@@ -1,23 +1,19 @@
 """
-app/evaluators/rag_evaluator.py
+Tools for evaluating the quality of a RAG (Retrieval-Augmented Generation) pipeline.
 
-RAG pipeline evaluation using LLM-as-judge + semantic similarity.
+Metrics:
 
-RAG Metric Definitions:
-- retrieval_precision: of the K chunks retrieved, what fraction are relevant to the question?
-  (LLM judge rates each chunk 0-1)
-- retrieval_recall: of all the information needed to answer, what fraction was retrieved?
-  (requires expected_answer as reference, uses semantic sim)
-- context_relevance: how well do retrieved chunks relate to the question?
-  (LLM judge, averaged across chunks)
-- groundedness: is the answer supported by the retrieved context?
-  (LLM judge: does every factual claim in the answer appear in context?)
-- answer_correctness: does the answer match the expected answer?
-  (semantic similarity between answer and expected_answer)
+retrieval_precision: how many of the retrieved chunks are actually relevant to the question
+retrieval_recall: how much of the information needed for the answer was successfully retrieved
+context_relevance: how closely the retrieved chunks relate to the user's question
+groundedness: whether the generated answer is supported by the retrieved context
+answer_correctness: how closely the generated answer matches the expected answer
 
-Industry Reference:
-These metrics align with RAGAS (Shahul Es et al., 2023) — the de-facto standard
-for RAG evaluation. We implement our own to avoid RAGAS's heavy dependencies.
+The evaluator combines LLM-based scoring with semantic similarity checks to
+measure both retrieval quality and answer quality.
+
+Inspired by common RAG evaluation approaches such as RAGAS, but implemented
+with a lighter dependency footprint.
 """
 import asyncio
 import json
