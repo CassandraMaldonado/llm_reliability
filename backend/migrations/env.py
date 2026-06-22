@@ -1,6 +1,6 @@
 # Alembic async migration environment.
 
-# -Imports all models so Alembic can detect schema changes via autogenerate.
+# - Imports all models so Alembic can detect schema changes via autogenerate.
 # - DATABASE_URL from environment for 12-factor app compliance.
 
 import asyncio
