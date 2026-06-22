@@ -27,13 +27,7 @@ async def get_current_user(
     credentials: Optional[HTTPAuthorizationCredentials] = Security(bearer_scheme),
     api_key: Optional[str] = Security(api_key_header),
 ) -> User:
-    """
-    Resolve the authenticated user from either:
-    1. Bearer JWT token (browser/interactive use)
-    2. X-API-Key header (SDK/programmatic use)
-    
-    Returns 401 if neither is valid.
-    """
+# gets the authenticated user 
     if credentials:
         try:
             payload = decode_token(credentials.credentials)
