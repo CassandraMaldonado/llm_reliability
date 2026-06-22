@@ -1,17 +1,10 @@
-"""
-app/api/deps.py
+# Shared FastAPI dependencies for authentication and services.
 
-FastAPI dependency injection for auth and services.
+# How it works:
+# Routes handlers get their dependencies.
+# Each request gets its own database session.
+# The current user is loaded once per request and reused when needed.
 
-Dependency Injection Pattern:
-- Every route handler receives typed dependencies via Depends()
-- DB session is request-scoped (one per request, auto-committed/rolled back)
-- CurrentUser is resolved once per request, cached by FastAPI
-- Services are instantiated per-request (cheap, stateless)
-
-This means routes are fully testable: swap get_current_user with a mock
-that returns a fake user and the entire auth layer is bypassed in tests.
-"""
 import uuid
 from typing import Optional
 
