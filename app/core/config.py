@@ -34,11 +34,11 @@ class Settings(BaseSettings):
     DATABASE_POOL_TIMEOUT: int = 30
     DATABASE_ECHO: bool = False  # Set True in dev to log all SQL
 
-    # ── Redis ─────────────────────────────────────────────────────────────────
+    # redis.
     REDIS_URL: RedisDsn = "redis://localhost:6379/0"  # type: ignore
     REDIS_CACHE_TTL_SECONDS: int = 300  # 5 min default cache
 
-    # ── Celery ────────────────────────────────────────────────────────────────
+    # celery.
     CELERY_BROKER_URL: str = "redis://localhost:6379/1"
     CELERY_RESULT_BACKEND: str = "redis://localhost:6379/2"
     CELERY_TASK_TIMEOUT_SECONDS: int = 1800  # 30 min max per eval task
