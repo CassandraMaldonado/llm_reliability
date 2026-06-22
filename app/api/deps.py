@@ -63,14 +63,12 @@ async def get_current_user(
 
 
 async def get_current_admin(current_user: User = Depends(get_current_user)) -> User:
-    """Require admin role."""
     if current_user.role not in ("admin", "owner"):
         raise HTTPException(status_code=403, detail="Admin access required")
     return current_user
 
 
 def require_org(org_id: uuid.UUID, current_user: User = Depends(get_current_user)) -> uuid.UUID:
-    """Validate that the current user belongs to the requested org."""
     if current_user.organization_id != org_id:
         raise HTTPException(status_code=403, detail="Access denied to this organization")
     return org_id
