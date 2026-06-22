@@ -15,25 +15,25 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    # ── App ──────────────────────────────────────────────────────────────────
+    # app.
     APP_NAME: str = "MANGOS LLM Reliability Platform"
     APP_VERSION: str = "0.1.0"
     ENVIRONMENT: str = "development"  # development, staging, production
     DEBUG: bool = False
     LOG_LEVEL: str = "INFO"
 
-    # ── API ──────────────────────────────────────────────────────────────────
+    # API.
     API_PREFIX: str = "/api/v1"
     ALLOWED_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:5173"]
 
-    # ── Security ─────────────────────────────────────────────────────────────
-    SECRET_KEY: str  # Required — no default. Will fail startup if missing.
+    # security.
+    SECRET_KEY: str  # Required, no default. Will fail startup if missing.
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
     ALGORITHM: str = "HS256"
     API_KEY_PREFIX: str = "mg_"
 
-    # ── Database ─────────────────────────────────────────────────────────────
+    # database.
     DATABASE_URL: PostgresDsn
     DATABASE_POOL_SIZE: int = 10
     DATABASE_MAX_OVERFLOW: int = 20
