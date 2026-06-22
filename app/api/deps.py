@@ -67,7 +67,7 @@ async def get_current_admin(current_user: User = Depends(get_current_user)) -> U
         raise HTTPException(status_code=403, detail="Admin access required")
     return current_user
 
-
+# validates that the user belongs to the requested org.
 def require_org(org_id: uuid.UUID, current_user: User = Depends(get_current_user)) -> uuid.UUID:
     if current_user.organization_id != org_id:
         raise HTTPException(status_code=403, detail="Access denied to this organization")
