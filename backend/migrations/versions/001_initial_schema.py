@@ -100,15 +100,15 @@ def upgrade() -> None:
     )
 
 
-# EXPERIMENT RUNS  (one run = one full eval pass with a config)
+# experiment runs.  
     op.create_table(
         "experiment_runs",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
         sa.Column("experiment_id", UUID(as_uuid=True), sa.ForeignKey("experiments.id"), nullable=False),
         sa.Column("organization_id", UUID(as_uuid=True), sa.ForeignKey("organizations.id"), nullable=False),
         # Model configuration
-        sa.Column("provider", sa.String(50), nullable=False),           # openai, anthropic, gemini, huggingface
-        sa.Column("model_name", sa.String(255), nullable=False),        # gpt-4o, claude-3-5-sonnet, etc.
+        sa.Column("provider", sa.String(50), nullable=False),           
+        sa.Column("model_name", sa.String(255), nullable=False),        
         sa.Column("model_version", sa.String(100), nullable=True),
         # Prompt configuration
         sa.Column("system_prompt", sa.Text, nullable=True),
@@ -180,13 +180,13 @@ def upgrade() -> None:
         sa.Column("hyperparameters", JSONB, nullable=False, server_default="{}"),
         # Ground truth (for eval)
         sa.Column("expected_output", sa.Text, nullable=True),
-        sa.Column("context_documents", JSONB, nullable=True),           # RAG context passed to model
+        sa.Column("context_documents", JSONB, nullable=True),           # RAG context passed to the model.
         # Status
-        sa.Column("status", sa.String(50), nullable=False, server_default="success"),  # success, error, timeout
+        sa.Column("status", sa.String(50), nullable=False, server_default="success"),  # success, error, timeout.
         sa.Column("error_code", sa.String(100), nullable=True),
         sa.Column("error_message", sa.Text, nullable=True),
         # User feedback
-        sa.Column("user_feedback_score", sa.Float, nullable=True),       # 1-5 thumbs up/down normalized
+        sa.Column("user_feedback_score", sa.Float, nullable=True),      
         sa.Column("user_feedback_text", sa.Text, nullable=True),
         sa.Column("metadata", JSONB, nullable=False, server_default="{}"),
         sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
