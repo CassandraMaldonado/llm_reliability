@@ -383,11 +383,11 @@ def upgrade() -> None:
     op.create_index("ix_eval_results_trace", "evaluation_results", ["trace_id"])
     op.create_index("ix_eval_results_run_metric", "evaluation_results", ["run_id", "metric_name"])
 
-    # Monitoring metrics — time-series queries
+    # monitoring metrics.
     op.create_index("ix_monitoring_org_model_metric_window", "monitoring_metrics",
                     ["organization_id", "model_name", "metric_name", "window_start"])
 
-    # Experiments
+    # experiments.
     op.create_index("ix_experiments_project", "experiments", ["project_id"])
     op.create_index("ix_experiment_runs_experiment", "experiment_runs", ["experiment_id"])
     op.create_index("ix_experiment_runs_status", "experiment_runs", ["status", "organization_id"])
