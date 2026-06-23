@@ -148,28 +148,26 @@ def upgrade() -> None:
         sa.Column("updated_at", sa.DateTime(timezone=True), onupdate=sa.func.now()),
     )
 
-    # ─────────────────────────────────────────
-    # LLM TRACES  (individual LLM calls)
-    # Core of the observability system. One row per LLM call.
-    # ─────────────────────────────────────────
+
+    # LLM traces.
     op.create_table(
         "llm_traces",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
         sa.Column("run_id", UUID(as_uuid=True), sa.ForeignKey("experiment_runs.id"), nullable=True),
         sa.Column("organization_id", UUID(as_uuid=True), sa.ForeignKey("organizations.id"), nullable=False),
         # Source: was this from an experiment, or from production SDK instrumentation?
-        sa.Column("source", sa.String(50), nullable=False, server_default="experiment"),  # experiment, production
-        sa.Column("trace_group_id", UUID(as_uuid=True), nullable=True),  # group related multi-turn calls
-        sa.Column("span_index", sa.Integer, nullable=True),              # position within a trace group
+        sa.Column("source", sa.String(50), nullable=False, server_default="experiment"),  
+        sa.Column("trace_group_id", UUID(as_uuid=True), nullable=True),  
+        sa.Column("span_index", sa.Integer, nullable=True),              
         # Input
         sa.Column("provider", sa.String(50), nullable=False),
         sa.Column("model_name", sa.String(255), nullable=False),
         sa.Column("system_prompt", sa.Text, nullable=True),
         sa.Column("user_prompt", sa.Text, nullable=False),
-        sa.Column("messages", JSONB, nullable=True),                     # full message array for multi-turn
+        sa.Column("messages", JSONB, nullable=True),                     
         # Output
         sa.Column("completion", sa.Text, nullable=True),
-        sa.Column("finish_reason", sa.String(50), nullable=True),        # stop, length, content_filter
+        sa.Column("finish_reason", sa.String(50), nullable=True),        
         # Tokens & cost
         sa.Column("prompt_tokens", sa.Integer, nullable=True),
         sa.Column("completion_tokens", sa.Integer, nullable=True),
