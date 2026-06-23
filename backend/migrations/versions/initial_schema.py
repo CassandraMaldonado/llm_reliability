@@ -212,9 +212,7 @@ def upgrade() -> None:
         sa.Column("evaluated_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
     )
 
-    # ─────────────────────────────────────────
-    # DATASETS  (reusable eval question sets)
-    # ─────────────────────────────────────────
+    # datasets.
     op.create_table(
         "datasets",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
