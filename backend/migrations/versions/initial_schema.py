@@ -293,9 +293,8 @@ def upgrade() -> None:
         sa.Column("recorded_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
     )
 
-    # ─────────────────────────────────────────
-    # ALERT RULES
-    # ─────────────────────────────────────────
+
+    # alert rules.
     op.create_table(
         "alert_rules",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
@@ -303,10 +302,10 @@ def upgrade() -> None:
         sa.Column("name", sa.String(255), nullable=False),
         sa.Column("description", sa.Text, nullable=True),
         sa.Column("metric_name", sa.String(100), nullable=False),
-        sa.Column("condition", sa.String(50), nullable=False),           # gt, lt, gte, lte, anomaly
+        sa.Column("condition", sa.String(50), nullable=False),           
         sa.Column("threshold", sa.Float, nullable=True),
-        sa.Column("severity", sa.String(50), nullable=False, server_default="warning"),  # info, warning, critical
-        sa.Column("model_filter", sa.String(255), nullable=True),        # null = all models
+        sa.Column("severity", sa.String(50), nullable=False, server_default="warning"),  # info, warning, critical.
+        sa.Column("model_filter", sa.String(255), nullable=True),        
         sa.Column("evaluation_window_minutes", sa.Integer, nullable=False, server_default="60"),
         sa.Column("cooldown_minutes", sa.Integer, nullable=False, server_default="30"),
         sa.Column("notification_channels", JSONB, nullable=False, server_default="[]"),
