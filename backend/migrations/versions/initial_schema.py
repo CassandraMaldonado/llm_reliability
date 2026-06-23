@@ -192,9 +192,7 @@ def upgrade() -> None:
         sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
     )
 
-    # ─────────────────────────────────────────
-    # EVALUATION RESULTS  (per-trace metric scores)
-    # ─────────────────────────────────────────
+    # eval.
     op.create_table(
         "evaluation_results",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
@@ -203,13 +201,13 @@ def upgrade() -> None:
         sa.Column("organization_id", UUID(as_uuid=True), sa.ForeignKey("organizations.id"), nullable=False),
         sa.Column("metric_name", sa.String(100), nullable=False),
         # e.g. answer_relevance, faithfulness, hallucination_score, semantic_similarity, toxicity
-        sa.Column("metric_version", sa.String(50), nullable=True),      # version of evaluator used
-        sa.Column("score", sa.Float, nullable=False),                    # normalized 0.0 – 1.0
-        sa.Column("raw_score", sa.Float, nullable=True),                 # provider-native score
-        sa.Column("passed", sa.Boolean, nullable=True),                  # did it meet threshold?
-        sa.Column("threshold", sa.Float, nullable=True),                 # threshold used
-        sa.Column("reasoning", sa.Text, nullable=True),                  # LLM-based evaluator explanation
-        sa.Column("evaluator_model", sa.String(255), nullable=True),     # which model scored this
+        sa.Column("metric_version", sa.String(50), nullable=True),      # version of evaluator used.
+        sa.Column("score", sa.Float, nullable=False),                    # normalized.
+        sa.Column("raw_score", sa.Float, nullable=True),                 
+        sa.Column("passed", sa.Boolean, nullable=True),                
+        sa.Column("threshold", sa.Float, nullable=True),                 # threshold used.
+        sa.Column("reasoning", sa.Text, nullable=True),                  # evaluator explanation.
+        sa.Column("evaluator_model", sa.String(255), nullable=True),    
         sa.Column("metadata", JSONB, nullable=False, server_default="{}"),
         sa.Column("evaluated_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
     )
