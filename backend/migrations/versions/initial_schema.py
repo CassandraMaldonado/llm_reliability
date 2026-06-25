@@ -17,8 +17,7 @@ branch_labels = None
 depends_on = None
 
 
-# Org table: this is the main root table for multi-tenancy.
-
+# Org table.
 def upgrade() -> None:
     op.create_table(
         "organizations",
@@ -243,9 +242,7 @@ def upgrade() -> None:
         sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
     )
 
-    # ─────────────────────────────────────────
-    # RAG EVALUATIONS
-    # ─────────────────────────────────────────
+    # RAG eval.
     op.create_table(
         "rag_evaluations",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
@@ -253,14 +250,14 @@ def upgrade() -> None:
         sa.Column("trace_id", UUID(as_uuid=True), sa.ForeignKey("llm_traces.id"), nullable=False),
         sa.Column("organization_id", UUID(as_uuid=True), sa.ForeignKey("organizations.id"), nullable=False),
         # RAG configuration
-        sa.Column("embedding_model", sa.String(255), nullable=False),   # text-embedding-3-large, bge-large, etc.
+        sa.Column("embedding_model", sa.String(255), nullable=False),   
         sa.Column("chunk_size", sa.Integer, nullable=True),
         sa.Column("chunk_overlap", sa.Integer, nullable=True),
         sa.Column("retrieval_strategy", sa.String(100), nullable=True), # dense, sparse, hybrid, mmr
         sa.Column("top_k", sa.Integer, nullable=True),
         # Retrieved context
         sa.Column("retrieved_chunks", JSONB, nullable=True),            # list of {text, score, source}
-        sa.Column("gold_context", JSONB, nullable=True),                # expected context from dataset
+        sa.Column("gold_context", JSONB, nullable=True),             
         # Scores
         sa.Column("retrieval_precision", sa.Float, nullable=True),
         sa.Column("retrieval_recall", sa.Float, nullable=True),
