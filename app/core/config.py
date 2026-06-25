@@ -1,6 +1,4 @@
 # Application settings and configuration.
-
-# Pydantic validates required settings when the app starts, helping catch missing or invalid values early before they cause issues at runtime.
     
 from functools import lru_cache
 from typing import List, Optional
@@ -55,7 +53,7 @@ class Settings(BaseSettings):
     EVALUATOR_PROVIDER: str = "openai"
     EVALUATOR_MODEL: str = "gpt-4o-mini"
 
-    # ── Embeddings ────────────────────────────────────────────────────────────
+    # embeddings.
     DEFAULT_EMBEDDING_MODEL: str = "text-embedding-3-small"
     DEFAULT_EMBEDDING_PROVIDER: str = "openai"
 
