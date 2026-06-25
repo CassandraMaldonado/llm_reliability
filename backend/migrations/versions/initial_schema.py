@@ -356,18 +356,16 @@ def upgrade() -> None:
         sa.Column("detected_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
     )
 
-    # ─────────────────────────────────────────
-    # INDEXES  (critical for dashboard query performance)
-    # ─────────────────────────────────────────
 
-    # Traces — most queried table, needs aggressive indexing
+    # indexes.
+    # traces: most queried table, needs aggressive indexing.
     op.create_index("ix_llm_traces_org_created", "llm_traces", ["organization_id", "created_at"])
     op.create_index("ix_llm_traces_org_model", "llm_traces", ["organization_id", "model_name"])
     op.create_index("ix_llm_traces_run_id", "llm_traces", ["run_id"])
     op.create_index("ix_llm_traces_trace_group", "llm_traces", ["trace_group_id"])
     op.create_index("ix_llm_traces_source_org", "llm_traces", ["source", "organization_id"])
 
-    # Eval results — commonly queried by metric name per run
+    # eval results.
     op.create_index("ix_eval_results_trace", "evaluation_results", ["trace_id"])
     op.create_index("ix_eval_results_run_metric", "evaluation_results", ["run_id", "metric_name"])
 
