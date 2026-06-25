@@ -311,9 +311,7 @@ def upgrade() -> None:
         sa.Column("updated_at", sa.DateTime(timezone=True), onupdate=sa.func.now()),
     )
 
-    # ─────────────────────────────────────────
-    # ALERTS  (triggered alert instances)
-    # ─────────────────────────────────────────
+    # alerts.
     op.create_table(
         "alerts",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
