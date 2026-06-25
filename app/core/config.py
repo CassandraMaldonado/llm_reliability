@@ -68,14 +68,14 @@ class Settings(BaseSettings):
     RATE_LIMIT_DEFAULT_RPM: int = 100       # requests per minute per API key
     RATE_LIMIT_EVAL_RPM: int = 10          # eval jobs are expensive
 
-    # ── Storage ──────────────────────────────────────────────────────────────
+    # storage.
     # Local disk in dev; swap for S3_BUCKET in prod via same interface
     STORAGE_BACKEND: str = "local"         # local, s3
     LOCAL_STORAGE_PATH: str = "/tmp/mangos_artifacts"
     S3_BUCKET: Optional[str] = None
     S3_REGION: Optional[str] = None
 
-    # ── Notifications ─────────────────────────────────────────────────────────
+    # notifications.
     SMTP_HOST: Optional[str] = None
     SMTP_PORT: int = 587
     SMTP_USER: Optional[str] = None
