@@ -105,22 +105,22 @@ def upgrade() -> None:
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
         sa.Column("experiment_id", UUID(as_uuid=True), sa.ForeignKey("experiments.id"), nullable=False),
         sa.Column("organization_id", UUID(as_uuid=True), sa.ForeignKey("organizations.id"), nullable=False),
-        # Model configuration
+        # model configuration.
         sa.Column("provider", sa.String(50), nullable=False),           
         sa.Column("model_name", sa.String(255), nullable=False),        
         sa.Column("model_version", sa.String(100), nullable=True),
-        # Prompt configuration
+        # prompt configuration.
         sa.Column("system_prompt", sa.Text, nullable=True),
         sa.Column("prompt_template", sa.Text, nullable=True),
         sa.Column("prompt_version", sa.String(50), nullable=True),
         # Hyperparameters stored as JSONB for flexibility
         sa.Column("hyperparameters", JSONB, nullable=False, server_default="{}"),
-        # e.g. {"temperature": 0.7, "top_p": 0.9, "max_tokens": 1024}
-        # Status
+        # {"temperature": 0.7, "top_p": 0.9, "max_tokens": 1024}
+        # Status.
         sa.Column("status", sa.String(50), nullable=False, server_default="pending"),
         # pending, running, completed, failed, cancelled
         sa.Column("celery_task_id", sa.String(255), nullable=True),
-        # Aggregate metrics (denormalized for fast dashboard queries)
+        # aggregate metrics.
         sa.Column("total_samples", sa.Integer, nullable=True),
         sa.Column("completed_samples", sa.Integer, nullable=True),
         sa.Column("failed_samples", sa.Integer, nullable=True),
@@ -270,7 +270,7 @@ def upgrade() -> None:
     )
 
  
-    # Monitoring metrics.
+    # monitoring metrics.
     op.create_table(
         "monitoring_metrics",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
