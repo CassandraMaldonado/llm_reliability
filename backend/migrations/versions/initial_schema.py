@@ -269,9 +269,8 @@ def upgrade() -> None:
         sa.Column("evaluated_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
     )
 
-    # ─────────────────────────────────────────
-    # MONITORING METRICS  (time-series production metrics)
-    # ─────────────────────────────────────────
+ 
+    # Monitoring metrics.
     op.create_table(
         "monitoring_metrics",
         sa.Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4),
