@@ -2,7 +2,7 @@
 
 **Monitor. Analyze. Navigate. Guard. Observe. Score.**
 
-An open-source, production-grade platform for LLM evaluation, observability and reliability. It combines the best ideas from LangSmith, DeepEval, W&B, Datadog and Arize Phoenix into a single  stack.
+An open-source, production garde platform for LLM evaluation, observability and reliability. It combines the best ideas from LangSmith, DeepEval, W&B, Datadog and Arize Phoenix into a single  stack.
 
 ---
 
@@ -25,12 +25,12 @@ An open-source, production-grade platform for LLM evaluation, observability and 
 ```
 ┌──────────────────────────────────────────────────────────────┐
 │                         MANGOS Stack                         │
-├──────────────┬───────────────┬──────────────┬───────────────┤
-│  React + TS  │  FastAPI      │  Celery      │  PostgreSQL   │
-│  Dashboard   │  REST API     │  Workers     │  + JSONB      │
-│  Port 5173   │  Port 8000    │  Beat (5min) │               │
-├──────────────┴───────────────┴──────────────┴───────────────┤
-│              Redis (cache + Celery broker)                    │
+├──────────────┬───────────────┬──────────────┬───────────-────┤
+│  React + TS  │  FastAPI      │  Celery      │  PostgreSQL    │
+│  Dashboard   │  REST API     │  Workers     │  + JSONB       │
+│  Port 5173   │  Port 8000    │  Beat (5min) │                │
+├──────────────┴───────────────┴──────────────┴─────────────-──┤
+│              Redis (cache + Celery broker)                   │
 └──────────────────────────────────────────────────────────────┘
 ```
 
