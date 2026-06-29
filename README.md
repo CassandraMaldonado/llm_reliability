@@ -237,12 +237,4 @@ Optional (enables more features):
 - `SENTRY_DSN` — error tracking
 - `SENDGRID_API_KEY` — email alerts
 
----
 
-## Roadmap
-
-**v0.1 (current)** — Core evaluation + tracing + drift detection  
-**v0.2** — React dashboard complete, real-time WebSocket updates  
-**v0.3** — Multi-model prompt playground, dataset versioning  
-**v0.4** — Slack/GitHub Actions integrations, regression detection on deploy  
-**v1.0** — SAML SSO, audit logs, HIPAA/SOC2 compliance mode
