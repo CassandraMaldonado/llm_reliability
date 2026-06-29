@@ -246,18 +246,3 @@ Optional (enables more features):
 **v0.3** — Multi-model prompt playground, dataset versioning  
 **v0.4** — Slack/GitHub Actions integrations, regression detection on deploy  
 **v1.0** — SAML SSO, audit logs, HIPAA/SOC2 compliance mode
-
----
-
-## Contributing
-
-PRs welcome. Please:
-1. Run `ruff check` and `mypy` before submitting
-2. Add tests for new features (`tests/unit/` for logic, `tests/integration/` for API)
-3. Keep the repository pattern — no SQLAlchemy in services or routes
-
----
-
-## License
-
-MIT — see `LICENSE`.
