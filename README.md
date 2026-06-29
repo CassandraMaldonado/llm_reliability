@@ -49,11 +49,11 @@ Full architecture doc: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 
 ```
 mangos/
-├── backend/                  # FastAPI application
+├── backend/                
 │   ├── app/
-│   │   ├── api/v1/endpoints/ # 10 API routers (auth, experiments, traces, rag, alerts, ...)
-│   │   ├── core/             # Config (Pydantic Settings), database session
-│   │   ├── evaluators/       # Metric implementations + RAG evaluator
+│   │   ├── api/v1/endpoints/ # 10 API routers.
+│   │   ├── core/             # config.
+│   │   ├── evaluators/       # metric implementations and RAG evaluator.
 │   │   ├── models/           # SQLAlchemy 2.0 ORM models (14 tables)
 │   │   ├── monitoring/       # Drift detection (KS test, Z-score, threshold)
 │   │   ├── repositories/     # All DB access — never call SQLAlchemy from services
