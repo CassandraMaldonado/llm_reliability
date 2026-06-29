@@ -60,11 +60,11 @@ mangos/
 │   │   ├── schemas/          # Pydantic v2 request/response schemas
 │   │   ├── services/         # Business logic (auth, evaluation orchestration)
 │   │   └── tasks/            # Celery tasks (evaluation pipeline, metrics aggregation, alerts)
-│   ├── migrations/           # Alembic async migrations
+│   ├── migrations/           
 │   ├── Dockerfile
 │   ├── requirements.txt
 │   └── requirements-dev.txt
-├── frontend/                 # React + TypeScript dashboard
+├── frontend/                 
 │   └── src/
 │       └── types/            # TypeScript types mirroring API schemas
 ├── sdk/                      # Python SDK for production instrumentation
