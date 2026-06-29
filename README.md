@@ -196,7 +196,7 @@ Runs every 5 minutes via Celery Beat. Three detection strategies:
 - **Z-score anomaly** — Flags individual values > 2.5 standard deviations from the 24-hour baseline.
 - **Threshold breach** — Hard limits (e.g. `latency_ms > 10,000` = critical, `hallucination_score > 0.6` = critical).
 
-Drift generates an Alert record and fires configured notification channels (webhook → Slack/PagerDuty/etc).
+Drift generates an Alert record and fires configured notification channels.
 
 ---
 
