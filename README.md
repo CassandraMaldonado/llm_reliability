@@ -41,7 +41,6 @@ An open-source, production garde platform for LLM evaluation, observability and 
 - **KS test for drift** — non-parametric, handles non-normal distributions, industry standard
 - **UUID primary keys** — distributed-safe, no sequential scan risk in future sharding
 
-Full architecture doc: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 
 ---
 
