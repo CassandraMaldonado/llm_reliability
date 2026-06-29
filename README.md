@@ -176,13 +176,13 @@ Full interactive docs at `/docs` when running locally.
 
 | Metric | Method | Cost |
 |---|---|---|
-| Semantic similarity | Local `sentence-transformers` (MiniLM) | Free |
-| Answer relevance | GPT-4o-mini judge | ~$0.0001/eval |
-| Faithfulness | GPT-4o-mini judge | ~$0.0001/eval |
-| Hallucination | GPT-4o-mini judge | ~$0.0001/eval |
-| Toxicity | GPT-4o-mini judge | ~$0.0001/eval |
-| Context relevance | GPT-4o-mini judge | ~$0.0001/eval |
-| RAG groundedness | GPT-4o-mini judge | ~$0.0001/eval |
+| Semantic similarity | Local `sentence-transformers` (MiniLM) |
+| Answer relevance | GPT-4o-mini judge | 
+| Faithfulness | GPT-4o-mini judge |
+| Hallucination | GPT-4o-mini judge |
+| Toxicity | GPT-4o-mini judge |
+| Context relevance | GPT-4o-mini judge |
+| RAG groundedness | GPT-4o-mini judge |
 
 All metrics run **concurrently** — evaluating 7 metrics takes the same time as evaluating 1.
 
