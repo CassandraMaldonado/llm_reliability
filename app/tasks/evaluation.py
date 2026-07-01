@@ -1,22 +1,12 @@
-"""
-app/tasks/evaluation.py
+# Celery tasks for LLM evaluation.
 
-Celery tasks for async LLM evaluation.
-
-Why Celery:
-- Eval jobs take 30s–10min (can't block HTTP requests)
-- Need retries (LLM APIs are flaky)
-- Need rate limiting (don't burn API budget)
-- Need priority queues (human-triggered > scheduled)
-- Need monitoring (failed tasks must alert)
-
-Task design principles:
+# Task design principles:
 - Tasks are idempotent — re-running the same task_id is safe
 - Tasks report progress for real-time UI updates
 - All state lives in PostgreSQL, not Celery result backend
   (Celery results expire; DB records don't)
 - Tasks must handle partial failures (skip failed rows, not abort entire run)
-"""
+
 import asyncio
 import logging
 import time
