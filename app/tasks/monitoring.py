@@ -32,10 +32,10 @@ OPERATOR_MAP = {
 METRIC_TO_TRACE_FIELD = {
     "latency_ms": "latency_ms",
     "cost_usd": "cost_usd",
-    "hallucination_score": None,   # from EvaluationResult
-    "answer_relevance": None,      # from EvaluationResult
-    "faithfulness": None,          # from EvaluationResult
-    "failure_rate": None,          # computed as error_count / total
+    "hallucination_score": None,   
+    "answer_relevance": None,      
+    "faithfulness": None,        
+    "failure_rate": None,          # error_count / total
     "feedback_score": "user_feedback_score",
 }
 
