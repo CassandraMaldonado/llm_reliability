@@ -32,14 +32,14 @@ celery_app.conf.update(
     result_serializer="json",
     timezone="UTC",
     enable_utc=True,
-    task_track_started=True,               # Report STARTED state (important for progress tracking)
-    task_acks_late=True,                   # Ack AFTER completion (prevents lost tasks on worker crash)
-    worker_prefetch_multiplier=1,          # Process one task at a time per worker (fair queue)
+    task_track_started=True,               
+    task_acks_late=True,                   
+    worker_prefetch_multiplier=1,          
     task_soft_time_limit=settings.CELERY_TASK_TIMEOUT_SECONDS,
     task_time_limit=settings.CELERY_TASK_TIMEOUT_SECONDS + 60,
     task_max_retries=settings.CELERY_MAX_RETRIES,
 
-    # Priority queues
+    # Priority queues.
     task_queues={
         "high": {"exchange": "high", "routing_key": "high"},
         "default": {"exchange": "default", "routing_key": "default"},
@@ -47,7 +47,7 @@ celery_app.conf.update(
     },
     task_default_queue="default",
 
-    # Beat schedule for periodic tasks
+    # Beat schedule for periodic tasks.
     beat_schedule={
         "drift-detection": {
             "task": "app.tasks.monitoring.run_drift_detection",
