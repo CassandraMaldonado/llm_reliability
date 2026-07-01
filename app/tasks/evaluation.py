@@ -19,7 +19,7 @@ from app.core.config import settings
 
 logger = get_task_logger(__name__)
 
-# ── Celery App ────────────────────────────────────────────────────────────────
+# Celery app.
 celery_app = Celery(
     "mangos",
     broker=settings.CELERY_BROKER_URL,
