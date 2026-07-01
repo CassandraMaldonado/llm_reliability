@@ -1,9 +1,5 @@
-"""
-app/tasks/monitoring.py
-
-Celery tasks for:
-1. Metrics aggregation — roll up raw traces into MonitoringMetric records every 5 min
-2. Alert evaluation — check all active alert rules against current metrics
+# Metrics aggregation: roll up raw traces into MonitoringMetric records.
+# Alert evaluation: check all active alert rules against current metrics.
 
 Design: These tasks run on Celery Beat schedule (every 5 minutes).
 They are idempotent — safe to re-run if they fail mid-execution.
@@ -14,7 +10,7 @@ Alert Architecture:
 - If threshold crossed → create Alert record + fire notification
 - Notifications: webhook (flexible, powers Slack/PagerDuty), email (via SendGrid)
 - Alert deduplication: don't re-fire same rule if alert already unresolved
-"""
+
 import asyncio
 import logging
 from datetime import datetime, timedelta, timezone
