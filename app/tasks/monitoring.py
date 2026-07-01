@@ -1,15 +1,11 @@
 # Metrics aggregation: roll up raw traces into MonitoringMetric records.
 # Alert evaluation: check all active alert rules against current metrics.
 
-Design: These tasks run on Celery Beat schedule (every 5 minutes).
-They are idempotent — safe to re-run if they fail mid-execution.
+# Alert architecture:
+# - Alert rules are stored in DB.
+# - Beat task gets all active rules and evaluates each against the latest metric value.
+# - Notifications: webhook and email.
 
-Alert Architecture:
-- Alert rules are stored in DB (per org)
-- Beat task fetches all active rules and evaluates each against latest metric value
-- If threshold crossed → create Alert record + fire notification
-- Notifications: webhook (flexible, powers Slack/PagerDuty), email (via SendGrid)
-- Alert deduplication: don't re-fire same rule if alert already unresolved
 
 import asyncio
 import logging
