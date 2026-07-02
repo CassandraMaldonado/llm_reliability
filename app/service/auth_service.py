@@ -1,7 +1,5 @@
 """
-app/services/auth_service.py
-
-Authentication service: JWT tokens, password hashing, API key management.
+# Authentication service: JWT tokens, password hashing, API key management.
 
 Security Design:
 - Passwords: bcrypt with work factor 12 (recalculate every 2-3 years as hardware improves)
