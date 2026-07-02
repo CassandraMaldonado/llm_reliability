@@ -173,14 +173,14 @@ class AuthService:
         await self.session.refresh(api_key)
         return api_key, raw_key
 
+    # Validate API key, return associated user.
     async def authenticate_api_key(self, raw_key: str) -> Optional[User]:
-        """Validate API key, return associated user."""
         key_hash = hash_api_key(raw_key)
         api_key = await self.api_keys.get_by_key_hash(key_hash)
         if not api_key:
             return None
         if api_key.expires_at and api_key.expires_at < datetime.now(timezone.utc):
             return None
-        # Update last used (fire-and-forget style, low priority)
+        # Update last used.
         await self.api_keys.update_last_used(api_key)
         return await self.users.get_by_id_any_org(api_key.user_id)
