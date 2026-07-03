@@ -51,18 +51,13 @@ async def get_me(current_user: User = Depends(get_current_user)):
     """Return the currently authenticated user's profile."""
     return current_user
 
-
+# Create a new API key.
 @router.post("/api-keys", response_model=ApiKeyResponse, status_code=201)
 async def create_api_key(
     data: ApiKeyCreate,
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """
-    Create a new API key.
-    IMPORTANT: The full key is returned only once in raw_key.
-    Store it securely — it cannot be retrieved again.
-    """
     service = AuthService(session)
     api_key, raw_key = await service.create_api_key(
         org_id=current_user.organization_id,
