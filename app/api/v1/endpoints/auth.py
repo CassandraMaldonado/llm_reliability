@@ -45,10 +45,9 @@ async def refresh(data: RefreshRequest, session: AsyncSession = Depends(get_db))
         raise HTTPException(status_code=401, detail="Invalid or expired refresh token")
     return tokens
 
-
+# Return the currently authenticated user's profile.
 @router.get("/me", response_model=UserResponse)
 async def get_me(current_user: User = Depends(get_current_user)):
-    """Return the currently authenticated user's profile."""
     return current_user
 
 # Create a new API key.
