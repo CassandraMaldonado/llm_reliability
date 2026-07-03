@@ -22,10 +22,9 @@ async def register(data: UserCreate, session: AsyncSession = Depends(get_db)):
     await session.commit()
     return user
 
-
+# Authenticate returns JWT access and refresh tokens.
 @router.post("/login", response_model=TokenResponse)
 async def login(data: LoginRequest, session: AsyncSession = Depends(get_db)):
-    """Authenticate with email/password, returns JWT access + refresh tokens."""
     service = AuthService(session)
     result = await service.login(data)
     if not result:
