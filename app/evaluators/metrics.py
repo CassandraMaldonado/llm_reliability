@@ -11,10 +11,6 @@ Why Strategy Pattern:
 
 Metric implementations use DeepEval under the hood where available,
 fall back to embedding similarity or custom LLM-as-judge for others.
-
-Enterprise context: Most production eval platforms (LangSmith, Braintrust)
-use LLM-as-judge for complex metrics (faithfulness, hallucination) and
-embedding similarity for relevance. We follow the same pattern.
 """
 import asyncio
 import time
