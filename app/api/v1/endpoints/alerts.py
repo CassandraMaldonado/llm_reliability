@@ -1,4 +1,5 @@
-"""app/api/v1/endpoints/alerts.py"""
+# app/api/v1/endpoints/alerts.py
+
 import uuid
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -14,7 +15,7 @@ from app.schemas.common import PaginatedResponse
 router = APIRouter()
 
 
-# ── Alert Rules ──────────────────────────────────────────────────────────────
+# alert rules.
 
 @router.post("/rules", response_model=AlertRuleResponse, status_code=201)
 async def create_alert_rule(
