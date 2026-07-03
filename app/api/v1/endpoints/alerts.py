@@ -16,6 +16,7 @@ router = APIRouter()
 
 
 # alert rules.
+# create an alert rule.
 
 @router.post("/rules", response_model=AlertRuleResponse, status_code=201)
 async def create_alert_rule(
@@ -23,10 +24,6 @@ async def create_alert_rule(
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """
-    Create an alert rule.
-    The Celery Beat monitoring task evaluates all active rules every 5 minutes.
-    """
     rule = AlertRule(
         organization_id=current_user.organization_id,
         **data.model_dump(),
