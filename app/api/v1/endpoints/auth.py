@@ -1,4 +1,4 @@
-"""app/api/v1/endpoints/auth.py — Authentication endpoints."""
+# Authentice the endpoints.
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
