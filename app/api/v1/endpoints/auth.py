@@ -14,12 +14,9 @@ from app.services.auth_service import AuthService
 router = APIRouter()
 
 
+# Register a new user. 
 @router.post("/register", response_model=UserResponse, status_code=201)
 async def register(data: UserCreate, session: AsyncSession = Depends(get_db)):
-    """
-    Register a new user. If organization_name is provided, creates a new org.
-    Otherwise joins the default org (single-tenant mode).
-    """
     service = AuthService(session)
     user, _ = await service.register(data)
     await session.commit()
