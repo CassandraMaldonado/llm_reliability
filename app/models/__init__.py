@@ -1,12 +1,6 @@
-"""
-app/models/
+# Theye define the database tables in Python.
 
-SQLAlchemy 2.0 ORM models.
-These define the database tables in Python.
-Kept separate from Pydantic schemas (schemas/ is for API serialization).
-
-Design notes:
-- All UUIDs as primary keys
+# - All UUIDs as primary keys
 - organization_id on every model (multi-tenancy)
 - Timestamps on everything
 - JSONB for flexible storage (hyperparameters, metadata, config)
