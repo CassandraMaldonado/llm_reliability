@@ -38,10 +38,7 @@ class SoftDeleteMixin:
         return self.deleted_at is not None
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# ORGANIZATION
-# ─────────────────────────────────────────────────────────────────────────────
-
+# Org.
 class Organization(Base, TimestampMixin, SoftDeleteMixin):
     __tablename__ = "organizations"
 
