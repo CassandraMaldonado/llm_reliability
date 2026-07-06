@@ -26,9 +26,8 @@ class TimestampMixin:
         DateTime(timezone=True), onupdate=func.now(), nullable=True
     )
 
-
+# Mixin that adds soft-delete support.
 class SoftDeleteMixin:
-    """Mixin that adds soft-delete support via deleted_at column."""
     deleted_at: Mapped[Optional[datetime]] = mapped_column(
         DateTime(timezone=True), nullable=True, default=None
     )
