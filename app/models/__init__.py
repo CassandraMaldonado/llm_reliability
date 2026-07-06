@@ -1,10 +1,9 @@
 # Theye define the database tables in Python.
 
 # - All UUIDs as primary keys
-- organization_id on every model (multi-tenancy)
-- Timestamps on everything
-- JSONB for flexible storage (hyperparameters, metadata, config)
-"""
+# - organization_id on every model.
+# - Timestamps on everything
+
 import uuid
 from datetime import datetime
 from typing import Optional, List, Any, Dict
