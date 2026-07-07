@@ -58,12 +58,8 @@ async def lifespan(app: FastAPI):
     await engine.dispose()
     log.info("MANGOS shut down cleanly")
 
-
+# Application factory, returns a configured FastAPI instance.
 def create_app() -> FastAPI:
-    """
-    Application factory.
-    Returns a configured FastAPI instance.
-    """
     app = FastAPI(
         title=settings.APP_NAME,
         version=settings.APP_VERSION,
