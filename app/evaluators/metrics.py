@@ -1,10 +1,5 @@
-"""
-app/evaluators/
+# Evaluation engine implementing the Strategy Pattern. Each metric is a class implementing BaseMetric.
 
-Evaluation engine implementing the Strategy Pattern.
-Each metric is a class implementing BaseMetric.
-
-Why Strategy Pattern:
 - New metrics plug in without touching existing code (Open/Closed Principle)
 - Metrics are independently testable
 - Enterprise teams can add proprietary metrics without forking core
