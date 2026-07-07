@@ -1,10 +1,8 @@
 # FastAPI application factory and root configuration.
 
-- Application factory pattern (not global app object) enables testing
-- Lifespan context manager for startup/shutdown (replaces deprecated on_event)
-- Structured logging (JSON in production, human-readable in dev)
-- Request ID middleware for distributed tracing
-- Health check endpoint (required for k8s liveness/readiness probes)
+# Application factory pattern enables testing.
+# Structured logging.
+# Request ID middleware for distributed tracing.
 
 import logging
 import time
