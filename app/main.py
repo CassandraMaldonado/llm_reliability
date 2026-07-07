@@ -18,9 +18,7 @@ from app.core.config import settings
 from app.core.database import engine, Base
 from app.api.v1.router import api_router
 
-# ── Structured logging setup ────────────────────────────────────────────────
-# structlog gives us JSON logs in production (parseable by Datadog/CloudWatch)
-# and colored dev logs locally. Same code path, different renderers.
+# structured logging setup.
 structlog.configure(
     processors=[
         structlog.stdlib.filter_by_level,
@@ -43,9 +41,6 @@ structlog.configure(
 
 log = structlog.get_logger()
 
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
     """
     FastAPI lifespan context manager.
     Code before yield: startup.
@@ -53,6 +48,8 @@ async def lifespan(app: FastAPI):
 
     Replaces deprecated @app.on_event("startup") pattern.
     """
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     log.info("MANGOS starting up", environment=settings.ENVIRONMENT)
 
     # In development, auto-create tables (migrations handle prod)
