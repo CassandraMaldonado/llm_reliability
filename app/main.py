@@ -1,15 +1,11 @@
-"""
-app/main.py
+# FastAPI application factory and root configuration.
 
-FastAPI application factory and root configuration.
-
-Enterprise patterns:
 - Application factory pattern (not global app object) enables testing
 - Lifespan context manager for startup/shutdown (replaces deprecated on_event)
 - Structured logging (JSON in production, human-readable in dev)
 - Request ID middleware for distributed tracing
 - Health check endpoint (required for k8s liveness/readiness probes)
-"""
+
 import logging
 import time
 import uuid
