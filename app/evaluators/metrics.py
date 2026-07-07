@@ -23,12 +23,10 @@ class MetricStatus(str, Enum):
     SKIPPED = "skipped"
 
 
+# Standardized input container for all metrics.
+
 @dataclass
 class MetricInput:
-    """
-    Standardized input container for all metrics.
-    Not all fields are required by every metric.
-    """
     question: str
     actual_output: str
     expected_output: Optional[str] = None
