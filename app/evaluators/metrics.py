@@ -3,9 +3,8 @@
 # New metrics plug in.
 # Metrics are independently testable
 
-Metric implementations use DeepEval under the hood where available,
-fall back to embedding similarity or custom LLM-as-judge for others.
-"""
+# Metric implementations use DeepEval under the hood where available, fall back to embedding similarity or custom LLM judge for others.
+
 import asyncio
 import time
 from abc import ABC, abstractmethod
