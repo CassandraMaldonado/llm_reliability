@@ -41,13 +41,7 @@ structlog.configure(
 
 log = structlog.get_logger()
 
-    """
-    FastAPI lifespan context manager.
-    Code before yield: startup.
-    Code after yield: shutdown.
-
-    Replaces deprecated @app.on_event("startup") pattern.
-    """
+# FastAPI lifespan context manager.
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     log.info("MANGOS starting up", environment=settings.ENVIRONMENT)
