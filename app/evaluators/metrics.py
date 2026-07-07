@@ -1,8 +1,7 @@
 # Evaluation engine implementing the Strategy Pattern. Each metric is a class implementing BaseMetric.
 
-- New metrics plug in without touching existing code (Open/Closed Principle)
-- Metrics are independently testable
-- Enterprise teams can add proprietary metrics without forking core
+# New metrics plug in.
+# Metrics are independently testable
 
 Metric implementations use DeepEval under the hood where available,
 fall back to embedding similarity or custom LLM-as-judge for others.
