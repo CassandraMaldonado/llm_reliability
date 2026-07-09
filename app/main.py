@@ -128,10 +128,10 @@ def create_app() -> FastAPI:
             }
         )
 
-    # ── Routes ───────────────────────────────────────────────────────────────
+    # routes.
     app.include_router(api_router, prefix=settings.API_PREFIX)
 
-    # ── Health Check ─────────────────────────────────────────────────────────
+    # health check.
     @app.get("/health", tags=["system"])
     async def health_check():
         """
