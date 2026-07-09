@@ -1,10 +1,6 @@
-"""
-app/monitoring/drift_detection.py
+# Stat drift detection for production LLM metrics.
 
-Statistical drift detection for production LLM metrics.
-
-Implements two complementary approaches:
-1. Statistical (KS test): Detects distribution shift over time windows
+# 1. Statistical (KS test): Detects distribution shift over time windows.
 2. Threshold-based: Simple rule-based alerting (p95 latency > 5s)
 3. Z-score anomaly: Detects sudden spikes outside normal range
 
