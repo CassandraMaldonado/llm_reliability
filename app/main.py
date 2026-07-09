@@ -82,7 +82,7 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
-    # ── Request ID Middleware ────────────────────────────────────────────────
+    # request ID middleware.
     @app.middleware("http")
     async def add_request_id(request: Request, call_next):
         """
