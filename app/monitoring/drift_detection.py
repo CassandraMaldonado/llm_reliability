@@ -4,13 +4,9 @@
 # 2. Threshold-based: Simple rule-based alerting.
 # 3. Z-score anomaly: Detects sudden spikes outside normal range.
 
-
-LLM providers silently update models. A "gpt-4o" call today may behave
+#LLM providers silently update models. A "gpt-4o" call today may behave
 differently from 3 months ago. Hallucination rates, latency, and cost
 all drift without warning. This system catches it automatically.
-
-Enterprise context: Netflix, Uber, and Airbnb all run similar drift
-detection on ML model outputs. We adapt it for LLM-specific metrics.
 
 import asyncio
 import logging
