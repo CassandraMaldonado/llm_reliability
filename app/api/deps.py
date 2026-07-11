@@ -27,7 +27,6 @@ async def get_current_user(
     credentials: Optional[HTTPAuthorizationCredentials] = Security(bearer_scheme),
     api_key: Optional[str] = Security(api_key_header),
 ) -> User:
-# gets the authenticated user 
     if credentials:
         try:
             payload = decode_token(credentials.credentials)
