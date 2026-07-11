@@ -1,4 +1,3 @@
-"""app/api/v1/endpoints/drift.py"""
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, BackgroundTasks
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -18,10 +17,7 @@ async def get_drift_summary(
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """
-    Dashboard-facing drift summary: overall health status, which metrics are drifting.
-    Used by the dashboard header drift indicator.
-    """
+    # dashboard drift summary with the overall health status and which metrics are drifting.
     repo = DriftRepository(session)
     latest = await repo.get_latest(current_user.organization_id, model_name)
 
