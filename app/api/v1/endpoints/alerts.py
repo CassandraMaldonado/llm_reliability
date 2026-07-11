@@ -1,5 +1,3 @@
-# app/api/v1/endpoints/alerts.py
-
 import uuid
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -82,7 +80,7 @@ async def delete_alert_rule(
     await session.commit()
 
 
-# ── Active Alerts ─────────────────────────────────────────────────────────────
+# Active alerts.
 
 @router.get("/", response_model=PaginatedResponse[AlertResponse])
 async def list_alerts(
