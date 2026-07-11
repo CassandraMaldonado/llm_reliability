@@ -1,13 +1,12 @@
 # Tools for evaluating the quality of the RAG pipeline.
 
+# The evaluator combines LLM-based scoring with semantic similarity checks to measure both retrieval quality and answer quality.
+
 # retrieval_precision: how many of the retrieved chunks are actually relevant to the question.
 # retrieval_recall: how much of the information needed for the answer was successfully retrieved.
 # context_relevance: how closely the retrieved chunks relate to the user's question.
 # groundedness: whether the generated answer is supported by the retrieved context.
 # answer_correctness: how closely the generated answer matches the expected answer.
-
-# The evaluator combines LLM-based scoring with semantic similarity checks to measure both retrieval quality and answer quality.
-
 
 import asyncio
 import json
