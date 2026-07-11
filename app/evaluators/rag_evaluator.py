@@ -1,5 +1,4 @@
-"""
-Tools for evaluating the quality of a RAG (Retrieval-Augmented Generation) pipeline.
+# Tools for evaluating the quality of the RAG pipeline.
 
 Metrics:
 
