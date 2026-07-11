@@ -35,22 +35,21 @@ async def login(data: LoginRequest, session: AsyncSession = Depends(get_db)):
     _, tokens = result
     return tokens
 
-
+    """Exchange a refresh token for a new access token."""
 @router.post("/refresh", response_model=TokenResponse)
 async def refresh(data: RefreshRequest, session: AsyncSession = Depends(get_db)):
-    """Exchange a refresh token for a new access token."""
     service = AuthService(session)
     tokens = await service.refresh(data.refresh_token)
     if not tokens:
         raise HTTPException(status_code=401, detail="Invalid or expired refresh token")
     return tokens
 
-# Return the currently authenticated user's profile.
+# returns the authenticated user's profile.
 @router.get("/me", response_model=UserResponse)
 async def get_me(current_user: User = Depends(get_current_user)):
     return current_user
 
-# Create a new API key.
+# creates a new API key.
 @router.post("/api-keys", response_model=ApiKeyResponse, status_code=201)
 async def create_api_key(
     data: ApiKeyCreate,
