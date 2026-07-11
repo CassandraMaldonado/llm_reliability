@@ -14,7 +14,7 @@ from app.services.auth_service import AuthService
 router = APIRouter()
 
 
-# Register a new user. 
+# register a new user. 
 @router.post("/register", response_model=UserResponse, status_code=201)
 async def register(data: UserCreate, session: AsyncSession = Depends(get_db)):
     service = AuthService(session)
@@ -22,7 +22,7 @@ async def register(data: UserCreate, session: AsyncSession = Depends(get_db)):
     await session.commit()
     return user
 
-# Authenticate returns JWT access and refresh tokens.
+# authenticate returns JWT access and refresh tokens.
 @router.post("/login", response_model=TokenResponse)
 async def login(data: LoginRequest, session: AsyncSession = Depends(get_db)):
     service = AuthService(session)
@@ -35,7 +35,7 @@ async def login(data: LoginRequest, session: AsyncSession = Depends(get_db)):
     _, tokens = result
     return tokens
 
-    """Exchange a refresh token for a new access token."""
+# exchange a refresh token for a new token.
 @router.post("/refresh", response_model=TokenResponse)
 async def refresh(data: RefreshRequest, session: AsyncSession = Depends(get_db)):
     service = AuthService(session)
