@@ -1,4 +1,3 @@
-"""app/api/v1/endpoints/datasets.py"""
 import uuid
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -22,7 +21,6 @@ async def create_dataset(
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """Create a dataset with optional inline rows."""
     repo = DatasetRepository(session)
 
     dataset = Dataset(
@@ -100,7 +98,7 @@ async def add_rows(
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """Append rows to an existing dataset."""
+    #appends rows to an existing dataset.
     repo = DatasetRepository(session)
     dataset = await repo.get_by_id(dataset_id, current_user.organization_id)
     if not dataset:
