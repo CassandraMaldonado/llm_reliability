@@ -4,14 +4,11 @@
 # retrieval_recall: how much of the information needed for the answer was successfully retrieved.
 # context_relevance: how closely the retrieved chunks relate to the user's question.
 # groundedness: whether the generated answer is supported by the retrieved context.
-answer_correctness: how closely the generated answer matches the expected answer
+# answer_correctness: how closely the generated answer matches the expected answer.
 
-The evaluator combines LLM-based scoring with semantic similarity checks to
-measure both retrieval quality and answer quality.
+# The evaluator combines LLM-based scoring with semantic similarity checks to measure both retrieval quality and answer quality.
 
-Inspired by common RAG evaluation approaches such as RAGAS, but implemented
-with a lighter dependency footprint.
-"""
+
 import asyncio
 import json
 from typing import Dict, List, Optional
