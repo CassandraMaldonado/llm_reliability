@@ -220,22 +220,15 @@ async def _evaluate_alerts_async():
                 session.add(alert)
                 await session.flush()
 
-                # Update rule last_triggered_at
                 rule.last_triggered_at = datetime.now(timezone.utc)
 
-                # Fire notifications
+                # fire notifications.
                 for channel in (rule.notification_channels or []):
                     await _fire_notification(channel, rule.notification_config, alert)
 
         await session.commit()
 
 # Dispatch alert notification, it supports webhook and email.
-    
-    Why webhook-first?
-    - One mechanism covers Slack, Teams, PagerDuty, OpsGenie, Discord
-    - No per-integration code needed
-    - Standard in monitoring tools (Grafana, Datadog)
-
 async def _fire_notification(channel: str, config: Dict, alert: Alert):
     if channel == "webhook":
         url = config.get("url")
