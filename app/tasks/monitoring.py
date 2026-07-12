@@ -176,7 +176,7 @@ async def _evaluate_alerts_async():
             rules = await rule_repo.get_active_rules(org_id)
 
             for rule in rules:
-                # Get latest metric value for this rule
+                # latest metric value for this rule.
                 latest = await metric_repo.get_latest_value(
                     org_id, rule.metric, rule.model_name
                 )
@@ -192,7 +192,7 @@ async def _evaluate_alerts_async():
                 if not threshold_breached:
                     continue
 
-                # Deduplication: skip if this rule already has an unresolved alert
+                # deduplication.
                 existing_alerts = await alert_repo.get_unresolved(org_id, limit=1000)
                 already_firing = any(
                     a.alert_rule_id == rule.id for a in existing_alerts
@@ -200,7 +200,7 @@ async def _evaluate_alerts_async():
                 if already_firing:
                     continue
 
-                # Create alert
+                # alert.
                 alert = Alert(
                     organization_id=org_id,
                     alert_rule_id=rule.id,
