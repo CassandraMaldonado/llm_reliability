@@ -229,18 +229,13 @@ async def _evaluate_alerts_async():
 
         await session.commit()
 
-    """
-    Dispatch alert notification.
-    
-    Supported channels:
-    - webhook: HTTP POST to any URL (powers Slack incoming webhooks, PagerDuty, etc.)
-    - email: POST to internal email service (implement with SendGrid/SES)
+# Dispatch alert notification, it supports webhook and email.
     
     Why webhook-first?
     - One mechanism covers Slack, Teams, PagerDuty, OpsGenie, Discord
     - No per-integration code needed
     - Standard in monitoring tools (Grafana, Datadog)
-    """
+
 async def _fire_notification(channel: str, config: Dict, alert: Alert):
     if channel == "webhook":
         url = config.get("url")
