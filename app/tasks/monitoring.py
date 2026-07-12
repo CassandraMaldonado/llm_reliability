@@ -229,8 +229,6 @@ async def _evaluate_alerts_async():
 
         await session.commit()
 
-
-async def _fire_notification(channel: str, config: Dict, alert: Alert):
     """
     Dispatch alert notification.
     
@@ -243,6 +241,7 @@ async def _fire_notification(channel: str, config: Dict, alert: Alert):
     - No per-integration code needed
     - Standard in monitoring tools (Grafana, Datadog)
     """
+async def _fire_notification(channel: str, config: Dict, alert: Alert):
     if channel == "webhook":
         url = config.get("url")
         if not url:
@@ -262,6 +261,5 @@ async def _fire_notification(channel: str, config: Dict, alert: Alert):
             logger.warning(f"Webhook notification failed: {e}")
 
     elif channel == "email":
-        # Placeholder: implement with SendGrid or AWS SES
         email = config.get("email")
         logger.info(f"Would send email to {email}: {alert.message}")
