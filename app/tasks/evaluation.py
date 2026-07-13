@@ -19,7 +19,7 @@ from app.core.config import settings
 
 logger = get_task_logger(__name__)
 
-# Celery app.
+# celery app.
 celery_app = Celery(
     "mangos",
     broker=settings.CELERY_BROKER_URL,
@@ -39,7 +39,7 @@ celery_app.conf.update(
     task_time_limit=settings.CELERY_TASK_TIMEOUT_SECONDS + 60,
     task_max_retries=settings.CELERY_MAX_RETRIES,
 
-    # Priority queues.
+    # priority queues.
     task_queues={
         "high": {"exchange": "high", "routing_key": "high"},
         "default": {"exchange": "default", "routing_key": "default"},
@@ -47,7 +47,7 @@ celery_app.conf.update(
     },
     task_default_queue="default",
 
-    # Beat schedule for periodic tasks.
+    # beats schedule for periodic tasks.
     beat_schedule={
         "drift-detection": {
             "task": "app.tasks.monitoring.run_drift_detection",
