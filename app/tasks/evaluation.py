@@ -153,7 +153,7 @@ async def _run_evaluation_async(
             run.total_samples = total
             await db.flush()
 
-            # 3. Build evaluation runner
+            # builds the evaluation runner.
             runner = EvaluationRunner.from_metric_names(
                 metric_names=metric_names,
                 evaluator_api_key=evaluator_api_key,
@@ -175,12 +175,12 @@ async def _run_evaluation_async(
                         meta={"current": i, "total": total, "run_id": str(run_id)}
                     )
 
-                    # Call the target LLM (simplified — production would use provider clients)
+                    # calls the target LLM.
                     trace_start = time.monotonic()
                     llm_response = await _call_llm(run, row.question)
                     latency_ms = (time.monotonic() - trace_start) * 1000
 
-                    # Log the trace
+                    # logs the trace.
                     trace = LLMTrace(
                         run_id=run_id,
                         organization_id=run.organization_id,
