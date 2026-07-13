@@ -83,12 +83,9 @@ def create_app() -> FastAPI:
     )
 
     # request ID middleware.
+    # injects X-Request-ID header on every response.
     @app.middleware("http")
     async def add_request_id(request: Request, call_next):
-        """
-        Inject X-Request-ID header on every request/response.
-        Critical for distributed tracing — correlate logs across services.
-        """
         request_id = request.headers.get("X-Request-ID", str(uuid.uuid4()))
         request.state.request_id = request_id
 
