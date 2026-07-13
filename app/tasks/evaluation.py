@@ -98,20 +98,9 @@ def run_evaluation_task(
     evaluator_api_key: Optional[str] = None,
     evaluator_model: str = "gpt-4o-mini",
 ) -> dict:
-    """
-    Main evaluation task. Runs all specified metrics against a dataset.
+# main evaluation task.
+# returns summary statistics.
 
-    Flow:
-    1. Load ExperimentRun + associated dataset rows from DB
-    2. For each row: call the target LLM, log trace, run eval metrics
-    3. Aggregate results, update ExperimentRun with summary stats
-    4. Trigger alert check if thresholds configured
-
-    Task is idempotent: if it fails mid-run, it picks up from where it left off
-    (completed traces are skipped on retry).
-
-    Returns summary statistics for the run.
-    """
     return self.run_async(_run_evaluation_async(
         task=self,
         run_id=UUID(run_id),
