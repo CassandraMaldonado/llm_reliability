@@ -117,10 +117,7 @@ async def _run_evaluation_async(
     evaluator_api_key: Optional[str],
     evaluator_model: str,
 ) -> dict:
-    """
-    Async implementation of the evaluation pipeline.
-    Separated from the Celery task wrapper for testability.
-    """
+# async implementation of the evaluation pipeline.
     from app.core.database import get_db_context
     from app.models import ExperimentRun, DatasetRow, LLMTrace, EvaluationResult
     from app.evaluators.metrics import EvaluationRunner, MetricInput
@@ -129,7 +126,7 @@ async def _run_evaluation_async(
     logger.info(f"Starting evaluation for run {run_id}")
 
     async with get_db_context() as db:
-        # 1. Load the run
+        # load run.
         result = await db.execute(select(ExperimentRun).where(ExperimentRun.id == run_id))
         run = result.scalar_one_or_none()
         if not run:
