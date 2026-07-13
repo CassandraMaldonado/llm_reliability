@@ -106,7 +106,7 @@ def create_app() -> FastAPI:
         )
         return response
 
-    # ── Global Exception Handler ─────────────────────────────────────────────
+    # global exception handler.
     @app.exception_handler(Exception)
     async def global_exception_handler(request: Request, exc: Exception):
         log.error(
