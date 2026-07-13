@@ -54,11 +54,11 @@ async def lifespan(app: FastAPI):
 
     yield
 
-    # Shutdown: close DB connection pool
+    # shutdown: close DB connection pool.
     await engine.dispose()
     log.info("MANGOS shut down cleanly")
 
-# Application factory, returns a configured FastAPI instance.
+# application factory, returns a configured FastAPI instance.
 def create_app() -> FastAPI:
     app = FastAPI(
         title=settings.APP_NAME,
