@@ -132,13 +132,13 @@ async def _run_evaluation_async(
         if not run:
             raise ValueError(f"Run {run_id} not found")
 
-        # Mark as running
+
         run.status = "running"
         run.started_at = datetime.now(timezone.utc)
         await db.flush()
 
         try:
-            # 2. Load dataset if configured (otherwise eval existing traces)
+            # loads the dataset.
             dataset_rows = []
             if hasattr(run, 'dataset_id') and run.metadata_.get('dataset_id'):
                 dataset_id = run.metadata_['dataset_id']
