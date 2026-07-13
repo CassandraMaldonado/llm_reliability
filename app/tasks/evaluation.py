@@ -265,7 +265,7 @@ async def _run_evaluation_async(
                     failed += 1
                     continue
 
-            # 5. Compute aggregate stats and update run
+            # computes aggregate stats.
             run.completed_samples = completed
             run.failed_samples = failed
 
@@ -322,7 +322,6 @@ async def _run_evaluation_async(
 async def _call_llm(run: "ExperimentRun", prompt: str) -> dict:
     import httpx
 
-    # Token cost tables (per 1M tokens, USD) — update as providers change pricing
     OPENAI_COSTS = {
         "gpt-4o": {"input": 2.50, "output": 10.00},
         "gpt-4o-mini": {"input": 0.15, "output": 0.60},
