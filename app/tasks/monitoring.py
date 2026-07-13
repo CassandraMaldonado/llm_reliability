@@ -86,7 +86,7 @@ async def _aggregate_for_org(session, org_id, window_start, window_end):
     from sqlalchemy import select, func, and_
     from app.models import LLMTrace
 
-    # Get distinct model names in this window
+    # gets distinct model names.
     result = await session.execute(
         select(LLMTrace.model_name)
         .where(and_(
@@ -97,7 +97,7 @@ async def _aggregate_for_org(session, org_id, window_start, window_end):
         .distinct()
     )
     model_names = [row[0] for row in result.all()]
-    model_names.append(None)  # Also aggregate across all models
+    model_names.append(None)  # aggregates across all models.
 
     for model_name in model_names:
         conditions = [
