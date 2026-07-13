@@ -62,15 +62,8 @@ celery_app.conf.update(
     },
 )
 
-
+# base celery task class that provides async database access.
 class DatabaseTask(Task):
-    """
-    Base Celery task class that provides async database access.
-
-    Pattern: Tasks need a DB session, but Celery workers are not FastAPI.
-    We use get_db_context() to get a session inside task execution.
-    The session is NOT shared between tasks (each task gets its own).
-    """
     abstract = True
     _loop: Optional[asyncio.AbstractEventLoop] = None
 
