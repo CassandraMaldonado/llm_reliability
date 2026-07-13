@@ -78,7 +78,7 @@ class DatabaseTask(Task):
         return self.loop.run_until_complete(coro)
 
 
-# ── Evaluation Task ────────────────────────────────────────────────────────────
+# evaluation task.
 
 @celery_app.task(
     bind=True,
