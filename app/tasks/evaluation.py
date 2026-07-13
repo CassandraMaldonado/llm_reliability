@@ -318,15 +318,8 @@ async def _run_evaluation_async(
             logger.error(f"Run {run_id} failed: {e}")
             raise
 
-
+# calls the LLM and returns a normalized response.
 async def _call_llm(run: "ExperimentRun", prompt: str) -> dict:
-    """
-    Call the appropriate LLM provider for a run.
-    Returns normalized response dict regardless of provider.
-
-    Cost calculation uses per-token pricing tables.
-    Production: prices should be fetched from config/DB, not hardcoded.
-    """
     import httpx
 
     # Token cost tables (per 1M tokens, USD) — update as providers change pricing
