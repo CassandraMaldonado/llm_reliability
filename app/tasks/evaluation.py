@@ -174,7 +174,7 @@ async def _run_evaluation_async(
                 evaluator_model=evaluator_model,
             )
 
-            # 4. For each dataset row, call LLM + evaluate
+            # for each row it calls LLM and evaluate.
             all_metric_scores: dict = {name: [] for name in metric_names}
             latencies: List[float] = []
             costs: List[float] = []
@@ -348,7 +348,7 @@ async def _call_llm(run: "ExperimentRun", prompt: str) -> dict:
         prompt_tokens = usage.get("prompt_tokens", 0)
         completion_tokens = usage.get("completion_tokens", 0)
 
-        # Calculate cost
+        # calculated cost.
         cost_per_m = OPENAI_COSTS.get(run.model_name, {"input": 5.0, "output": 15.0})
         cost_usd = (
             prompt_tokens * cost_per_m["input"] / 1_000_000
