@@ -74,7 +74,7 @@ class DatabaseTask(Task):
         return self._loop
 
     def run_async(self, coro):
-        """Run a coroutine synchronously from within a Celery task."""
+# run a coroutine synchronously from within a Celery task.
         return self.loop.run_until_complete(coro)
 
 
