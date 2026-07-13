@@ -150,10 +150,7 @@ async def _aggregate_for_org(session, org_id, window_start, window_end):
     default_retry_delay=60,
 )
 def evaluate_alert_rules_task(self):
-    """
-    Evaluate all active alert rules. Fires alerts when thresholds are breached.
-    Runs every 5 minutes via Celery Beat.
-    """
+# evaluates all active alert rules, it fires alerts when the thresholds are breached.
     asyncio.run(_evaluate_alerts_async())
 
 
@@ -228,7 +225,7 @@ async def _evaluate_alerts_async():
 
         await session.commit()
 
-# Dispatch alert notification, it supports webhook and email.
+# dispatch alert notification, it supports webhook and email.
 async def _fire_notification(channel: str, config: Dict, alert: Alert):
     if channel == "webhook":
         url = config.get("url")
