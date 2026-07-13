@@ -47,16 +47,7 @@ METRIC_TO_TRACE_FIELD = {
     default_retry_delay=60,
 )
 def aggregate_metrics_task(self):
-    """
-    Roll up the last 5 minutes of LLMTrace records into MonitoringMetric rows.
-    Runs every 5 minutes via Celery Beat.
-    
-    Why aggregate instead of query raw traces?
-    - Traces can be millions of rows; metric aggregates are thousands
-    - Dashboard queries hit pre-aggregated data: <10ms response time
-    - Time-series visualizations need fixed-interval buckets
-    - Pattern: same as how Datadog, Prometheus, and InfluxDB work
-    """
+# rolls up the last 5 minutes of LLMTrace records into MonitoringMetric rows.
     asyncio.run(_aggregate_metrics_async())
 
 
@@ -69,7 +60,7 @@ async def _aggregate_metrics_async():
         window_end = datetime.now(timezone.utc)
         window_start = window_end - timedelta(minutes=5)
 
-        # Get all active orgs
+        # gets all active orgs.
         result = await session.execute(
             select(Organization.id).where(Organization.deleted_at.is_(None))
         )
