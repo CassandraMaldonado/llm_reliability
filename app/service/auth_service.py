@@ -34,7 +34,7 @@ def verify_password(plain: str, hashed: str) -> bool:
 def hash_api_key(raw_key: str) -> str:
     return hashlib.sha256(raw_key.encode()).hexdigest()
 
-# Returns (raw_key, key_hash).
+# returns (raw_key, key_hash).
 def generate_api_key() -> Tuple[str, str]:
     raw = KEY_PREFIX + secrets.token_urlsafe(32)
     return raw, hash_api_key(raw)
