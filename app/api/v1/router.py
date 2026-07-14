@@ -1,12 +1,5 @@
 # Full REST API.
 
-# API Design Principles:
-# - RESTful resource naming.
-# - Pagination on all list endpoints.
-- Async everywhere — no blocking database calls in route handlers
-- All business logic lives in services/, not here
-- Route handlers: validate → call service → return schema
-"""
 from fastapi import APIRouter
 from app.api.v1.endpoints import (
     auth,
