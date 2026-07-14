@@ -1,12 +1,5 @@
 """
 # Authentication service: JWT tokens, password hashing, API key management.
-
-Security Design:
-- Passwords: bcrypt with work factor 12 (recalculate every 2-3 years as hardware improves)
-- Access tokens: short-lived (15 min) JWTs signed with HS256
-- Refresh tokens: long-lived (7 days), stored hashed in Redis for revocation
-- API keys: random 32-byte prefix + secret, full key hashed with SHA-256 (never stored plain)
-- API key format: "mg_<base64url(32 random bytes)>" — recognizable prefix for secret scanning
 """
 import hashlib
 import os
