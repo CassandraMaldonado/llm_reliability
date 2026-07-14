@@ -17,7 +17,7 @@ from app.api.v1.endpoints import (
 
 api_router = APIRouter()
 
-# Mount all sub-routers
+# all sub-routers.
 api_router.include_router(auth.router, prefix="/auth", tags=["Authentication"])
 api_router.include_router(organizations.router, prefix="/organizations", tags=["Organizations"])
 api_router.include_router(experiments.router, prefix="/experiments", tags=["Experiments"])
