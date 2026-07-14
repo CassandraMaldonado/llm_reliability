@@ -208,7 +208,7 @@ async def _run_evaluation_async(
                     if llm_response.get("cost_usd"):
                         costs.append(llm_response["cost_usd"])
 
-                    # Run evaluation metrics
+                    # evaluation metrics.
                     eval_input = MetricInput(
                         question=row.question,
                         actual_output=llm_response.get("content", ""),
@@ -219,7 +219,7 @@ async def _run_evaluation_async(
                     )
                     metric_results = await runner.run(eval_input)
 
-                    # Store individual metric results
+                    # individual metric results.
                     for metric_result in metric_results:
                         eval_record = EvaluationResult(
                             trace_id=trace.id,
