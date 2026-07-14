@@ -1,6 +1,5 @@
-"""
-# Authentication service: JWT tokens, password hashing, API key management.
-"""
+# Authentication.
+
 import hashlib
 import os
 import secrets
