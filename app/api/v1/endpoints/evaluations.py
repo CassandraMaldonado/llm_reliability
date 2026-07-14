@@ -1,4 +1,5 @@
-"""app/api/v1/endpoints/evaluations.py"""
+# Evaluations.
+
 import uuid
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -21,7 +22,7 @@ async def list_evaluations(
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """List individual evaluation results for a run, optionally filtered by metric."""
+    # lists individual evaluation results for a run.
     repo = EvaluationRepository(session)
     filters = {"experiment_run_id": run_id}
     if metric:
