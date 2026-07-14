@@ -79,10 +79,7 @@ async def trigger_drift_check(
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """
-    Manually trigger a drift detection run (outside of the 5-min Celery schedule).
-    Useful for on-demand checks after a deployment.
-    """
+    # to manually trigger a drift detection run.
     async def run_check():
         from app.monitoring.drift_detection import DriftDetector
         trace_repo = TraceRepository(session)
