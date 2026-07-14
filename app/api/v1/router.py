@@ -1,12 +1,8 @@
-"""
-app/api/v1/router.py + endpoint definitions
+# Full REST API.
 
-Full REST API for the MANGOS platform.
-
-API Design Principles:
-- RESTful resource naming (/experiments, /runs, /traces)
-- Consistent error format: {error, message, details}
-- Pagination on all list endpoints (cursor-based for large datasets)
+# API Design Principles:
+# - RESTful resource naming.
+# - Pagination on all list endpoints.
 - Async everywhere — no blocking database calls in route handlers
 - All business logic lives in services/, not here
 - Route handlers: validate → call service → return schema
