@@ -77,8 +77,8 @@ class AuthService:
         self.api_keys = ApiKeyRepository(session)
         self.orgs = OrganizationRepository(session)
 
+# register user. 
     async def register(self, data: UserCreate) -> Tuple[User, TokenResponse]:
-        """Register user, optionally create org."""
         # Create org if name provided
         if data.organization_name:
             slug = data.organization_name.lower().replace(" ", "-")
@@ -89,7 +89,7 @@ class AuthService:
             self.session.add(org)
             await self.session.flush()
         else:
-            # Default org (for single-tenant or dev mode)
+            # default org.
             result = await self.orgs.get_by_slug("default")
             if not result:
                 org = Organization(name="Default", slug="default")
