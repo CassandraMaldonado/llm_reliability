@@ -80,7 +80,7 @@ async def delete_alert_rule(
     await session.commit()
 
 
-# Active alerts.
+# active alerts.
 @router.get("/", response_model=PaginatedResponse[AlertResponse])
 async def list_alerts(
     resolved: bool = Query(default=False),
