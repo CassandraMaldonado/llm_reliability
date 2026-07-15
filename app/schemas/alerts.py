@@ -4,12 +4,10 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
-    """
- Condition format: "<metric> <operator> <threshold>"
-    Examples:
-      "avg_hallucination_score > 0.6"
-      "avg_latency_ms > 5000"
-      "failure_rate > 0.05"
+# condition format: <metric> <operator> <threshold>
+# avg_hallucination_score > 0.6
+# avg_latency_ms > 5000
+# failure_rate > 0.05
     
     Why string-based conditions?
     - Flexible, human-readable, storable in DB
