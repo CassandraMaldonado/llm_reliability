@@ -9,10 +9,6 @@ from pydantic import BaseModel, ConfigDict, Field
 # avg_latency_ms > 5000
 # failure_rate > 0.05
     
-    Why string-based conditions?
-    - Flexible, human-readable, storable in DB
-    - Parsed server-side for safety (never eval()'d)
-    """
 class AlertRuleCreate(BaseModel):
     name: str = Field(min_length=1, max_length=255)
     description: Optional[str] = None
