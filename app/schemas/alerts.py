@@ -1,15 +1,11 @@
-"""app/schemas/alerts.py"""
+# Alerts.
 import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
-
-class AlertRuleCreate(BaseModel):
     """
-    Alert rule definition.
-    
-    Condition format: "<metric> <operator> <threshold>"
+ Condition format: "<metric> <operator> <threshold>"
     Examples:
       "avg_hallucination_score > 0.6"
       "avg_latency_ms > 5000"
@@ -19,6 +15,7 @@ class AlertRuleCreate(BaseModel):
     - Flexible, human-readable, storable in DB
     - Parsed server-side for safety (never eval()'d)
     """
+class AlertRuleCreate(BaseModel):
     name: str = Field(min_length=1, max_length=255)
     description: Optional[str] = None
     metric: str  # hallucination_score, latency_ms, cost_usd, failure_rate, relevance_score
