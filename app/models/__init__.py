@@ -17,7 +17,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import Base
 
-# Mixin that adds created_at and updated_at.
+# mixin that adds created_at and updated_at.
 class TimestampMixin:
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
@@ -37,7 +37,7 @@ class SoftDeleteMixin:
         return self.deleted_at is not None
 
 
-# Org.
+# org.
 class Organization(Base, TimestampMixin, SoftDeleteMixin):
     __tablename__ = "organizations"
 
