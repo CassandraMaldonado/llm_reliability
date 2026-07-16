@@ -160,7 +160,8 @@ class ExperimentRun(Base, TimestampMixin):
     status: Mapped[str] = mapped_column(String(50), nullable=False, default="pending")
     celery_task_id: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
 
-    # Aggregated metrics (denormalized for fast dashboard queries)
+    # aggregated metrics.
+    
     total_samples: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
     completed_samples: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
     failed_samples: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
@@ -189,10 +190,7 @@ class ExperimentRun(Base, TimestampMixin):
     traces: Mapped[List["LLMTrace"]] = relationship("LLMTrace", back_populates="run")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# LLM TRACE
-# ─────────────────────────────────────────────────────────────────────────────
-
+# LLM trace.
 class LLMTrace(Base):
     __tablename__ = "llm_traces"
 
