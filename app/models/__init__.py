@@ -104,7 +104,7 @@ class APIKey(Base):
         return True
 
 
-# Project.
+# project.
 class Project(Base, TimestampMixin, SoftDeleteMixin):
     __tablename__ = "projects"
 
@@ -120,10 +120,8 @@ class Project(Base, TimestampMixin, SoftDeleteMixin):
     experiments: Mapped[List["Experiment"]] = relationship("Experiment", back_populates="project")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# EXPERIMENT
-# ─────────────────────────────────────────────────────────────────────────────
 
+# experiment.
 class Experiment(Base, TimestampMixin, SoftDeleteMixin):
     __tablename__ = "experiments"
 
@@ -142,10 +140,8 @@ class Experiment(Base, TimestampMixin, SoftDeleteMixin):
     runs: Mapped[List["ExperimentRun"]] = relationship("ExperimentRun", back_populates="experiment")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# EXPERIMENT RUN
-# ─────────────────────────────────────────────────────────────────────────────
 
+# experiment run.
 class ExperimentRun(Base, TimestampMixin):
     __tablename__ = "experiment_runs"
 
