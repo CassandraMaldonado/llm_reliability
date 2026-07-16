@@ -104,10 +104,7 @@ class APIKey(Base):
         return True
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# PROJECT
-# ─────────────────────────────────────────────────────────────────────────────
-
+# Project.
 class Project(Base, TimestampMixin, SoftDeleteMixin):
     __tablename__ = "projects"
 
