@@ -246,9 +246,8 @@ class LLMTrace(Base):
     evaluation_results: Mapped[List["EvaluationResult"]] = relationship("EvaluationResult", back_populates="trace")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# EVALUATION RESULT
-# ─────────────────────────────────────────────────────────────────────────────
+
+# eval result.
 
 class EvaluationResult(Base):
     __tablename__ = "evaluation_results"
