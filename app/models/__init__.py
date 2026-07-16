@@ -54,9 +54,8 @@ class Organization(Base, TimestampMixin, SoftDeleteMixin):
     projects: Mapped[List["Project"]] = relationship("Project", back_populates="organization")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# USER
-# ─────────────────────────────────────────────────────────────────────────────
+
+# user.
 
 class User(Base, TimestampMixin):
     __tablename__ = "users"
