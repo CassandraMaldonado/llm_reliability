@@ -1,4 +1,4 @@
-# Theye define the database tables in Python.
+# They define the database tables in Python.
 
 # - All UUIDs as primary keys
 # - organization_id on every model.
@@ -17,7 +17,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import Base
 
-# mixin that adds created_at and updated_at.
+# mixing that adds created_at and updated_at.
 class TimestampMixin:
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
