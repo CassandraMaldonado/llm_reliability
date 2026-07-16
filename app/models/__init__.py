@@ -56,7 +56,6 @@ class Organization(Base, TimestampMixin, SoftDeleteMixin):
 
 
 # user.
-
 class User(Base, TimestampMixin):
     __tablename__ = "users"
 
@@ -75,9 +74,7 @@ class User(Base, TimestampMixin):
     api_keys: Mapped[List["APIKey"]] = relationship("APIKey", back_populates="created_by_user")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# API KEY
-# ─────────────────────────────────────────────────────────────────────────────
+# API key.
 
 class APIKey(Base):
     __tablename__ = "api_keys"
