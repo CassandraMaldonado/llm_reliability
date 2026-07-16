@@ -271,9 +271,7 @@ class EvaluationResult(Base):
     trace: Mapped["LLMTrace"] = relationship("LLMTrace", back_populates="evaluation_results")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# ALERT RULE & ALERT
-# ─────────────────────────────────────────────────────────────────────────────
+# alert rule.
 
 class AlertRule(Base, TimestampMixin):
     __tablename__ = "alert_rules"
