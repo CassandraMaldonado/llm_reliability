@@ -29,7 +29,7 @@ class DriftType(str, Enum):
     ANOMALY = "anomaly"               # Z-score spike detected
     SUSTAINED = "sustained"           # Metric degraded and stayed there
 
-#     """A time window of metric values for a specific model."""
+# time window of metric values.
 @dataclass
 class MetricWindow:
     model_name: str
