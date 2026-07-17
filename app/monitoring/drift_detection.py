@@ -24,10 +24,10 @@ logger = logging.getLogger(__name__)
 
 
 class DriftType(str, Enum):
-    STATISTICAL = "statistical"       # KS test detected distribution shift
-    THRESHOLD = "threshold"           # Value crossed a fixed threshold
-    ANOMALY = "anomaly"               # Z-score spike detected
-    SUSTAINED = "sustained"           # Metric degraded and stayed there
+    STATISTICAL = "statistical"       # KS test for distribution shift.
+    THRESHOLD = "threshold"          
+    ANOMALY = "anomaly"               # Z-score spike.
+    SUSTAINED = "sustained"           # metric degraded and stayed there.
 
 # time window of metric values.
 @dataclass
