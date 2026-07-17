@@ -56,7 +56,7 @@ class MetricWindow:
     def p95(self) -> Optional[float]:
         return float(np.percentile(self.values, 95)) if self.values else None
 
-#   """Result of a drift detection check."""
+# result of the drift detection check.
 @dataclass
 class DriftResult:
     is_drift: bool
