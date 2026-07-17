@@ -161,7 +161,6 @@ class ExperimentRun(Base, TimestampMixin):
     celery_task_id: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
 
     # aggregated metrics.
-    
     total_samples: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
     completed_samples: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
     failed_samples: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
