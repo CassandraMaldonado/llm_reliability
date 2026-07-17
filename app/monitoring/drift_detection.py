@@ -4,7 +4,6 @@
 # 2. Threshold-based: Simple rule-based alerting.
 # 3. Z-score anomaly: Detects sudden spikes outside normal range.
 
-#LLM providers silently update models. Hallucination rates, latency and cost all drift without warning. 
 import asyncio
 import logging
 from dataclasses import dataclass, field
@@ -30,10 +29,9 @@ class DriftType(str, Enum):
     ANOMALY = "anomaly"               # Z-score spike detected
     SUSTAINED = "sustained"           # Metric degraded and stayed there
 
-
+#     """A time window of metric values for a specific model."""
 @dataclass
 class MetricWindow:
-    """A time window of metric values for a specific model."""
     model_name: str
     provider: str
     metric_name: str
