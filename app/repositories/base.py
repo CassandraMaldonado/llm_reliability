@@ -87,8 +87,8 @@ class BaseRepository(Generic[ModelType]):
         await self.session.refresh(obj)
         return obj
 
+# mark the record as deleted while keeping it in the database.
     async def soft_delete(self, obj: ModelType) -> ModelType:
-        """Mark as deleted without removing from DB — preserves audit trail."""
         from datetime import datetime, timezone
         obj.deleted_at = datetime.now(timezone.utc)
         await self.session.flush()
