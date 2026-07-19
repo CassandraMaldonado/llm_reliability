@@ -1,3 +1,20 @@
+"""
+Base repository that contains common CRUD operations used across the project.
+
+I decided to use the Repository Pattern to keep the database logic separate
+from the service layer. Instead of having SQLAlchemy queries spread throughout
+the code, all database interactions live in one place.
+
+Some benefits I found are:
+- Cleaner and more organized code.
+- Easier to test by mocking the repository.
+- Business logic doesn't depend directly on SQLAlchemy.
+- If I ever switch databases or ORMs, fewer parts of the code need to change.
+
+This is a common software design pattern that helps make projects easier to
+maintain as they grow.
+"""
+
 import uuid
 from typing import Generic, List, Optional, Tuple, Type, TypeVar
 
