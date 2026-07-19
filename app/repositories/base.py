@@ -1,5 +1,4 @@
-"""
-Base repository that contains common CRUD operations used across the project.
+# Base repository that contains common CRUD operations used across the project.
 
 I decided to use the Repository Pattern to keep the database logic separate
 from the service layer. Instead of having SQLAlchemy queries spread throughout
@@ -13,7 +12,6 @@ Some benefits I found are:
 
 This is a common software design pattern that helps make projects easier to
 maintain as they grow.
-"""
 
 import uuid
 from typing import Generic, List, Optional, Tuple, Type, TypeVar
