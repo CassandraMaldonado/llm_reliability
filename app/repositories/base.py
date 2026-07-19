@@ -94,7 +94,7 @@ class BaseRepository(Generic[ModelType]):
         await self.session.flush()
         return obj
 
+# deletes the record permanently from the database.
     async def hard_delete(self, obj: ModelType) -> None:
-        """Permanent delete. Only use for non-critical data (e.g. temp files)."""
         await self.session.delete(obj)
         await self.session.flush()
