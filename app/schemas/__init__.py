@@ -1,3 +1,11 @@
+# Pydantic schemas used for request validation and API responses.
+
+Conventions:
+- Keep API schemas separate from SQLAlchemy models.
+- Use Create, Update, and Response schemas for each resource.
+- Response schemas use `from_attributes=True` for ORM conversion.
+- Prefer strict typing where possible.
+- UUID fields use `uuid.UUID`.
 
 from app.schemas.common import (
     PaginatedResponse,
