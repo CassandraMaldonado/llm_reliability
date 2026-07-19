@@ -1,18 +1,3 @@
-"""
-app/repositories/base.py
-
-Generic base repository implementing common CRUD patterns.
-
-Repository Pattern Rationale:
-- Services call repositories, never SQLAlchemy directly
-- Enables swap to a different ORM or DB without touching business logic
-- Makes unit testing trivial: mock the repository, test the service
-- Single place for all DB-level concerns (pagination, soft-delete filtering)
-
-Enterprise usage: every major Python backend at scale (Instagram, Dropbox)
-separates data access from business logic. Django ORM is the anti-pattern —
-it bleeds into views. We avoid that here.
-"""
 import uuid
 from typing import Generic, List, Optional, Tuple, Type, TypeVar
 
