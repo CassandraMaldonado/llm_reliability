@@ -22,8 +22,8 @@ class BaseRepository(Generic[ModelType]):
     def __init__(self, session: AsyncSession):
         self.session = session
 
+    # gets primary key, scoped to org (row-level tenancy).
     async def get_by_id(self, id: uuid.UUID, org_id: uuid.UUID) -> Optional[ModelType]:
-        """Get by primary key, scoped to org (row-level tenancy)."""
         result = await self.session.execute(
             select(self.model).where(
                 and_(
@@ -34,6 +34,7 @@ class BaseRepository(Generic[ModelType]):
         )
         return result.scalar_one_or_none()
 
+    # returns (items, total_count).
     async def list(
         self,
         org_id: uuid.UUID,
@@ -41,27 +42,25 @@ class BaseRepository(Generic[ModelType]):
         limit: int = 20,
         **filters,
     ) -> Tuple[List[ModelType], int]:
-        """Return (items, total_count) for pagination."""
         conditions = [self.model.organization_id == org_id]
 
-        # Apply soft-delete filter if model supports it
+        # appliest the filter if the model supports it.
         if hasattr(self.model, "deleted_at"):
             conditions.append(self.model.deleted_at.is_(None))
 
-        # Apply additional filters
         for key, value in filters.items():
             if value is not None and hasattr(self.model, key):
                 conditions.append(getattr(self.model, key) == value)
 
         where_clause = and_(*conditions)
 
-        # Count query
+        # count query.
         count_result = await self.session.execute(
             select(func.count()).select_from(self.model).where(where_clause)
         )
         total = count_result.scalar_one()
 
-        # Data query
+        # data query.
         result = await self.session.execute(
             select(self.model)
             .where(where_clause)
@@ -75,7 +74,7 @@ class BaseRepository(Generic[ModelType]):
 
     async def create(self, obj: ModelType) -> ModelType:
         self.session.add(obj)
-        await self.session.flush()  # flush to get DB-generated values (id, created_at)
+        await self.session.flush()
         await self.session.refresh(obj)
         return obj
 
