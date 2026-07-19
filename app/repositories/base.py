@@ -13,10 +13,8 @@ from app.core.database import Base
 
 ModelType = TypeVar("ModelType", bound=Base)
 
-    """
-    Generic repository providing standard CRUD + pagination.
-    Subclass and set `model = YourModel`.
-    """
+# base repository that includes reusable CRUD methods and pagination.
+# other repositories extend this class by setting `model = YourModel`.
 class BaseRepository(Generic[ModelType]):
 
     model: Type[ModelType]
