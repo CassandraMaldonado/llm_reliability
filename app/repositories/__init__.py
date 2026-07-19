@@ -356,10 +356,7 @@ class MonitoringRepository(BaseRepository[MonitoringMetric]):
         return result.scalar_one_or_none()
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# ALERTS
-# ─────────────────────────────────────────────────────────────────────────────
-
+# alerts.
 class AlertRuleRepository(BaseRepository[AlertRule]):
     model = AlertRule
 
@@ -405,10 +402,8 @@ class AlertRepository(BaseRepository[Alert]):
         return alert
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# DRIFT
-# ─────────────────────────────────────────────────────────────────────────────
 
+# drift.
 class DriftRepository(BaseRepository[DriftReport]):
     model = DriftReport
 
