@@ -1,20 +1,4 @@
-"""
-app/schemas/
 
-Pydantic v2 schemas for API request/response serialization.
-
-Design Principles:
-- Schemas are SEPARATE from ORM models (never return raw SQLAlchemy objects)
-- Three schema variants per resource: Create, Update, Response
-- from_attributes=True on all Response schemas (ORM → Pydantic conversion)
-- Strict types: no silent coercion of str → int etc.
-- All UUIDs as uuid.UUID (not str), serialized as strings in JSON
-
-Why separate from models?
-- ORM models have DB-specific types (JSONB, UUID dialect)
-- API contracts should be stable even when DB schema evolves
-- Enables field-level permission control (hide internal fields from API)
-"""
 from app.schemas.common import (
     PaginatedResponse,
     CursorPage,
