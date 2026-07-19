@@ -20,10 +20,7 @@ from app.models import (
 )
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# ORGANIZATION & USER
-# ─────────────────────────────────────────────────────────────────────────────
-
+# org and users.
 class OrganizationRepository(BaseRepository[Organization]):
     model = Organization
 
