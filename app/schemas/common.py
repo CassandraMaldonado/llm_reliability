@@ -6,11 +6,6 @@ Pagination Strategy: Cursor-based (not offset-based)
 - Cursor = base64(last_seen_id + last_seen_created_at) for stable ordering.
 - Enterprise standard: Stripe, GitHub, Slack all use cursor pagination.
 
-Error Format: RFC 7807 Problem Details (industry standard)
-- type: URI identifying the problem type
-- title: human-readable summary
-- detail: specific explanation for this occurrence
-"""
 import uuid
 from datetime import datetime
 from typing import Generic, List, Optional, TypeVar, Annotated, Any, Dict
