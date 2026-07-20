@@ -1,4 +1,5 @@
-"""app/schemas/auth.py — Authentication and user schemas."""
+# Authentication and user schemas.
+
 import uuid
 from datetime import datetime
 from typing import Optional
