@@ -47,13 +47,8 @@ class ApiKeyCreate(BaseModel):
     description: Optional[str] = None
     expires_in_days: Optional[int] = Field(default=None, ge=1, le=365)
 
-
+# key prefix + raw key are only returned once at creation. After that, we only key_prefix is accessible.
 class ApiKeyResponse(BaseModel):
-    """
-    NOTE: key_prefix + raw_key are only returned once at creation.
-    After that, only key_prefix is accessible (full key is hashed in DB).
-    Enterprise pattern: same as AWS IAM secret access keys.
-    """
     model_config = ConfigDict(from_attributes=True)
 
     id: uuid.UUID
