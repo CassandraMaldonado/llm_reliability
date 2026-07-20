@@ -1,7 +1,4 @@
-"""
-app/schemas/common.py
-
-Shared Pydantic primitives used across all schemas.
+# Shared Pydantic primitives used across all schemas.
 
 Pagination Strategy: Cursor-based (not offset-based)
 - Why cursor-based? Offset pagination breaks on inserts: if you're on page 3
