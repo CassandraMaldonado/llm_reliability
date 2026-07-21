@@ -1,4 +1,3 @@
-"""app/schemas/datasets.py"""
 import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional
@@ -8,7 +7,7 @@ from pydantic import BaseModel, ConfigDict, Field
 class DatasetRowCreate(BaseModel):
     question: str
     expected_answer: Optional[str] = None
-    context: Optional[str] = None           # for RAG evaluation
+    context: Optional[str] = None           # for RAG.
     retrieved_contexts: Optional[List[str]] = None
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
