@@ -47,9 +47,8 @@ class ErrorResponse(BaseModel):
     details: Optional[Dict[str, Any]] = None   # optional structured details
     request_id: Optional[str] = None   # for correlation with logs
 
-
+# success acknowledgment for operations that don't return data.
 class SuccessResponse(BaseModel):
-    """Simple success acknowledgment for operations that don't return data."""
     success: bool = True
     message: str = "Operation completed successfully"
 
