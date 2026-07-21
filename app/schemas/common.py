@@ -15,21 +15,19 @@ UUIDStr = uuid.UUID
 T = TypeVar("T")
 
 
-class PaginatedResponse(BaseModel, Generic[T]):
-    """
-    Standard paginated list response.
-    All list endpoints return this shape.
+# standard paginated list response, all list endpoints return this shape.
     
-    Example response:
-    {
-        "items": [...],
-        "total": 1523,
-        "page": 1,
-        "page_size": 20,
-        "has_next": true,
-        "next_cursor": "eyJpZCI6IjEyMyJ9"
-    }
-    """
+    #Example response:
+    #{
+        #"items": [...],
+        #"total": 1523,
+        #"page": 1,
+        #"page_size": 20,
+        #"has_next": true,
+        #"next_cursor": "eyJpZCI6IjEyMyJ9"
+    #}
+
+class PaginatedResponse(BaseModel, Generic[T]):
     items: List[T]
     total: int
     page: int = 1
