@@ -40,21 +40,20 @@ class CursorPage(BaseModel):
     cursor: Optional[str] = None
     limit: int = Field(default=20, ge=1, le=100)
 
-# RFC 7807 Problem Details error format. Consistent error shape across all endpoints.
+# RFC 7807 Problem Details error format.
 class ErrorResponse(BaseModel):
-    error: str                          # machine-readable error code e.g. "NOT_FOUND"
-    message: str                        # human-readable message
-    details: Optional[Dict[str, Any]] = None   # optional structured details
-    request_id: Optional[str] = None   # for correlation with logs
+    error: str                          
+    message: str                        
+    details: Optional[Dict[str, Any]] = None   # optional structured details.
+    request_id: Optional[str] = None   
 
 # success acknowledgment for operations that don't return data.
 class SuccessResponse(BaseModel):
     success: bool = True
     message: str = "Operation completed successfully"
 
-
+# common time range filtering for metrics endpoints.
 class TimeRangeFilter(BaseModel):
-    """Common time range filter for monitoring/metrics endpoints."""
     start_time: Optional[datetime] = None
     end_time: Optional[datetime] = None
     window_hours: Optional[int] = Field(default=24, ge=1, le=720)  # max 30 days
