@@ -1,10 +1,6 @@
 # Shared Pydantic primitives used across all schemas.
 
-Pagination Strategy: Cursor-based (not offset-based)
-- Why cursor-based? Offset pagination breaks on inserts: if you're on page 3
-  and someone inserts a row, your page 4 duplicates a row.
-- Cursor = base64(last_seen_id + last_seen_created_at) for stable ordering.
-- Enterprise standard: Stripe, GitHub, Slack all use cursor pagination.
+# pagination strategy is cursor based.
 
 import uuid
 from datetime import datetime
@@ -12,7 +8,7 @@ from typing import Generic, List, Optional, TypeVar, Annotated, Any, Dict
 
 from pydantic import BaseModel, ConfigDict, Field
 
-# Type alias for UUID fields that serialize as strings in JSON
+# type alias for UUID fields that serialize as strings in JSON.
 UUIDStr = uuid.UUID
 
 
