@@ -47,7 +47,7 @@ class ApiKeyCreate(BaseModel):
     description: Optional[str] = None
     expires_in_days: Optional[int] = Field(default=None, ge=1, le=365)
 
-# key prefix + raw key are only returned once at creation. After that, we only key_prefix is accessible.
+# key prefix and raw key are only returned once at creation. After that we only key_prefix is accessible.
 class ApiKeyResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
