@@ -35,18 +35,13 @@ class PaginatedResponse(BaseModel, Generic[T]):
     has_next: bool = False
     next_cursor: Optional[str] = None
 
-
+# cursor pagination input parameters.
 class CursorPage(BaseModel):
-    """Cursor pagination input parameters."""
     cursor: Optional[str] = None
     limit: int = Field(default=20, ge=1, le=100)
 
-
+# RFC 7807 Problem Details error format. Consistent error shape across all endpoints.
 class ErrorResponse(BaseModel):
-    """
-    RFC 7807 Problem Details error format.
-    Consistent error shape across all endpoints.
-    """
     error: str                          # machine-readable error code e.g. "NOT_FOUND"
     message: str                        # human-readable message
     details: Optional[Dict[str, Any]] = None   # optional structured details
