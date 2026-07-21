@@ -32,9 +32,8 @@ class DriftReportResponse(BaseModel):
     alert_generated: bool
     created_at: datetime
 
-
+# dashboard drift overview.
 class DriftSummary(BaseModel):
-    """Dashboard-friendly drift overview."""
     overall_drift_score: float
     drifting_metrics: List[str]
     latest_report_id: Optional[str]
