@@ -33,14 +33,14 @@ class RAGEvaluationResponse(BaseModel):
     answer: str
     retrieved_contexts: List[str]
 
-    # Computed metrics
+    # computed metrics.
     retrieval_precision: Optional[float]
     retrieval_recall: Optional[float]
     context_relevance: Optional[float]
     groundedness: Optional[float]
     answer_correctness: Optional[float]
 
-    # Config
+    # config.
     embedding_model: Optional[str]
     chunk_size: Optional[int]
     retrieval_strategy: Optional[str]
