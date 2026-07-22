@@ -14,10 +14,10 @@ class RAGEvaluationCreate(BaseModel):
     expected_answer: Optional[str] = None
 
     # RAG configuration metadata
-    embedding_model: Optional[str] = None    # text-embedding-3-small, bge-large, etc.
+    embedding_model: Optional[str] = None    #text-embedding-3-small, bge-large, etc.
     chunk_size: Optional[int] = None
     chunk_overlap: Optional[int] = None
-    retrieval_strategy: Optional[str] = None  # dense, sparse, hybrid, mmr
+    retrieval_strategy: Optional[str] = None  #dense, sparse, hybrid, mmr.
     top_k: Optional[int] = None
     reranker: Optional[str] = None
     metadata: Dict[str, Any] = Field(default_factory=dict)
