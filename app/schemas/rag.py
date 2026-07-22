@@ -47,9 +47,8 @@ class RAGEvaluationResponse(BaseModel):
     metadata: Dict[str, Any]
     created_at: datetime
 
-
+# compare multiple RAG configurations on the same dataset.
 class RAGCompareRequest(BaseModel):
-    """Compare multiple RAG configurations on the same dataset."""
     evaluation_ids: List[uuid.UUID] = Field(min_length=2, max_length=20)
     group_by: str = Field(
         default="embedding_model",
