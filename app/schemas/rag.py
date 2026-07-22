@@ -64,7 +64,7 @@ class RAGGroupStats(BaseModel):
     avg_context_relevance: float
     avg_groundedness: float
     avg_answer_correctness: float
-    overall_score: float  # weighted composite
+    overall_score: float  #weighted composite.
 
 
 class RAGCompareResponse(BaseModel):
