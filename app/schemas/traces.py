@@ -1,15 +1,11 @@
-"""app/schemas/traces.py"""
+
 import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
-
+# SDK-facing schema.
 class TraceCreate(BaseModel):
-    """
-    SDK-facing schema: what the mangos.trace() context manager POSTs.
-    Designed to be minimal — just what the SDK can capture automatically.
-    """
     experiment_run_id: Optional[uuid.UUID] = None
     model_name: str
     provider: str
@@ -22,8 +18,8 @@ class TraceCreate(BaseModel):
     cost_usd: Optional[float] = None
     metadata: Dict[str, Any] = Field(default_factory=dict)
     tags: List[str] = Field(default_factory=list)
-    session_id: Optional[str] = None    # group traces from one user session
-    user_id: Optional[str] = None       # end-user identifier (hashed for privacy)
+    session_id: Optional[str] = None    #group traces from one user session.
+    user_id: Optional[str] = None       #end-user identifier.
 
 
 class TraceResponse(BaseModel):
