@@ -7,12 +7,12 @@ from pydantic import BaseModel, ConfigDict
 class DriftMetricDetail(BaseModel):
     metric_name: str
     drift_detected: bool
-    drift_type: Optional[str]    # distribution, anomaly, threshold.
-    severity: Optional[str]      # critical, warning.
+    drift_type: Optional[str]    #distribution, anomaly, threshold.
+    severity: Optional[str]      #critical, warning.
     baseline_mean: Optional[float]
     current_mean: Optional[float]
     delta_pct: Optional[float]
-    p_value: Optional[float]     # p-value.
+    p_value: Optional[float]     #p-value.
     z_score: Optional[float]
 
 
@@ -25,7 +25,7 @@ class DriftReportResponse(BaseModel):
     baseline_window_hours: int
     current_window_hours: int
     drift_detected: bool
-    drift_score: float           # 0-1 composite drift score.
+    drift_score: float           #0-1 composite drift score.
     metrics_analyzed: int
     metrics_drifted: int
     metric_details: List[DriftMetricDetail]
@@ -38,4 +38,4 @@ class DriftSummary(BaseModel):
     drifting_metrics: List[str]
     latest_report_id: Optional[str]
     last_checked_at: Optional[datetime]
-    status: str  # healthy, warning, critical
+    status: str  #healthy, warning, critical.
