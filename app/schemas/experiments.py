@@ -1,4 +1,5 @@
-"""app/schemas/experiments.py — Experiment and run schemas."""
+# Experiment and run schemas.
+
 import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional
