@@ -1,4 +1,3 @@
-"""app/schemas/evaluations.py"""
 import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional
@@ -21,9 +20,8 @@ class EvaluationResultResponse(BaseModel):
     latency_ms: Optional[float]
     created_at: datetime
 
-
+# aggregated evaluation metrics.
 class EvaluationSummary(BaseModel):
-    """Aggregated evaluation metrics for a run."""
     run_id: str
     total_evaluated: int
     metrics: Dict[str, Dict[str, float]]  # metric_name -> {mean, p50, p95, pass_rate}
