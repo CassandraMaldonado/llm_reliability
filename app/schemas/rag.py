@@ -1,15 +1,11 @@
-"""app/schemas/rag.py"""
+
 import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
-
+# RAG pipeline result for evaluation.
 class RAGEvaluationCreate(BaseModel):
-    """
-    Submit a RAG pipeline result for evaluation.
-    Captures the full retrieval + generation chain for analysis.
-    """
     experiment_run_id: Optional[uuid.UUID] = None
     dataset_row_id: Optional[uuid.UUID] = None
     question: str
