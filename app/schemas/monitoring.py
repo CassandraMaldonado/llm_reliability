@@ -24,12 +24,11 @@ class MetricResponse(BaseModel):
     metadata: Dict[str, Any]
     created_at: datetime
 
-
+# aggregated metric stats for dashboard KPI cards.
 class MetricAggregateResponse(BaseModel):
-    """Aggregated metric stats for dashboard KPI cards."""
     metric_name: str
     current_value: float
-    previous_value: Optional[float]     # previous window for delta calculation
+    previous_value: Optional[float]     # previous window for delta calculation.
     delta_pct: Optional[float]
     trend: str  # up, down, stable
     time_series: List[TimeSeriesPoint]
