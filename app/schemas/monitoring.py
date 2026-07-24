@@ -28,7 +28,7 @@ class MetricResponse(BaseModel):
 class MetricAggregateResponse(BaseModel):
     metric_name: str
     current_value: float
-    previous_value: Optional[float]     # previous window for delta calculation.
+    previous_value: Optional[float]     # delta calculation.
     delta_pct: Optional[float]
     trend: str  # up, down, stable
     time_series: List[TimeSeriesPoint]
