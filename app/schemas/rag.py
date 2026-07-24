@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
-# RAG pipeline result for evaluation.
+# RAG pipeline result.
 class RAGEvaluationCreate(BaseModel):
     experiment_run_id: Optional[uuid.UUID] = None
     dataset_row_id: Optional[uuid.UUID] = None
@@ -13,7 +13,7 @@ class RAGEvaluationCreate(BaseModel):
     retrieved_contexts: List[str] = Field(min_length=1)
     expected_answer: Optional[str] = None
 
-    # RAG configuration metadata
+    # metadata.
     embedding_model: Optional[str] = None    #text-embedding-3-small, bge-large, etc.
     chunk_size: Optional[int] = None
     chunk_overlap: Optional[int] = None
