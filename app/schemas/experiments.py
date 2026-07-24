@@ -95,14 +95,14 @@ class RunCompareRequest(BaseModel):
 
 class RunMetricComparison(BaseModel):
     metric: str
-    values: Dict[str, Optional[float]]  # run_id -> value
-    winner_run_id: Optional[str]        # run with best value (None if tie)
-    delta_pct: Optional[float]          # % improvement of best vs worst
+    values: Dict[str, Optional[float]]
+    winner_run_id: Optional[str]        # run with best value.
+    delta_pct: Optional[float]          # % improvement of best vs worst.
 
 
 class RunCompareResponse(BaseModel):
     run_ids: List[str]
     runs: List[ExperimentRunResponse]
     metric_comparisons: List[RunMetricComparison]
-    overall_winner_run_id: Optional[str]  # run that wins most metrics
-    summary: str                           # human-readable summary
+    overall_winner_run_id: Optional[str]  #run that wins most metrics.
+    summary: str                        
