@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
-# SDK-facing schema.
+# SDK schema.
 class TraceCreate(BaseModel):
     experiment_run_id: Optional[uuid.UUID] = None
     model_name: str
@@ -19,7 +19,7 @@ class TraceCreate(BaseModel):
     metadata: Dict[str, Any] = Field(default_factory=dict)
     tags: List[str] = Field(default_factory=list)
     session_id: Optional[str] = None    #group traces from one user session.
-    user_id: Optional[str] = None       #end-user identifier.
+    user_id: Optional[str] = None       #end-user id.
 
 
 class TraceResponse(BaseModel):
