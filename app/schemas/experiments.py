@@ -7,10 +7,6 @@ from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# EXPERIMENTS
-# ─────────────────────────────────────────────────────────────────────────────
-
 class ExperimentCreate(BaseModel):
     name: str = Field(min_length=1, max_length=255)
     description: Optional[str] = None
@@ -42,18 +38,9 @@ class ExperimentResponse(BaseModel):
     updated_at: Optional[datetime]
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# EXPERIMENT RUNS
-# ─────────────────────────────────────────────────────────────────────────────
-
+# experiment runs, the hyperparameters are stored in JSONB.
 class ExperimentRunCreate(BaseModel):
-    """
-    Create a new experiment run.
-    
-    Hyperparameters are stored in JSONB — this is intentional.
-    LLM hyperparameters evolve (new models add new params) and using JSONB
-    avoids schema migrations every time a new provider appears.
-    """
+
     experiment_id: uuid.UUID
     dataset_id: Optional[uuid.UUID] = None
     model_name: str = Field(min_length=1, max_length=100)
