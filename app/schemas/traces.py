@@ -41,7 +41,7 @@ class TraceResponse(BaseModel):
     tags: List[str]
     created_at: datetime
 
-# end-user thumbs up/down or star rating feedback on a trace.
+# end-user thumbs up/down or star rating feedback.
 class FeedbackCreate(BaseModel):
     score: float = Field(ge=0.0, le=1.0, description="0=negative, 1=positive, 0.5=neutral")
     label: Optional[str] = Field(default=None, description="thumbs_up, thumbs_down, star_1..5")
