@@ -44,7 +44,7 @@ class ExperimentRunCreate(BaseModel):
     experiment_id: uuid.UUID
     dataset_id: Optional[uuid.UUID] = None
     model_name: str = Field(min_length=1, max_length=100)
-    provider: str = Field(min_length=1, max_length=50)  # openai, anthropic, gemini
+    provider: str = Field(min_length=1, max_length=50)  # llm.
     system_prompt: Optional[str] = None
     user_prompt_template: Optional[str] = None
     hyperparameters: Dict[str, Any] = Field(
