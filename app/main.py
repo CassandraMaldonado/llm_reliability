@@ -124,14 +124,9 @@ def create_app() -> FastAPI:
     # routes.
     app.include_router(api_router, prefix=settings.API_PREFIX)
 
-    # health check.
+    # health check, kubernetes readiness probe endpoint. It returns 200 if the service is healthy.
     @app.get("/health", tags=["system"])
     async def health_check():
-        """
-        Kubernetes liveness/readiness probe endpoint.
-        Returns 200 if the service is healthy.
-        Enterprise: Add DB ping check for readiness probe.
-        """
         return {
             "status": "healthy",
             "version": settings.APP_VERSION,
