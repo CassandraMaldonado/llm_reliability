@@ -42,7 +42,7 @@ log = structlog.get_logger()
 async def lifespan(app: FastAPI):
     log.info("MANGOS starting up", environment=settings.ENVIRONMENT)
 
-    # In development, auto-create tables (migrations handle prod)
+    # auto create tables.
     if settings.ENVIRONMENT == "development":
         async with engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
