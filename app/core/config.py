@@ -103,14 +103,13 @@ class Settings(BaseSettings):
         env_file_encoding = "utf-8"
         case_sensitive = True
 
-
-@lru_cache()
-def get_settings() -> Settings:
     """
     Cached settings singleton.
     lru_cache ensures we parse .env exactly once — not on every request.
     FastAPI Depends(get_settings) injects this safely throughout.
     """
+@lru_cache()
+def get_settings() -> Settings:
     return Settings()
 
 
