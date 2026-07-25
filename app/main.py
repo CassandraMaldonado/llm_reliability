@@ -60,8 +60,8 @@ def create_app() -> FastAPI:
         title=settings.APP_NAME,
         version=settings.APP_VERSION,
         description=(
-            "Enterprise-grade LLM evaluation, monitoring, and reliability platform. "
-            "Track experiments, detect drift, measure quality, and prevent hallucinations."
+            "LLM evaluation, monitoring and reliability platform."
+            "Track experiments, detect drift, measure quality and prevent hallucinations."
         ),
         docs_url="/docs" if settings.ENVIRONMENT != "production" else None,
         redoc_url="/redoc" if settings.ENVIRONMENT != "production" else None,
