@@ -47,7 +47,7 @@ METRIC_TO_TRACE_FIELD = {
     default_retry_delay=60,
 )
 def aggregate_metrics_task(self):
-# rolls up the last 5 minutes of LLMTrace records into MonitoringMetric rows.
+# rolls up the last 5 minutes of LLM trace records.
     asyncio.run(_aggregate_metrics_async())
 
 
