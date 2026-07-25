@@ -1,9 +1,5 @@
 # FastAPI application factory and root configuration.
 
-# Application factory pattern enables testing.
-# Structured logging.
-# Request ID middleware for distributed tracing.
-
 import logging
 import time
 import uuid
