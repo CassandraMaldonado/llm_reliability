@@ -16,13 +16,8 @@ import openai
 
 from app.core.config import settings
 
-
+# evaluates a RAG pipeline output across 5 core metrics.
 class RAGEvaluator:
-    """
-    Evaluate a RAG pipeline output across 5 core metrics.
-    Uses gpt-4o-mini as judge (cost-efficient, ~$0.0001 per evaluation).
-    """
-
     def __init__(self):
         self.client = openai.AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
         self.judge_model = "gpt-4o-mini"
