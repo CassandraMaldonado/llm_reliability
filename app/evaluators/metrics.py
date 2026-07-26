@@ -32,10 +32,9 @@ class MetricInput:
     conversation_history: Optional[List[Dict]] = None
     metadata: Dict[str, Any] = field(default_factory=dict)
 
-
+# standardized output from all metrics.
 @dataclass
 class MetricResult:
-    """Standardized output from all metrics."""
     metric_name: str
     score: float                         # Normalized 0.0 – 1.0
     raw_score: Optional[float] = None
