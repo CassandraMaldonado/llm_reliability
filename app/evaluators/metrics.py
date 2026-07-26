@@ -495,10 +495,7 @@ MetricRegistry._metrics = {
     "context_relevance": ContextRelevanceMetric,
 }
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# EVALUATION RUNNER
-# ─────────────────────────────────────────────────────────────────────────────
+# eval runner.
 
 class EvaluationRunner:
     """
