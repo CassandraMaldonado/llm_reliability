@@ -151,11 +151,7 @@ class SemanticSimilarityMetric(BaseMetric):
             )
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# LLM-AS-JUDGE BASE  (shared by Relevance, Faithfulness, Hallucination)
-# ─────────────────────────────────────────────────────────────────────────────
-
-class LLMJudgeMetric(BaseMetric, ABC):
+# LLM judge.
     """
     Base class for metrics that use an LLM to evaluate outputs.
 
@@ -167,6 +163,8 @@ class LLMJudgeMetric(BaseMetric, ABC):
     Enterprise context: This is exactly what DeepEval, Braintrust, and
     LangSmith use under the hood for complex metrics.
     """
+
+class LLMJudgeMetric(BaseMetric, ABC):
 
     def __init__(
         self,
