@@ -1,14 +1,5 @@
-"""
-app/core/database.py
+# Async SQLAlchemy 2.0 database session management.
 
-Async SQLAlchemy 2.0 database session management.
-
-Enterprise pattern:
-- AsyncEngine + AsyncSession for non-blocking I/O (critical for FastAPI)
-- Session-per-request via dependency injection
-- Never share sessions across requests (not thread/task safe)
-- Connection pool tuned for production load
-"""
 from contextlib import asynccontextmanager
 from typing import AsyncGenerator
 
