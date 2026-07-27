@@ -48,13 +48,9 @@ class MetricResult:
     latency_ms: Optional[float] = None
 
 
+# abstract base class for all evaluation metrics, every metric must implement score().
+# The async interface ensures metrics can call LLM APIs concurrently.
 class BaseMetric(ABC):
-    """
-    Abstract base class for all evaluation metrics.
-
-    Enforces the contract: every metric must implement score().
-    The async interface ensures metrics can call LLM APIs concurrently.
-    """
     name: str
     version: str = "1.0.0"
     requires_expected_output: bool = False
