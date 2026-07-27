@@ -26,7 +26,7 @@ class MetricInput:
     actual_output: str
     expected_output: Optional[str] = None
     context_documents: Optional[List[str]] = None  # retrieved chunks.
-    gold_context: Optional[List[str]] = None        # RAG: ground truth context
+    gold_context: Optional[List[str]] = None        # ground truth context.
     conversation_history: Optional[List[Dict]] = None
     metadata: Dict[str, Any] = field(default_factory=dict)
 
