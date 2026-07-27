@@ -36,11 +36,11 @@ class MetricInput:
 @dataclass
 class MetricResult:
     metric_name: str
-    score: float                         # Normalized 0.0 – 1.0
+    score: float                         # normalized.
     raw_score: Optional[float] = None
     passed: Optional[bool] = None
     threshold: Optional[float] = None
-    reasoning: Optional[str] = None     # LLM-as-judge explanation
+    reasoning: Optional[str] = None     # LLM explanation.
     evaluator_model: Optional[str] = None
     status: MetricStatus = MetricStatus.PASSED
     error_message: Optional[str] = None
