@@ -130,10 +130,10 @@ class RAGEvaluator:
                 "Score 1.0=identical meaning, 0.0=completely wrong."
             )
 
+    # what fraction of the information needed was retrieved.
     async def _evaluate_retrieval_recall(
         self, expected_answer: str, contexts: List[str]
     ) -> float:
-        """What fraction of the information needed (from expected_answer) was retrieved?"""
         context_str = "\n\n".join(contexts[:5])
         return await self._judge(
             f"Expected answer: {expected_answer}\n\nRetrieved context:\n{context_str[:2000]}\n\n"
