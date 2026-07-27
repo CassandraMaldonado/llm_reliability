@@ -111,10 +111,10 @@ class RAGEvaluator:
             "Score 1.0=fully grounded (no hallucinations), 0.0=unsupported claims."
         )
 
+    # how correct is the answer compared to the expected answer?
     async def _evaluate_answer_correctness(
         self, answer: str, expected_answer: str
     ) -> float:
-        """How correct is the answer compared to the expected answer?"""
         try:
             from sentence_transformers import SentenceTransformer, util
             model = SentenceTransformer("all-MiniLM-L6-v2")
