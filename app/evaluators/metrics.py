@@ -232,9 +232,7 @@ class LLMJudgeMetric(BaseMetric, ABC):
             )
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# ANSWER RELEVANCE
-# ─────────────────────────────────────────────────────────────────────────────
+# answer relevance.
 
 class AnswerRelevanceMetric(LLMJudgeMetric):
     """
