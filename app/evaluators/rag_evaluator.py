@@ -29,7 +29,6 @@ class RAGEvaluator:
         retrieved_contexts: List[str],
         expected_answer: Optional[str] = None,
     ) -> Dict[str, float]:
-        """Run all RAG metrics concurrently."""
         tasks = [
             self._evaluate_retrieval_precision(question, retrieved_contexts),
             self._evaluate_context_relevance(question, retrieved_contexts),
