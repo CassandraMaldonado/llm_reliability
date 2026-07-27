@@ -69,9 +69,8 @@ class BaseMetric(ABC):
 
 _embedding_model: Optional[SentenceTransformer] = None
 
-
+# lazy load embedding model.
 def _get_embedding_model() -> SentenceTransformer:
-    """Lazy-load embedding model (singleton). First call takes ~2s."""
     global _embedding_model
     if _embedding_model is None:
         # all-MiniLM-L6-v2: fast, small, surprisingly good for similarity
