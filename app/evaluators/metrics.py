@@ -65,10 +65,7 @@ class BaseMetric(ABC):
         return score >= self.threshold
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# SEMANTIC SIMILARITY METRIC
-# Uses sentence-transformers — no LLM API call needed, cheap and fast.
-# ─────────────────────────────────────────────────────────────────────────────
+# semantics similarity, uses sentence-transformers.
 
 _embedding_model: Optional[SentenceTransformer] = None
 
