@@ -79,7 +79,6 @@ def _get_embedding_model() -> SentenceTransformer:
     return _embedding_model
 
 
-class SemanticSimilarityMetric(BaseMetric):
     """
     Cosine similarity between actual and expected output embeddings.
 
@@ -93,6 +92,7 @@ class SemanticSimilarityMetric(BaseMetric):
     Enterprise use: Gate regression. If similarity drops below 0.7,
     flag for human review before deploying prompt changes.
     """
+class SemanticSimilarityMetric(BaseMetric):
     name = "semantic_similarity"
     requires_expected_output = True
 
