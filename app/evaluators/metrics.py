@@ -495,11 +495,8 @@ class EvaluationRunner:
     def __init__(self, metrics: List[BaseMetric]):
         self.metrics = metrics
 
+# runs all metrics and returns the results in same order as self.metrics.
     async def run(self, input: MetricInput) -> List[MetricResult]:
-        """
-        Run all metrics concurrently. Returns results in same order as self.metrics.
-        Failed metrics return error MetricResult — never raise exceptions.
-        """
         tasks = [metric.score(input) for metric in self.metrics]
         results = await asyncio.gather(*tasks, return_exceptions=True)
 
