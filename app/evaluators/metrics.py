@@ -480,16 +480,8 @@ MetricRegistry._metrics = {
     "context_relevance": ContextRelevanceMetric,
 }
 
-# eval runner.
-
+# eval runner, orchestrates running multiple metrics against a single LLM trace.
 class EvaluationRunner:
-    """
-    Orchestrates running multiple metrics against a single LLM trace.
-
-    Runs metrics concurrently with asyncio.gather() — critical for performance.
-    Running 6 LLM-as-judge metrics sequentially would take 6× longer.
-    Concurrent execution brings wall time close to the slowest single metric.
-    """
 
     def __init__(self, metrics: List[BaseMetric]):
         self.metrics = metrics
