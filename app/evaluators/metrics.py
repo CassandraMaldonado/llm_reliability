@@ -19,13 +19,13 @@ class MetricStatus(str, Enum):
     SKIPPED = "skipped"
 
 
-# Standardized input container for all metrics.
+# standardizes the input container for all metrics.
 @dataclass
 class MetricInput:
     question: str
     actual_output: str
     expected_output: Optional[str] = None
-    context_documents: Optional[List[str]] = None  # RAG: retrieved chunks
+    context_documents: Optional[List[str]] = None  # retrieved chunks.
     gold_context: Optional[List[str]] = None        # RAG: ground truth context
     conversation_history: Optional[List[Dict]] = None
     metadata: Dict[str, Any] = field(default_factory=dict)
