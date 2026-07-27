@@ -1,5 +1,4 @@
 # Evaluation engine implementing the Strategy Pattern. Each metric is a class implementing BaseMetric.
-
 # metric implementations use DeepEval under the hood where available, fall back to embedding similarity or custom LLM judge for others.
 
 import asyncio
@@ -21,7 +20,6 @@ class MetricStatus(str, Enum):
 
 
 # Standardized input container for all metrics.
-
 @dataclass
 class MetricInput:
     question: str
@@ -49,7 +47,6 @@ class MetricResult:
 
 
 # abstract base class for all evaluation metrics, every metric must implement score().
-# The async interface ensures metrics can call LLM APIs concurrently.
 class BaseMetric(ABC):
     name: str
     version: str = "1.0.0"
