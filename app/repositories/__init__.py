@@ -60,10 +60,7 @@ class ApiKeyRepository(BaseRepository[ApiKey]):
         await self.session.flush()
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# EXPERIMENTS
-# ─────────────────────────────────────────────────────────────────────────────
-
+# experiments.
 class ExperimentRepository(BaseRepository[Experiment]):
     model = Experiment
 
