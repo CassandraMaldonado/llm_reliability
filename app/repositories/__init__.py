@@ -36,8 +36,8 @@ class UserRepository(BaseRepository[User]):
         )
         return result.scalar_one_or_none()
 
+    # auth middleware where we don't yet know the org.
     async def get_by_id_any_org(self, user_id: uuid.UUID) -> Optional[User]:
-        """For auth middleware where we don't yet know the org."""
         result = await self.session.execute(
             select(User).where(User.id == user_id)
         )
