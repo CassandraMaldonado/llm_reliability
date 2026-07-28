@@ -1,9 +1,6 @@
-"""
-app/repositories/
+# all domain repositories inheriting from BaseRepository.
+# Each adds domain-specific query methods beyond basic CRUD.
 
-All domain repositories inheriting from BaseRepository.
-Each adds domain-specific query methods beyond basic CRUD.
-"""
 import uuid
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
