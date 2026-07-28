@@ -299,9 +299,7 @@ class RAGRepository(BaseRepository[RAGEvaluation]):
         return [dict(row._mapping) for row in result.all()]
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# MONITORING & METRICS
-# ─────────────────────────────────────────────────────────────────────────────
+# monitoring and metrics.
 
 class MonitoringRepository(BaseRepository[MonitoringMetric]):
     model = MonitoringMetric
