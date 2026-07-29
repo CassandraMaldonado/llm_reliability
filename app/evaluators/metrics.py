@@ -141,12 +141,6 @@ class SemanticSimilarityMetric(BaseMetric):
 
 
 # LLM judge, base class for metrics that use the LLM to evaluate the outputs.
-
-    LLM-as-judge pattern:
-    - Use a capable model (GPT-4o-mini works well, cheap)
-    - Structured prompt forces score + reasoning
-    - Parse JSON response for reliability
-
 class LLMJudgeMetric(BaseMetric, ABC):
 
     def __init__(
