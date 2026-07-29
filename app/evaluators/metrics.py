@@ -504,6 +504,7 @@ class EvaluationRunner:
 
         return normalized
 
+  # builds an EvaluationRunner from a list of metric names.
     @classmethod
     def from_metric_names(
         cls,
@@ -512,10 +513,6 @@ class EvaluationRunner:
         evaluator_model: str = "gpt-4o-mini",
         thresholds: Optional[Dict[str, float]] = None,
     ) -> "EvaluationRunner":
-        """
-        Build an EvaluationRunner from a list of metric names.
-        Used by the API to build runners from user configuration.
-        """
         thresholds = thresholds or {}
         metrics = []
         for name in metric_names:
