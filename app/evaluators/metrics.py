@@ -236,9 +236,8 @@ class LLMJudgeMetric(BaseMetric, ABC):
 # does the answer actually address the question asked?
 # score interpretation:
     # 1.0: directly and completely answers the question.
-    - 0.5: Partially relevant, misses key aspects
-    - 0.0: Off-topic, does not address the question
-    """
+    # 0.5: partially relevant, misses key aspects.
+    # 0.0: off-topic, does not address the question.
 class AnswerRelevanceMetric(LLMJudgeMetric):
     name = "answer_relevance"
 
