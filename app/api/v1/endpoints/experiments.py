@@ -37,7 +37,7 @@ class ExperimentResponse(BaseModel):
 # creates a new experiment run, the run defines WHAT to test (model + prompt + dataset).
 class RunCreate(BaseModel):
     experiment_id: uuid.UUID
-    dataset_id: Optional[uuid.UUID] = None              # Eval against a dataset
+    dataset_id: Optional[uuid.UUID] = None              # eval against a dataset.
     provider: str = Field(..., pattern="^(openai|anthropic|gemini|huggingface)$")
     model_name: str = Field(..., min_length=1, max_length=255)
     model_version: Optional[str] = None
@@ -56,10 +56,8 @@ class RunCreate(BaseModel):
     metadata: dict = {}
 
 
+# log a single LLM call.
 class TraceCreate(BaseModel):
-    """
-    Log a single LLM call. Used by the SDK for production tracing.
-    """
     run_id: Optional[uuid.UUID] = None
     source: str = Field(default="production", pattern="^(experiment|production)$")
     provider: str
