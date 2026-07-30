@@ -87,7 +87,7 @@ class RunComparisonRequest(BaseModel):
     metrics: Optional[List[str]] = None  # None = all metrics
 
 
-# ── Experiment Endpoints ──────────────────────────────────────────────────────
+# experiment endpoints.
 
 @router.post("/", response_model=ExperimentResponse, status_code=status.HTTP_201_CREATED)
 async def create_experiment(
