@@ -415,13 +415,7 @@ async def log_trace(
     }
 
 
-@router.post("/traces/{trace_id}/feedback")
-async def submit_feedback(
-    trace_id: uuid.UUID,
-    score: float = Query(..., ge=0.0, le=1.0),
-    text: Optional[str] = None,
-    db: AsyncSession = Depends(get_db),
-):
+#     
     """
     Submit user feedback for a specific LLM response.
 
@@ -429,6 +423,13 @@ async def submit_feedback(
     Normalized: 1.0 = thumbs up, 0.0 = thumbs down.
     Used to correlate automatic eval scores with human judgment.
     """
+@router.post("/traces/{trace_id}/feedback")
+async def submit_feedback(
+    trace_id: uuid.UUID,
+    score: float = Query(..., ge=0.0, le=1.0),
+    text: Optional[str] = None,
+    db: AsyncSession = Depends(get_db),
+):
     result = await db.execute(select(LLMTrace).where(LLMTrace.id == trace_id))
     trace = result.scalar_one_or_none()
     if not trace:
