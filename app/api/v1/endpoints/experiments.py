@@ -406,8 +406,8 @@ async def log_trace(
     db.add(trace)
     await db.flush()
 
-    # Background: auto-eval if expected_output provided
-    # background_tasks.add_task(auto_evaluate_trace, trace_id=trace.id)
+    # Background: auto-eval if expected_output provided.
+    # background_tasks.add_task(auto_evaluate_trace, trace_id=trace.id).
 
     return {
         "trace_id": str(trace.id),
