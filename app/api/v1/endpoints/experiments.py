@@ -357,14 +357,7 @@ async def compare_runs(
     return comparison
 
 
-# ── Trace Endpoints ───────────────────────────────────────────────────────────
-
-@router.post("/traces", status_code=status.HTTP_201_CREATED)
-async def log_trace(
-    payload: TraceCreate,
-    background_tasks: BackgroundTasks,
-    db: AsyncSession = Depends(get_db),
-):
+# trace endpoints.\
     """
     Log a single LLM call trace.
 
@@ -378,6 +371,13 @@ async def log_trace(
             response = openai.chat.completions.create(...)
             t.record(response)
     """
+
+@router.post("/traces", status_code=status.HTTP_201_CREATED)
+async def log_trace(
+    payload: TraceCreate,
+    background_tasks: BackgroundTasks,
+    db: AsyncSession = Depends(get_db),
+):
     trace = LLMTrace(
         run_id=payload.run_id,
         organization_id=uuid.uuid4(),  # From SDK auth header in production
@@ -406,7 +406,7 @@ async def log_trace(
     db.add(trace)
     await db.flush()
 
-    # Background: auto-eval if expected_output provided.
+    # background: auto-eval if expected_output provided.
     # background_tasks.add_task(auto_evaluate_trace, trace_id=trace.id).
 
     return {
