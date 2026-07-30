@@ -1,12 +1,5 @@
-"""
-app/api/v1/endpoints/experiments.py
+# Experiment tracking endpoints.
 
-Experiment tracking endpoints.
-
-These are the highest-traffic endpoints in the platform.
-Designed to be as fast as possible — DB writes are async,
-long-running evals are offloaded to Celery.
-"""
 import uuid
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, status, BackgroundTasks
