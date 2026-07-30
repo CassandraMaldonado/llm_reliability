@@ -415,14 +415,10 @@ async def log_trace(
     }
 
 
-#     
-    """
-    Submit user feedback for a specific LLM response.
-
-    Maps to the thumbs up/down in your product UI.
-    Normalized: 1.0 = thumbs up, 0.0 = thumbs down.
+# submit user feedback for a response and maps to the thumbs up/down in the UI.
+# Normalized: 1.0 = thumbs up, 0.0 = thumbs down.
     Used to correlate automatic eval scores with human judgment.
-    """
+
 @router.post("/traces/{trace_id}/feedback")
 async def submit_feedback(
     trace_id: uuid.UUID,
