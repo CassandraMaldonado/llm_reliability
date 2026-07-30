@@ -14,10 +14,6 @@ from app.core.config import settings
 router = APIRouter()
 
 
-# ── Pydantic Schemas ─────────────────────────────────────────────────────────
-# Note: In a real project, these live in app/schemas/experiments.py
-# Included here for completeness.
-
 class ExperimentCreate(BaseModel):
     project_id: uuid.UUID
     name: str = Field(..., min_length=1, max_length=255)
