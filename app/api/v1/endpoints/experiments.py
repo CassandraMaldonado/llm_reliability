@@ -34,10 +34,7 @@ class ExperimentResponse(BaseModel):
     class Config:
         from_attributes = True
 
-    """
-    Create a new experiment run.
-    The run defines WHAT to test (model + prompt + dataset).
-    """
+# creates a new experiment run, the run defines WHAT to test (model + prompt + dataset).
 class RunCreate(BaseModel):
     experiment_id: uuid.UUID
     dataset_id: Optional[uuid.UUID] = None              # Eval against a dataset
