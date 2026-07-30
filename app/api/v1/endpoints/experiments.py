@@ -308,7 +308,7 @@ async def compare_runs(
     if len(runs) != len(payload.run_ids):
         raise HTTPException(status_code=404, detail="One or more runs not found")
 
-    # Build comparison table
+    # builds a comparison table.
     metrics = payload.metrics or [
         "avg_latency_ms", "total_cost_usd", "avg_answer_relevance",
         "avg_faithfulness", "avg_hallucination_score", "avg_semantic_similarity",
@@ -333,7 +333,7 @@ async def compare_runs(
             run_data["metrics"][metric] = getattr(run, metric, None)
         comparison["runs"].append(run_data)
 
-    # Determine winner per metric
+    # determines winner per metric.
     for metric in metrics:
         values = {
             str(run.id): getattr(run, metric, None)
