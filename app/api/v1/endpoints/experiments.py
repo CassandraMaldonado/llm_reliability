@@ -88,6 +88,7 @@ class RunComparisonRequest(BaseModel):
 
 
 # experiment endpoints.
+# creates a new experiment, it contains multiple runs, each with different models/prompts/configs.
 
 @router.post("/", response_model=ExperimentResponse, status_code=status.HTTP_201_CREATED)
 async def create_experiment(
@@ -95,12 +96,6 @@ async def create_experiment(
     db: AsyncSession = Depends(get_db),
     # current_user: User = Depends(get_current_user),  # Auth in production
 ):
-    """
-    Create a new experiment.
-
-    An experiment is a named study — e.g., "GPT-4o vs Claude on customer support".
-    It contains multiple runs, each with different models/prompts/configs.
-    """
     experiment = Experiment(
         project_id=payload.project_id,
         organization_id=uuid.uuid4(),  # From auth in production
