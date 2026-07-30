@@ -416,8 +416,8 @@ async def log_trace(
 
 
 # submit user feedback for a response and maps to the thumbs up/down in the UI.
-# Normalized: 1.0 = thumbs up, 0.0 = thumbs down.
-    Used to correlate automatic eval scores with human judgment.
+# normalized: 1.0 = thumbs up and 0.0 = thumbs down.
+# used to correlate automatic eval scores with human judgment.
 
 @router.post("/traces/{trace_id}/feedback")
 async def submit_feedback(
