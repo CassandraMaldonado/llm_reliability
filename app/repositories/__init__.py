@@ -256,8 +256,7 @@ class DatasetRepository(BaseRepository[Dataset]):
         return list(result.scalars().all()), total
 
 
-# RAG eval.
-#         """Group RAG evaluations by config dimension for comparison."""
+# group RAG eval by config dimension.
 
 class RAGRepository(BaseRepository[RAGEvaluation]):
     model = RAGEvaluation
