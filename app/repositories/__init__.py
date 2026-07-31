@@ -185,7 +185,7 @@ class TraceRepository(BaseRepository[LLMTrace]):
         )
         return list(result.scalars().all()), total
 
-    # ysed by drift detection to get baseline and current window traces."""
+# used in drift detection to get the baseline and window traces.
     async def get_recent_for_org(
         self, org_id: uuid.UUID, hours: int = 24, model_name: Optional[str] = None
     ) -> List[LLMTrace]:
