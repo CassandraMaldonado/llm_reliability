@@ -185,10 +185,10 @@ class TraceRepository(BaseRepository[LLMTrace]):
         )
         return list(result.scalars().all()), total
 
+    # ysed by drift detection to get baseline and current window traces."""
     async def get_recent_for_org(
         self, org_id: uuid.UUID, hours: int = 24, model_name: Optional[str] = None
     ) -> List[LLMTrace]:
-        """Used by drift detection to get baseline and current window traces."""
         from datetime import timedelta
         cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
         conditions = [
