@@ -160,9 +160,7 @@ class ExperimentRunRepository(BaseRepository[ExperimentRun]):
             await self.session.flush()
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# TRACES
-# ─────────────────────────────────────────────────────────────────────────────
+# traces.
 
 class TraceRepository(BaseRepository[LLMTrace]):
     model = LLMTrace
