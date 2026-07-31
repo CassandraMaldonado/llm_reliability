@@ -235,9 +235,7 @@ class EvaluationRepository(BaseRepository[EvaluationResult]):
         return {row.metric_name: dict(row._mapping) for row in result.all()}
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# DATASETS
-# ─────────────────────────────────────────────────────────────────────────────
+# datasets.
 
 class DatasetRepository(BaseRepository[Dataset]):
     model = Dataset
