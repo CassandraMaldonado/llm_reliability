@@ -263,6 +263,7 @@ class DatasetRepository(BaseRepository[Dataset]):
 # ─────────────────────────────────────────────────────────────────────────────
 # RAG EVALUATIONS
 # ─────────────────────────────────────────────────────────────────────────────
+#         """Group RAG evaluations by config dimension for comparison."""
 
 class RAGRepository(BaseRepository[RAGEvaluation]):
     model = RAGEvaluation
@@ -270,7 +271,6 @@ class RAGRepository(BaseRepository[RAGEvaluation]):
     async def get_grouped_stats(
         self, org_id: uuid.UUID, group_by: str, eval_ids: List[uuid.UUID]
     ) -> List[Dict[str, Any]]:
-        """Group RAG evaluations by config dimension for comparison."""
         group_col = getattr(RAGEvaluation, group_by, None)
         if group_col is None:
             return []
