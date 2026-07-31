@@ -205,10 +205,7 @@ class TraceRepository(BaseRepository[LLMTrace]):
         return list(result.scalars().all())
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# EVALUATIONS
-# ─────────────────────────────────────────────────────────────────────────────
-
+# eval.
 class EvaluationRepository(BaseRepository[EvaluationResult]):
     model = EvaluationResult
 
