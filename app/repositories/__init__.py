@@ -64,10 +64,10 @@ class ApiKeyRepository(BaseRepository[ApiKey]):
 class ExperimentRepository(BaseRepository[Experiment]):
     model = Experiment
 
+# returns experiments with their run counts in one query.
     async def get_with_run_count(
         self, org_id: uuid.UUID, offset: int = 0, limit: int = 20
     ) -> Tuple[List[Dict], int]:
-        """Return experiments with their run counts in one query."""
         query = (
             select(
                 Experiment,
@@ -161,7 +161,6 @@ class ExperimentRunRepository(BaseRepository[ExperimentRun]):
 
 
 # traces.
-
 class TraceRepository(BaseRepository[LLMTrace]):
     model = LLMTrace
 
@@ -233,7 +232,6 @@ class EvaluationRepository(BaseRepository[EvaluationResult]):
 
 
 # datasets.
-
 class DatasetRepository(BaseRepository[Dataset]):
     model = Dataset
 
@@ -254,7 +252,6 @@ class DatasetRepository(BaseRepository[Dataset]):
 
 
 # group RAG eval by config dimension.
-
 class RAGRepository(BaseRepository[RAGEvaluation]):
     model = RAGEvaluation
 
