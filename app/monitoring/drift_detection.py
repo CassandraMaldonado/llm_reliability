@@ -322,7 +322,7 @@ class DriftDetector:
                 metadata={"ks_statistic": ks_stat, "ks_pvalue": ks_pvalue},
             )
 
-        # 2. Z-score anomaly
+        # 2. z-score anomaly.
         z_score = self._zscore_anomaly(baseline, current)
         if z_score > self.zscore_threshold:
             severity = "critical" if z_score > self.zscore_threshold * 1.5 else "warning"
@@ -342,7 +342,7 @@ class DriftDetector:
                 metadata={"z_score": z_score},
             )
 
-        # 3. Threshold check
+        # 3. threshold check.
         if metric_config:
             triggered, severity, check_value = self._threshold_check(current, metric_config)
             if triggered:
@@ -362,7 +362,7 @@ class DriftDetector:
                     metadata={"threshold_value": check_value, "metric_config": metric_config},
                 )
 
-        return None  # No drift detected
+        return None  # no drift detected.
 
     async def detect_all(
         self,
