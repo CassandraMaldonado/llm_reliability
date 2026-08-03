@@ -54,7 +54,7 @@ class ApiKeyResponse(BaseModel):
     id: uuid.UUID
     name: str
     key_prefix: str
-    raw_key: Optional[str] = None   # Only populated on creation
+    raw_key: Optional[str] = None   # only populated on creation.
     description: Optional[str]
     is_active: bool
     expires_at: Optional[datetime]
