@@ -344,7 +344,7 @@ async def compare_runs(
             comparison["winner_by_metric"][metric] = None
             continue
 
-        # Lower is better for latency/cost, higher is better for quality metrics
+        # lower is better for latency, higher is better for quality metrics.
         lower_is_better = metric in ("avg_latency_ms", "total_cost_usd", "avg_cost_usd")
         winner_id = min(values, key=values.get) if lower_is_better else max(values, key=values.get)
         comparison["winner_by_metric"][metric] = winner_id
@@ -368,7 +368,7 @@ async def log_trace(
 ):
     trace = LLMTrace(
         run_id=payload.run_id,
-        organization_id=uuid.uuid4(),  # From SDK auth header in production
+        organization_id=uuid.uuid4(),  # from SDK auth header in production.
         source=payload.source,
         provider=payload.provider,
         model_name=payload.model_name,
