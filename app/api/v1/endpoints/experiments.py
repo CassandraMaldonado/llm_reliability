@@ -194,7 +194,7 @@ async def list_experiments(
     ]
 
 
-# ── Run Endpoints ─────────────────────────────────────────────────────────────
+# runs the endpoints.
 
 @router.post("/runs", status_code=status.HTTP_202_ACCEPTED)
 async def create_run(
