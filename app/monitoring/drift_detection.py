@@ -374,10 +374,7 @@ class DriftDetector:
         model_name: str,
         provider: str,
     ) -> List[DriftResult]:
-        """
-        Run drift detection for all monitored metrics concurrently.
-        Returns list of drift results where drift was detected.
-        """
+    # runs drift detection for all monitored metrics and returns a list of drift results where drift was detected.
         tasks = [
             self.detect_metric_drift(organization_id, model_name, provider, metric_name)
             for metric_name in self.METRIC_CONFIG.keys()
