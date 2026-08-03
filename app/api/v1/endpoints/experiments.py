@@ -215,7 +215,7 @@ async def create_run(
     db.add(run)
     await db.flush()
 
-    # Dispatch to Celery asynchronously
+    # dispatch to Celery asynchronously.
     # In production: from app.tasks.evaluation import run_evaluation_task
     # task = run_evaluation_task.delay(str(run.id), payload.metrics_to_evaluate)
     # run.celery_task_id = task.id
@@ -233,10 +233,7 @@ async def get_run(
     run_id: uuid.UUID,
     db: AsyncSession = Depends(get_db),
 ):
-    """
-    Get run status and aggregated metrics.
-    Poll this to check if an async eval run is complete.
-    """
+ # gets the run status and aggregated metrics.
     result = await db.execute(
         select(ExperimentRun).where(ExperimentRun.id == run_id)
     )
