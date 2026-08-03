@@ -137,7 +137,7 @@ async def get_experiment(
     if not experiment:
         raise HTTPException(status_code=404, detail="Experiment not found")
 
-    # Get run count efficiently
+    # gets the run count.
     count_result = await db.execute(
         select(func.count(ExperimentRun.id))
         .where(ExperimentRun.experiment_id == experiment_id)
@@ -202,16 +202,7 @@ async def create_run(
     background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
 ):
-    """
-    Create and trigger an experiment run.
-
-    Returns 202 Accepted immediately — the actual evaluation runs async.
-    The response includes a task_id to poll for status.
-
-    Why 202 not 201:
-    RFC 7231: 202 means "the request has been accepted for processing,
-    but the processing has not been completed." Perfect for async jobs.
-    """
+# creates and triggers an experiment run.
     run = ExperimentRun(
         experiment_id=payload.experiment_id,
         organization_id=uuid.uuid4(),  # From auth in production
