@@ -141,11 +141,7 @@ class DriftDetector:
         window_start: datetime,
         window_end: datetime,
     ) -> MetricWindow:
-        """
-        Pull metric values for a given time window.
-        Handles both built-in trace metrics (latency, cost) and
-        computed eval metrics (hallucination, relevance).
-        """
+  # pulls metric values for a given time window. It handles both built-in trace metrics (latency, cost) and computed eval metrics (hallucination, relevance).
         if metric_name in ("latency_ms", "cost_usd", "total_tokens"):
             # Built-in trace-level metrics
             column_map = {
