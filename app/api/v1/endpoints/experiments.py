@@ -124,7 +124,7 @@ async def get_experiment(
     experiment_id: uuid.UUID,
     db: AsyncSession = Depends(get_db),
 ):
-    """Get a single experiment with run count."""
+# get a single experiment with run count.
     result = await db.execute(
         select(Experiment).where(
             and_(
