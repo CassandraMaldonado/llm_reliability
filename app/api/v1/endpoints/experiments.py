@@ -282,15 +282,9 @@ async def compare_runs(
     payload: RunComparisonRequest,
     db: AsyncSession = Depends(get_db),
 ):
-    """
-    Side-by-side comparison of multiple runs.
+# side by side comparison of multiple runs, it returns a structured diff showing which run wins on each metric.
+# this is the core which prompt/model is better? feature.
 
-    Returns a structured diff showing which run wins on each metric.
-    This is the core "which prompt/model is better?" feature.
-
-    Enterprise use: Gate prompt deployments — only ship if new run
-    beats baseline on all critical metrics.
-    """
     result = await db.execute(
         select(ExperimentRun).where(ExperimentRun.id.in_(payload.run_ids))
     )
