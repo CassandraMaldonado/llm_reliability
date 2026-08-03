@@ -40,7 +40,7 @@ class CursorPage(BaseModel):
     cursor: Optional[str] = None
     limit: int = Field(default=20, ge=1, le=100)
 
-# RFC 7807 Problem Details error format.
+# problem Details error format.
 class ErrorResponse(BaseModel):
     error: str                          
     message: str                        
