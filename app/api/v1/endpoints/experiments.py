@@ -352,20 +352,13 @@ async def compare_runs(
     return comparison
 
 
-# trace endpoints.\
-    """
-    Log a single LLM call trace.
-
-    This is called by the MANGOS Python SDK automatically wrapping
-    every LLM call. Lightweight path — just persist and return.
-    Auto-evaluation is triggered as a background task if configured.
-
-    SDK usage:
-        from mangos import trace
-        with trace(model="gpt-4o", prompt=...) as t:
-            response = openai.chat.completions.create(...)
-            t.record(response)
-    """
+# trace endpoints.
+# Log a single LLM call trace.
+    # SDK usage:
+        # from mangos import trace
+        # with trace(model="gpt-4o", prompt=...) as t:
+            # response = openai.chat.completions.create(...)
+            # t.record(response)
 
 @router.post("/traces", status_code=status.HTTP_201_CREATED)
 async def log_trace(
