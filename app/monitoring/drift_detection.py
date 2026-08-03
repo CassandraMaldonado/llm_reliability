@@ -61,12 +61,12 @@ class MetricWindow:
 class DriftResult:
     is_drift: bool
     drift_type: DriftType
-    drift_score: float                 # KS statistic, Z-score, or 0/1 for threshold
+    drift_score: float                 # ks statistic, z-score, or 0/1 for threshold.
     p_value: Optional[float]
     baseline: MetricWindow
     current: MetricWindow
     description: str
-    severity: str = "warning"          # info, warning, critical
+    severity: str = "warning"          # info, warning, critical.
     metadata: Dict[str, Any] = field(default_factory=dict)
 
 
