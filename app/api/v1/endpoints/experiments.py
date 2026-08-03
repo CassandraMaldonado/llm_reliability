@@ -94,16 +94,16 @@ class RunComparisonRequest(BaseModel):
 async def create_experiment(
     payload: ExperimentCreate,
     db: AsyncSession = Depends(get_db),
-    # current_user: User = Depends(get_current_user),  # Auth in production
+    # current_user: User = Depends(get_current_user),
 ):
     experiment = Experiment(
         project_id=payload.project_id,
-        organization_id=uuid.uuid4(),  # From auth in production
+        organization_id=uuid.uuid4(),  # from auth in production.
         name=payload.name,
         description=payload.description,
         tags=payload.tags,
         metadata_=payload.metadata,
-        created_by_user_id=uuid.uuid4(),  # From auth in production
+        created_by_user_id=uuid.uuid4(),  # from auth in production.
     )
     db.add(experiment)
     await db.flush()
