@@ -163,13 +163,7 @@ async def list_experiments(
     offset: int = Query(default=0, ge=0),
     db: AsyncSession = Depends(get_db),
 ):
-    """
-    List experiments with optional filtering.
-
-    Pagination: offset-based for simplicity in MVP.
-    Enterprise upgrade: cursor-based pagination for datasets > 10k rows
-    (offset gets slow with large offsets due to sequential scan).
-    """
+# list experiments with optional filtering.
     query = select(Experiment).where(Experiment.deleted_at.is_(None))
 
     if project_id:
