@@ -44,7 +44,7 @@ engine = create_engine()
 AsyncSessionLocal = async_sessionmaker(
     bind=engine,
     class_=AsyncSession,
-    expire_on_commit=False,  # Keep objects accessible after commit (FastAPI response serialization)
+    expire_on_commit=False,  # keeps objects accessible after commit.
     autocommit=False,
     autoflush=False,
 )
@@ -78,9 +78,6 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
         finally:
             await session.close()
 
-
-@asynccontextmanager
-async def get_db_context() -> AsyncGenerator[AsyncSession, None]:
     """
     Context manager version for use outside of FastAPI (e.g., Celery tasks).
 
@@ -88,6 +85,8 @@ async def get_db_context() -> AsyncGenerator[AsyncSession, None]:
         async with get_db_context() as db:
             result = await some_repo.find(db, id=task_id)
     """
+@asynccontextmanager
+async def get_db_context() -> AsyncGenerator[AsyncSession, None]:
     async with AsyncSessionLocal() as session:
         try:
             yield session
