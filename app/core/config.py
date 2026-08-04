@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:5173"]
 
     # security.
-    SECRET_KEY: str  # Required, no default. Will fail startup if missing.
+    SECRET_KEY: str
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
     ALGORITHM: str = "HS256"
@@ -34,7 +34,7 @@ class Settings(BaseSettings):
 
     # redis.
     REDIS_URL: RedisDsn = "redis://localhost:6379/0" 
-    REDIS_CACHE_TTL_SECONDS: int = 300  # 5 min default cache
+    REDIS_CACHE_TTL_SECONDS: int = 300
 
     # celery.
     CELERY_BROKER_URL: str = "redis://localhost:6379/1"
@@ -57,7 +57,7 @@ class Settings(BaseSettings):
     DEFAULT_EMBEDDING_MODEL: str = "text-embedding-3-small"
     DEFAULT_EMBEDDING_PROVIDER: str = "openai"
 
-    # ── Monitoring ────────────────────────────────────────────────────────────
+    # monitoring.
     DRIFT_DETECTION_INTERVAL_MINUTES: int = 5
     DRIFT_BASELINE_WINDOW_HOURS: int = 24
     DRIFT_CURRENT_WINDOW_HOURS: int = 1
