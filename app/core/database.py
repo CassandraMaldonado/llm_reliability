@@ -51,9 +51,9 @@ AsyncSessionLocal = async_sessionmaker(
 
 # FastAPI dependency that yields a database session.
     # Session lifecycle:
-    # 1. Open session at request start
-    # 2. Yield to route handler
-    # 3. Commit on success OR rollback on exception
+    # 1. Open session at request start.
+    # 2. Yield to route handler.
+    # 3. Commit on success OR rollback on exception.
     # 4. Always close session (returns connection to pool).
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
     async with AsyncSessionLocal() as session:
