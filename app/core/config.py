@@ -64,9 +64,9 @@ class Settings(BaseSettings):
     DRIFT_KS_PVALUE_THRESHOLD: float = 0.05
     DRIFT_ZSCORE_THRESHOLD: float = 2.5
 
-    # ── Rate Limiting ─────────────────────────────────────────────────────────
-    RATE_LIMIT_DEFAULT_RPM: int = 100       # requests per minute per API key
-    RATE_LIMIT_EVAL_RPM: int = 10          # eval jobs are expensive
+    # rate limiting.
+    RATE_LIMIT_DEFAULT_RPM: int = 100      
+    RATE_LIMIT_EVAL_RPM: int = 10          # eval jobs are expensive.
 
     # storage.
     # Local disk in dev; swap for S3_BUCKET in prod via same interface
