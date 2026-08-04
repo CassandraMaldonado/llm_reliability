@@ -14,11 +14,7 @@ from sqlalchemy.pool import NullPool
 
 from app.core.config import settings
 
-    """
-    SQLAlchemy declarative base.
-    All ORM models inherit from this.
-    Putting it here (not in models/) avoids circular imports.
-    """
+# SQLAlchemy declarative base.
 class Base(DeclarativeBase):
     pass
 
