@@ -28,8 +28,8 @@ def create_engine(for_testing: bool = False) -> AsyncEngine:
             "pool_size": settings.DATABASE_POOL_SIZE,
             "max_overflow": settings.DATABASE_MAX_OVERFLOW,
             "pool_timeout": settings.DATABASE_POOL_TIMEOUT,
-            "pool_pre_ping": True,   # validates connection before use (handles DB restarts)
-            "pool_recycle": 3600,    # recycle connections after 1 hour (prevent stale TCP)
+            "pool_pre_ping": True,   # validates the connection before using it.
+            "pool_recycle": 3600,
         }
     )
     return create_async_engine(
