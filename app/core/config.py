@@ -70,7 +70,7 @@ class Settings(BaseSettings):
 
     # storage.
     # Local disk in dev; swap for S3_BUCKET in prod via same interface
-    STORAGE_BACKEND: str = "local"         # local, s3
+    STORAGE_BACKEND: str = "local"
     LOCAL_STORAGE_PATH: str = "/tmp/mangos_artifacts"
     S3_BUCKET: Optional[str] = None
     S3_REGION: Optional[str] = None
@@ -103,11 +103,7 @@ class Settings(BaseSettings):
         env_file_encoding = "utf-8"
         case_sensitive = True
 
-    """
-    Cached settings singleton.
-    lru_cache ensures we parse .env exactly once — not on every request.
-    FastAPI Depends(get_settings) injects this safely throughout.
-    """
+
 @lru_cache()
 def get_settings() -> Settings:
     return Settings()
