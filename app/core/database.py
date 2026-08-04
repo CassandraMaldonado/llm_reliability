@@ -49,23 +49,12 @@ AsyncSessionLocal = async_sessionmaker(
     autoflush=False,
 )
 
-    """
-    FastAPI dependency that yields a database session.
-
-    Usage in route:
-        @router.get("/things")
-        async def list_things(db: AsyncSession = Depends(get_db)):
-            ...
-
-    Session lifecycle:
-    1. Open session at request start
-    2. Yield to route handler
-    3. Commit on success OR rollback on exception
-    4. Always close session (returns connection to pool)
-
-    Enterprise note: always rollback explicitly in except — don't rely on
-    session closing to handle rollback. Explicit is safer.
-    """
+# FastAPI dependency that yields a database session.
+    # Session lifecycle:
+    # 1. Open session at request start
+    # 2. Yield to route handler
+    # 3. Commit on success OR rollback on exception
+    # 4. Always close session (returns connection to pool).
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
     async with AsyncSessionLocal() as session:
         try:
