@@ -19,13 +19,13 @@ class Base(DeclarativeBase):
     pass
 
 
-def create_engine(for_testing: bool = False) -> AsyncEngine:
     """
     Create AsyncEngine with production-tuned pool settings.
 
     for_testing=True uses NullPool (no connection reuse) which is required
     when using pytest-asyncio with transaction rollback fixtures.
     """
+def create_engine(for_testing: bool = False) -> AsyncEngine:
     pool_kwargs = (
         {"poolclass": NullPool}
         if for_testing
