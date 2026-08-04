@@ -49,8 +49,6 @@ AsyncSessionLocal = async_sessionmaker(
     autoflush=False,
 )
 
-
-async def get_db() -> AsyncGenerator[AsyncSession, None]:
     """
     FastAPI dependency that yields a database session.
 
@@ -68,6 +66,7 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
     Enterprise note: always rollback explicitly in except — don't rely on
     session closing to handle rollback. Explicit is safer.
     """
+async def get_db() -> AsyncGenerator[AsyncSession, None]:
     async with AsyncSessionLocal() as session:
         try:
             yield session
