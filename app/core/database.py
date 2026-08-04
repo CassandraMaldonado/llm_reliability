@@ -78,13 +78,7 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
         finally:
             await session.close()
 
-    """
-    Context manager version for use outside of FastAPI (e.g., Celery tasks).
-
-    Usage:
-        async with get_db_context() as db:
-            result = await some_repo.find(db, id=task_id)
-    """
+# context version for use outside of FastAPI.
 @asynccontextmanager
 async def get_db_context() -> AsyncGenerator[AsyncSession, None]:
     async with AsyncSessionLocal() as session:
