@@ -82,9 +82,9 @@ def _get_embedding_model() -> SentenceTransformer:
 # cosine similarity between the actual and expected output embeddings.
 # score interpretation:
     # over 0.9: very similar, nearly an identical meaning.
-    - 0.7–0.9: Similar (same topic, similar content)
-    - 0.5–0.7: Loosely related
-    - <0.5: Different content
+     # 0.7–0.9: similar, same topic and similar content.
+     # 0.5–0.7: loosely related.
+     # < 0.5: different content.
 
     No LLM API needed — runs entirely locally.
     Enterprise use: Gate regression. If similarity drops below 0.7,
