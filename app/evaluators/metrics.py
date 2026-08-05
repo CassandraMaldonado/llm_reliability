@@ -247,10 +247,7 @@ Respond with JSON: {{"score": <float>, "reasoning": "<explanation>"}}
 """
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# FAITHFULNESS (RAG grounding)
-# ─────────────────────────────────────────────────────────────────────────────
-
+# faithfulness.
 class FaithfulnessMetric(LLMJudgeMetric):
     """
     Are all claims in the answer supported by the provided context?
