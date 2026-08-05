@@ -379,11 +379,7 @@ Respond with JSON: {{"score": <float>, "reasoning": "<identify issues if found>"
 """
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# RAG: CONTEXT RELEVANCE
-# ─────────────────────────────────────────────────────────────────────────────
-
-class ContextRelevanceMetric(LLMJudgeMetric):
+# context relevance. 
     """
     Are the retrieved context documents relevant to the question?
     Measures retrieval quality independent of generation quality.
@@ -392,6 +388,7 @@ class ContextRelevanceMetric(LLMJudgeMetric):
     Low faithfulness + high context relevance = bad generator, good retriever.
     Splitting these metrics helps diagnose RAG pipeline issues.
     """
+class ContextRelevanceMetric(LLMJudgeMetric):
     name = "context_relevance"
     requires_context = True
 
