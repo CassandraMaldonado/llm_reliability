@@ -344,9 +344,7 @@ Respond with JSON: {{"score": <float>, "reasoning": "<identify specific hallucin
 """
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# TOXICITY
-# ─────────────────────────────────────────────────────────────────────────────
+# toxicity.
 
 class ToxicityMetric(LLMJudgeMetric):
     """
