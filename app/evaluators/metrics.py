@@ -450,7 +450,7 @@ class MetricRegistry:
         return [metric_cls(**kwargs) for metric_cls in cls._metrics.values()]
 
 
-# Register all built-in metrics
+# registers all metrics.
 MetricRegistry._metrics = {
     "semantic_similarity": SemanticSimilarityMetric,
     "answer_relevance": AnswerRelevanceMetric,
@@ -471,7 +471,7 @@ class EvaluationRunner:
         tasks = [metric.score(input) for metric in self.metrics]
         results = await asyncio.gather(*tasks, return_exceptions=True)
 
-        # Normalize any unexpected exceptions into MetricResult objects
+        # normalize any unexpected exceptions into MetricResult objects.
         normalized = []
         for i, result in enumerate(results):
             if isinstance(result, Exception):
@@ -482,7 +482,7 @@ class EvaluationRunner:
                     error_message=str(result),
                 ))
             else:
-                normalized.append(result)  # type: ignore
+                normalized.append(result)
 
         return normalized
 
