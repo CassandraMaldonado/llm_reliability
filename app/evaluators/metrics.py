@@ -444,9 +444,9 @@ class MetricRegistry:
     def list_available(cls) -> List[str]:
         return list(cls._metrics.keys())
 
+# all registered metrics with given kwargs.
     @classmethod
     def build_all(cls, **kwargs) -> List[BaseMetric]:
-        """Instantiate all registered metrics with given kwargs."""
         return [metric_cls(**kwargs) for metric_cls in cls._metrics.values()]
 
 
