@@ -420,12 +420,6 @@ Respond with JSON: {{"score": <float>, "reasoning": "<which chunks were/weren't 
 
 
 # metric registry.
-    """
-    Central registry of available metrics.
-
-    Enterprise pattern: Plugin registry. New metrics registered here become
-    available to the entire evaluation pipeline without code changes elsewhere.
-    """
 class MetricRegistry:
 
     _metrics: Dict[str, type] = {}
