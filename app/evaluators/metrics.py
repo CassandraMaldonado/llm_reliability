@@ -56,9 +56,9 @@ class BaseMetric(ABC):
     def __init__(self, threshold: float = 0.5):
         self.threshold = threshold
 
+            """Compute the metric. Must return a MetricResult."""
     @abstractmethod
     async def score(self, input: MetricInput) -> MetricResult:
-        """Compute the metric. Must return a MetricResult."""
         ...
 
     def _passes(self, score: float) -> bool:
