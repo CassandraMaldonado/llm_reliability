@@ -241,16 +241,11 @@ Respond with JSON: {{"score": <float>, "reasoning": "<explanation>"}}
 """
 
 
-# faithfulness.
-    """
-    Are all claims in the answer supported by the provided context?
-    Critical for RAG applications — prevents hallucinated facts.
-
-    Score interpretation:
-    - 1.0: Every claim in the answer is directly supported by context
-    - 0.5: Most claims supported, some extrapolation
-    - 0.0: Claims contradict or are absent from context
-    """
+# faithfulness, are all claims in the answer supported by the provided context?
+    # Score interpretation:
+     # 1.0: every claim in the answer is directly supported by the context.
+     # 0.5: most claims are supported, there's some extrapolation.
+     # 0.0: claims contradict or are absent from context.
 class FaithfulnessMetric(LLMJudgeMetric):
     name = "faithfulness"
     requires_context = True
