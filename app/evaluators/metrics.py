@@ -112,7 +112,7 @@ class SemanticSimilarityMetric(BaseMetric):
                 )
             )
             similarity = float(util.cos_sim(embeddings[0], embeddings[1]).item())
-            # Cosine similarity can be negative; clamp to [0, 1]
+            # clamp cosine similarity to [0, 1]
             score = max(0.0, similarity)
 
             return MetricResult(
