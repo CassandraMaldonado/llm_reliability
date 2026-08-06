@@ -242,7 +242,6 @@ Respond with JSON: {{"score": <float>, "reasoning": "<explanation>"}}
 
 
 # faithfulness.
-class FaithfulnessMetric(LLMJudgeMetric):
     """
     Are all claims in the answer supported by the provided context?
     Critical for RAG applications — prevents hallucinated facts.
@@ -252,6 +251,7 @@ class FaithfulnessMetric(LLMJudgeMetric):
     - 0.5: Most claims supported, some extrapolation
     - 0.0: Claims contradict or are absent from context
     """
+class FaithfulnessMetric(LLMJudgeMetric):
     name = "faithfulness"
     requires_context = True
 
