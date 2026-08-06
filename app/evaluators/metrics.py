@@ -154,11 +154,9 @@ class LLMJudgeMetric(BaseMetric, ABC):
         """Return the evaluation prompt for this specific metric."""
         ...
 
+# calls the judge LLM and gives a JSON response.
+# it returns {"score": float, "reasoning": str}
     async def _call_judge(self, prompt: str) -> Dict[str, Any]:
-        """
-        Call the judge LLM and parse structured JSON response.
-        Returns {"score": float, "reasoning": str}
-        """
         import json
 
         system = (
