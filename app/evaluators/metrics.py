@@ -86,10 +86,6 @@ def _get_embedding_model() -> SentenceTransformer:
      # 0.5–0.7: loosely related.
      # < 0.5: different content.
 
-    No LLM API needed — runs entirely locally.
-    Enterprise use: Gate regression. If similarity drops below 0.7,
-    flag for human review before deploying prompt changes.
-    """
 class SemanticSimilarityMetric(BaseMetric):
     name = "semantic_similarity"
     requires_expected_output = True
