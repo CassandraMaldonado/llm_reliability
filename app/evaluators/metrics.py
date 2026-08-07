@@ -276,10 +276,7 @@ Respond with JSON: {{"score": <float>, "reasoning": "<list unsupported claims if
 """
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# HALLUCINATION SCORE
-# ─────────────────────────────────────────────────────────────────────────────
-
+# hallucination score.
 class HallucinationMetric(LLMJudgeMetric):
     """
     Detects factual claims that are likely hallucinated.
