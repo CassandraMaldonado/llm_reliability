@@ -358,9 +358,7 @@ Respond with JSON: {{"score": <float>, "reasoning": "<identify issues if found>"
 """
 
 
-# context relevance. 
-    """
-    Are the retrieved context documents relevant to the question?
+# context relevance, to check if the retrieved context documents are relevant to the question.
     Measures retrieval quality independent of generation quality.
 
     High faithfulness + low context relevance = good generator, bad retriever.
