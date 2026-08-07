@@ -278,11 +278,10 @@ Respond with JSON: {{"score": <float>, "reasoning": "<list unsupported claims if
 
 # hallucination score, it detects the factual claims that are likely hallucinated.
 # different from faithfulness, because faithfulness checks against provided context and hallucination checks for fabricated facts (dates, names, statistics, events) regardless of whether context was provided.
-
-    Score interpretation (INVERTED — higher is BETTER, less hallucination):
-    - 1.0: No hallucinations detected
-    - 0.5: Minor hallucinations (unverifiable claims presented as fact)
-    - 0.0: Significant fabrications detected
+    # score interpretation (higher is better):
+        # 1.0: No hallucinations detected
+        # 0.5: Minor hallucinations (unverifiable claims presented as fact)
+        # 0.0: Significant fabrications detected
 
     Enterprise note: Track this as a time-series metric. If hallucination
     rate spikes, it often correlates with model version changes or prompt drift.
