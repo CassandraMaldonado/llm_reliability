@@ -276,14 +276,8 @@ Respond with JSON: {{"score": <float>, "reasoning": "<list unsupported claims if
 """
 
 
-# hallucination score.
-class HallucinationMetric(LLMJudgeMetric):
-    """
-    Detects factual claims that are likely hallucinated.
-
-    Different from faithfulness: faithfulness checks against provided context,
-    hallucination checks for fabricated facts (dates, names, statistics, events)
-    regardless of whether context was provided.
+# hallucination score, it detects the factual claims that are likely hallucinated.
+# different from faithfulness, because faithfulness checks against provided context and hallucination checks for fabricated facts (dates, names, statistics, events) regardless of whether context was provided.
 
     Score interpretation (INVERTED — higher is BETTER, less hallucination):
     - 1.0: No hallucinations detected
@@ -293,6 +287,7 @@ class HallucinationMetric(LLMJudgeMetric):
     Enterprise note: Track this as a time-series metric. If hallucination
     rate spikes, it often correlates with model version changes or prompt drift.
     """
+class HallucinationMetric(LLMJudgeMetric):
     name = "hallucination_score"
 
     def _build_prompt(self, input: MetricInput) -> str:
