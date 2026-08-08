@@ -195,13 +195,10 @@ class DriftDetector:
         statistic, p_value = scipy_stats.ks_2samp(baseline.values, current.values)
         return float(statistic), float(p_value)
 
-            """
-        Z-score of current mean vs baseline distribution.
+# z-score of the mean vs baseline distribution, it is more sensitive to the mean shift than KS test.
 
-        Z-score > threshold = current mean is unusually far from baseline mean.
-        More sensitive to mean shift than KS test.
-        Use alongside KS for complementary coverage.
-        """
+       # Z-score > threshold = current mean is unusually far from baseline mean.
+
     def _zscore_anomaly(self, baseline: MetricWindow, current: MetricWindow) -> float:
         if not baseline.values or not current.values:
             return 0.0
