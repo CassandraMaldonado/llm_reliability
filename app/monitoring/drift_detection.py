@@ -208,16 +208,13 @@ class DriftDetector:
         z_score = abs((current.mean - baseline.mean) / baseline.std)
         return float(z_score)
 
+# threshold: is the metric above/below a fixed limit?
+# it returns (triggered, severity, current_value).
     def _threshold_check(
         self,
         current: MetricWindow,
         metric_config: Dict[str, Any],
     ) -> Tuple[bool, str, float]:
-        """
-        Simple threshold rule: is the metric above/below a fixed limit?
-
-        Returns (triggered, severity, current_value).
-        """
         if not current.values:
             return False, "info", 0.0
 
@@ -277,7 +274,7 @@ class DriftDetector:
 
         metric_config = self.METRIC_CONFIG.get(metric_name, {})
 
-        # 1. Statistical drift (KS test)
+        # 1. statistical drift (KS test).
         ks_stat, ks_pvalue = self._ks_test(baseline, current)
         if ks_pvalue < self.ks_pvalue_threshold:
             severity = "critical" if ks_pvalue < 0.01 else "warning"
