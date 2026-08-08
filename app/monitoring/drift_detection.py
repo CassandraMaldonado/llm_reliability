@@ -84,14 +84,14 @@ class DriftDetector:
         },
         "cost_usd": {
             "higher_is_worse": True,
-            "threshold_critical": 0.10,    # $0.10 per call is very expensive
+            "threshold_critical": 0.10,
             "threshold_warning": 0.05,
             "description": "Per-call cost",
             "unit": "USD",
         },
         "hallucination_score": {
-            "higher_is_worse": False,      # higher = less hallucination = better
-            "threshold_critical": 0.6,     # below 0.6 = lots of hallucinations
+            "higher_is_worse": False,      # higher = less hallucination.
+            "threshold_critical": 0.6,     # below 0.6 = lots of hallucinations.
             "threshold_warning": 0.75,
             "description": "Hallucination rate",
             "unit": "score",
