@@ -131,7 +131,7 @@ class DriftDetector:
         window_start: datetime,
         window_end: datetime,
     ) -> MetricWindow:
-  # pulls metric values for a given time window. It handles both built-in trace metrics (latency, cost) and computed eval metrics (hallucination, relevance).
+  # pulls metric values for a given time window, it handles built-in trace metrics (latency, cost) and computed eval metrics (hallucination, relevance).
         if metric_name in ("latency_ms", "cost_usd", "total_tokens"):
             # Built-in trace-level metrics
             column_map = {
@@ -246,6 +246,7 @@ class DriftDetector:
 
         return False, "info", check_value
 
+# runs all drift detection strategies for one metric.
     async def detect_metric_drift(
         self,
         organization_id: UUID,
@@ -253,10 +254,6 @@ class DriftDetector:
         provider: str,
         metric_name: str,
     ) -> Optional[DriftResult]:
-        """
-        Run all drift detection strategies for one metric.
-        Returns DriftResult if drift detected, None otherwise.
-        """
         now = datetime.now(timezone.utc)
 
         baseline_end = now - timedelta(hours=settings.DRIFT_CURRENT_WINDOW_HOURS)
