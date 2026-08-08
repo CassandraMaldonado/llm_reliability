@@ -70,18 +70,8 @@ class DriftResult:
     metadata: Dict[str, Any] = field(default_factory=dict)
 
 
+# detects statistical drift in LLM metric time-series.
 class DriftDetector:
-    """
-    Detects statistical drift in LLM metric time-series.
-
-    Usage:
-        detector = DriftDetector(db_session)
-        results = await detector.detect_all(
-            organization_id=org_id,
-            model_name="gpt-4o",
-            provider="openai",
-        )
-    """
 
     # Which metrics to monitor and their drift config
     METRIC_CONFIG: Dict[str, Dict[str, Any]] = {
