@@ -263,7 +263,6 @@ class DriftDetector:
             current_start, now
         )
 
-        # Need minimum data to be meaningful
         if baseline.sample_count < 5 or current.sample_count < 3:
             logger.debug(
                 f"Insufficient data for drift detection: "
