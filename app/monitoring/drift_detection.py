@@ -184,18 +184,10 @@ class DriftDetector:
             sample_count=len(values),
         )
 
-            """
-        Kolmogorov-Smirnov test for distribution shift.
-
-        Returns (statistic, p_value).
+  # kolmogorov-smirnov test for distribution shift and it returns the p_value.
         Low p-value (< threshold) = distributions are significantly different = drift.
 
-        Why KS test:
-        - Non-parametric (doesn't assume normal distribution)
-        - Works on any continuous metric
-        - Detects shape changes, not just mean shift
-        - Industry standard for data drift detection (used in Evidently AI, Great Expectations)
-        """
+
     def _ks_test(self, baseline: MetricWindow, current: MetricWindow) -> Tuple[float, float]:
         if len(baseline.values) < 10 or len(current.values) < 10:
             # Not enough data for a reliable test
