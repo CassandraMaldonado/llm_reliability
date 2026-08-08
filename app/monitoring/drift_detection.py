@@ -73,7 +73,7 @@ class DriftResult:
 # detects statistical drift in LLM metric time-series.
 class DriftDetector:
 
-    # Which metrics to monitor and their drift config
+    # which metrics to monitor and their drift config.
     METRIC_CONFIG: Dict[str, Dict[str, Any]] = {
         "latency_ms": {
             "higher_is_worse": True,
@@ -155,7 +155,7 @@ class DriftDetector:
                 )
             )
         else:
-            # Evaluation metrics from evaluation_results table
+            # evaluation metrics from evaluation_results table.
             query = (
                 select(EvaluationResult.score)
                 .join(LLMTrace, EvaluationResult.trace_id == LLMTrace.id)
@@ -184,8 +184,7 @@ class DriftDetector:
             sample_count=len(values),
         )
 
-    def _ks_test(self, baseline: MetricWindow, current: MetricWindow) -> Tuple[float, float]:
-        """
+            """
         Kolmogorov-Smirnov test for distribution shift.
 
         Returns (statistic, p_value).
@@ -197,6 +196,7 @@ class DriftDetector:
         - Detects shape changes, not just mean shift
         - Industry standard for data drift detection (used in Evidently AI, Great Expectations)
         """
+    def _ks_test(self, baseline: MetricWindow, current: MetricWindow) -> Tuple[float, float]:
         if len(baseline.values) < 10 or len(current.values) < 10:
             # Not enough data for a reliable test
             return 0.0, 1.0
