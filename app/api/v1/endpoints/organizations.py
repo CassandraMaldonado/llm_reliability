@@ -1,4 +1,3 @@
-"""app/api/v1/endpoints/organizations.py"""
 import uuid
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
