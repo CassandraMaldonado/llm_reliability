@@ -16,6 +16,9 @@ AVAILABLE_METRICS = [
 ]
 
 
+# fetches the aggregated metrics for the dashboard overview.
+#    Returns current value, trend, and time-series for each metric.
+
 @router.get("/metrics", response_model=List[MetricAggregateResponse])
 async def get_metrics_overview(
     hours: int = Query(default=24, ge=1, le=720),
@@ -24,10 +27,6 @@ async def get_metrics_overview(
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """
-    Fetch aggregated metrics for the dashboard overview.
-    Returns current value, trend, and time-series for each metric.
-    """
     repo = MonitoringRepository(session)
     requested = metrics.split(",") if metrics else AVAILABLE_METRICS
 
