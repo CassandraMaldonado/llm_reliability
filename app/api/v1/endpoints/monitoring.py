@@ -1,4 +1,3 @@
-"""app/api/v1/endpoints/monitoring.py"""
 import uuid
 from typing import List, Optional
 from fastapi import APIRouter, Depends, Query
