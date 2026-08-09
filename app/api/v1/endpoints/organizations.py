@@ -21,14 +21,13 @@ async def get_my_org(
         raise HTTPException(status_code=404, detail="Organization not found")
     return org
 
-
+    """Update organization settings. Admin only."""
 @router.patch("/me", response_model=OrganizationResponse)
 async def update_my_org(
     data: OrganizationUpdate,
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_admin),
 ):
-    """Update organization settings. Admin only."""
     repo = OrganizationRepository(session)
     org = await repo.get_by_id(current_user.organization_id, current_user.organization_id)
     if not org:
