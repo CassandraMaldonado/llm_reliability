@@ -16,8 +16,7 @@ from app.schemas.common import PaginatedResponse
 
 router = APIRouter()
 
-    """
-    Background task: compute RAG metrics after submission.
+# background task: compute RAG metrics after submission.
     
     Metrics computed:
     - retrieval_precision: fraction of retrieved chunks that are relevant
@@ -26,9 +25,8 @@ router = APIRouter()
     - groundedness: how grounded the answer is in the retrieved context
     - answer_correctness: compared to expected_answer if provided
     
-    Uses LLM-as-judge for context_relevance and groundedness.
-    Uses semantic similarity for answer_correctness.
-    """
+# uses LLM as a judge for context_relevance and groundedness and semantic similarity for answer_correctness.
+
 async def _compute_rag_metrics(eval_id: uuid.UUID, session: AsyncSession):
     from sqlalchemy import select
     from app.evaluators.rag_evaluator import RAGEvaluator
