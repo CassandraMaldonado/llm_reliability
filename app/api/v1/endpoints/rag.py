@@ -16,8 +16,6 @@ from app.schemas.common import PaginatedResponse
 
 router = APIRouter()
 
-
-async def _compute_rag_metrics(eval_id: uuid.UUID, session: AsyncSession):
     """
     Background task: compute RAG metrics after submission.
     
@@ -31,6 +29,7 @@ async def _compute_rag_metrics(eval_id: uuid.UUID, session: AsyncSession):
     Uses LLM-as-judge for context_relevance and groundedness.
     Uses semantic similarity for answer_correctness.
     """
+async def _compute_rag_metrics(eval_id: uuid.UUID, session: AsyncSession):
     from sqlalchemy import select
     from app.evaluators.rag_evaluator import RAGEvaluator
 
