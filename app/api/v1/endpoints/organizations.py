@@ -21,7 +21,7 @@ async def get_my_org(
         raise HTTPException(status_code=404, detail="Organization not found")
     return org
 
-    """Update organization settings. Admin only."""
+# updates the organization settings.
 @router.patch("/me", response_model=OrganizationResponse)
 async def update_my_org(
     data: OrganizationUpdate,
