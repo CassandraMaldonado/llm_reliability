@@ -1,7 +1,6 @@
 # Celery tasks for LLM evaluation.
 
-# - Tasks report progress for real-time UI updates.
-# - All state lives in PostgreSQL, not Celery result backend.
+# tasks report progress for real-time UI updates.
 # - Tasks must handle partial failures.
 
 import asyncio
