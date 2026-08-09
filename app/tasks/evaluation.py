@@ -1,7 +1,6 @@
 # Celery tasks for LLM evaluation.
 
-# tasks report progress for real-time UI updates.
-# - Tasks must handle partial failures.
+# tasks report progress for real-time UI updates and they must handle partial failures.
 
 import asyncio
 import logging
