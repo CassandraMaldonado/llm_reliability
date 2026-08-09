@@ -17,7 +17,7 @@ AVAILABLE_METRICS = [
 
 
 # fetches the aggregated metrics for the dashboard overview.
-#    Returns current value, trend, and time-series for each metric.
+# it returns current value, trend and time-series for each metric.
 
 @router.get("/metrics", response_model=List[MetricAggregateResponse])
 async def get_metrics_overview(
