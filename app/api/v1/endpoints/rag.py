@@ -18,8 +18,8 @@ router = APIRouter()
 
 # background task: compute RAG metrics after submission.
     
-    Metrics computed:
-    - retrieval_precision: fraction of retrieved chunks that are relevant
+    # Metrics computed:
+        # retrieval_precision: fraction of retrieved chunks that are relevant.
     - retrieval_recall: fraction of relevant chunks that were retrieved
     - context_relevance: how relevant retrieved context is to the question
     - groundedness: how grounded the answer is in the retrieved context
