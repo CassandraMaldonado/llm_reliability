@@ -9,13 +9,12 @@ from app.schemas.organizations import OrganizationResponse, OrganizationUpdate
 
 router = APIRouter()
 
-
+# returns the current user's organization.
 @router.get("/me", response_model=OrganizationResponse)
 async def get_my_org(
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """Return the current user's organization."""
     repo = OrganizationRepository(session)
     org = await repo.get_by_id(current_user.organization_id, current_user.organization_id)
     if not org:
