@@ -1,4 +1,5 @@
-"""app/api/v1/endpoints/rag.py — RAG pipeline evaluation endpoints."""
+# RAG pipeline evaluation endpoints.
+
 import uuid
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, BackgroundTasks
