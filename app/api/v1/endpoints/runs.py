@@ -62,10 +62,8 @@ async def get_run_summary(
     )
 
 
-    """
-    Side-by-side metric comparison of 2-10 runs.
-    Identifies winner per metric and overall champion.
-    """
+# side by side metric comparison of 2 to 10 runs, it identifies a winner per metric and overall champion.
+
 @router.post("/compare", response_model=RunCompareResponse)
 async def compare_runs(
     data: RunCompareRequest,
@@ -78,7 +76,7 @@ async def compare_runs(
     if len(runs) < 2:
         raise HTTPException(status_code=400, detail="At least 2 valid runs required")
 
-    # Metrics where lower is better
+    # metrics where lower is better.
     lower_is_better = {"avg_latency_ms", "avg_cost_usd", "avg_hallucination_score", "error_count"}
 
     comparisons: List[RunMetricComparison] = []
