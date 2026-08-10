@@ -20,7 +20,7 @@ router = APIRouter()
     
     # Metrics computed:
         # retrieval_precision: fraction of retrieved chunks that are relevant.
-    - retrieval_recall: fraction of relevant chunks that were retrieved
+        # retrieval_recall: fraction of relevant chunks that were retrieved.
     - context_relevance: how relevant retrieved context is to the question
     - groundedness: how grounded the answer is in the retrieved context
     - answer_correctness: compared to expected_answer if provided
