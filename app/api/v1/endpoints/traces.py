@@ -1,4 +1,3 @@
-"""app/api/v1/endpoints/traces.py"""
 import uuid
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
