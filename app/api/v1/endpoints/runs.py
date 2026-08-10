@@ -62,16 +62,16 @@ async def get_run_summary(
     )
 
 
+    """
+    Side-by-side metric comparison of 2-10 runs.
+    Identifies winner per metric and overall champion.
+    """
 @router.post("/compare", response_model=RunCompareResponse)
 async def compare_runs(
     data: RunCompareRequest,
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """
-    Side-by-side metric comparison of 2-10 runs.
-    Identifies winner per metric and overall champion.
-    """
     repo = ExperimentRunRepository(session)
     runs = await repo.get_multiple(data.run_ids, current_user.organization_id)
 
