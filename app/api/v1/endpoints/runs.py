@@ -28,14 +28,13 @@ async def get_run(
         raise HTTPException(status_code=404, detail="Run not found")
     return run
 
-
+# gets aggregated evaluation metrics for a completed run.
 @router.get("/{run_id}/summary", response_model=EvaluationSummary)
 async def get_run_summary(
     run_id: uuid.UUID,
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """Get aggregated evaluation metrics for a completed run."""
     run_repo = ExperimentRunRepository(session)
     run = await run_repo.get_by_id(run_id, current_user.organization_id)
     if not run:
