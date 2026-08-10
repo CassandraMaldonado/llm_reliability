@@ -100,16 +100,15 @@ async def list_rag_evaluations(
     )
 
 
+# compares RAG configurations grouped by embedding_model, chunk_size or retrieval_strategy.
+# it identifies which config performs best across retrieval and generation metrics.
+    
 @router.post("/compare", response_model=RAGCompareResponse)
 async def compare_rag_configs(
     data: RAGCompareRequest,
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """
-    Compare RAG configurations grouped by embedding_model, chunk_size, or retrieval_strategy.
-    Identifies which config performs best across retrieval and generation metrics.
-    """
     repo = RAGRepository(session)
     groups_data = await repo.get_grouped_stats(
         current_user.organization_id, data.group_by, data.evaluation_ids
