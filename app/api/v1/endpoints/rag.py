@@ -53,6 +53,7 @@ async def _compute_rag_metrics(eval_id: uuid.UUID, session: AsyncSession):
     await session.commit()
 
 
+# submit a RAG pipeline output for evaluation.
 @router.post("/evaluations", response_model=RAGEvaluationResponse, status_code=202)
 async def submit_rag_evaluation(
     data: RAGEvaluationCreate,
@@ -60,11 +61,6 @@ async def submit_rag_evaluation(
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """
-    Submit a RAG pipeline output for evaluation.
-    Returns 202 Accepted — metrics are computed asynchronously.
-    Poll the GET endpoint to check when scores are populated.
-    """
     rag_eval = RAGEvaluation(
         organization_id=current_user.organization_id,
         **data.model_dump(),
