@@ -62,10 +62,7 @@ async def get_trace(
     return trace
 
 
-    """
-    Submit end-user feedback (thumbs up/down) on a trace.
-    Used for RLHF data collection and monitoring user satisfaction trends.
-    """
+# submit end-user feedback on a trace, it is used for RLHF data collection and monitoring user satisfaction trends.
 @router.post("/{trace_id}/feedback", response_model=TraceResponse)
 async def submit_feedback(
     trace_id: uuid.UUID,
