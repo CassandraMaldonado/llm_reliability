@@ -10,10 +10,7 @@ from app.schemas.common import PaginatedResponse
 
 router = APIRouter()
 
-    """
-    Log an LLM trace. Called by the MANGOS SDK after each LLM call.
-    Lightweight — must return fast so it doesn't slow down the application.
-    """
+# log an LLM trace. 
 @router.post("/", response_model=TraceResponse, status_code=201)
 async def log_trace(
     data: TraceCreate,
