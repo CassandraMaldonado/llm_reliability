@@ -1,8 +1,6 @@
 # Shared FastAPI dependencies for authentication and services.
 
-# How it works:
-# Routes handlers get their dependencies.
-# Each request gets its own database session.
+# Routes handlers get their dependencies and each request gets its own database session.
 # The current user is loaded once per request and reused when needed.
 
 import uuid
