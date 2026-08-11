@@ -85,6 +85,4 @@ async def submit_feedback(
     await session.refresh(trace)
     return trace
 
-
-# Make Optional available
 from typing import Optional
