@@ -62,6 +62,10 @@ async def get_trace(
     return trace
 
 
+    """
+    Submit end-user feedback (thumbs up/down) on a trace.
+    Used for RLHF data collection and monitoring user satisfaction trends.
+    """
 @router.post("/{trace_id}/feedback", response_model=TraceResponse)
 async def submit_feedback(
     trace_id: uuid.UUID,
@@ -69,10 +73,6 @@ async def submit_feedback(
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """
-    Submit end-user feedback (thumbs up/down) on a trace.
-    Used for RLHF data collection and monitoring user satisfaction trends.
-    """
     repo = TraceRepository(session)
     trace = await repo.get_by_id(trace_id, current_user.organization_id)
     if not trace:
