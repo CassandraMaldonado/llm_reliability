@@ -1,4 +1,4 @@
-# Evaluation engine implementing the Strategy Pattern. Each metric is a class implementing BaseMetric.
+# evaluation engine implementing the Strategy Pattern, each metric is a class implementing BaseMetric.
 # metric implementations use DeepEval under the hood where available, fall back to embedding similarity or custom LLM judge for others.
 
 import asyncio
