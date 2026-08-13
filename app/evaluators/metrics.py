@@ -80,7 +80,6 @@ def _get_embedding_model() -> SentenceTransformer:
 
 
 # cosine similarity between the actual and expected output embeddings.
-# score interpretation:
     # over 0.9: very similar, nearly an identical meaning.
      # 0.7–0.9: similar, same topic and similar content.
      # 0.5–0.7: loosely related.
