@@ -344,10 +344,10 @@ Respond with JSON: {{"score": <float>, "reasoning": "<identify issues if found>"
 # Context relevance, to check if the retrieved context documents are relevant to the question.
 # it measures the retrieval quality independent of generation quality.
 
-    High faithfulness + low context relevance = good generator, bad retriever.
+# high faithfulness and low context relevance = a good generator but a bad retriever.
     Low faithfulness + high context relevance = bad generator, good retriever.
     Splitting these metrics helps diagnose RAG pipeline issues.
-    """
+
 class ContextRelevanceMetric(LLMJudgeMetric):
     name = "context_relevance"
     requires_context = True
