@@ -345,8 +345,7 @@ Respond with JSON: {{"score": <float>, "reasoning": "<identify issues if found>"
 # it measures the retrieval quality independent of generation quality.
 
 # high faithfulness and low context relevance = a good generator but a bad retriever.
-    Low faithfulness + high context relevance = bad generator, good retriever.
-    Splitting these metrics helps diagnose RAG pipeline issues.
+# low faithfulness and high context relevance = a bad generator but good retriever.
 
 class ContextRelevanceMetric(LLMJudgeMetric):
     name = "context_relevance"
