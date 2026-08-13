@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     # app.
     APP_NAME: str = "MANGOS LLM Reliability Platform"
     APP_VERSION: str = "0.1.0"
-    ENVIRONMENT: str = "development"  # development, staging, production
+    ENVIRONMENT: str = "development"  # development, staging or production.
     DEBUG: bool = False
     LOG_LEVEL: str = "INFO"
 
