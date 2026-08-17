@@ -102,8 +102,8 @@ class RAGEvaluator:
             "Score 1.0=perfectly relevant, 0.0=completely irrelevant."
         )
 
+            """Is the answer grounded in (supported by) the retrieved context?"""
     async def _evaluate_groundedness(self, answer: str, contexts: List[str]) -> float:
-        """Is the answer grounded in (supported by) the retrieved context?"""
         context_str = "\n\n---\n\n".join(contexts[:3])
         return await self._judge(
             f"Answer: {answer}\n\nRetrieved context:\n{context_str[:2000]}\n\n"
@@ -123,7 +123,7 @@ class RAGEvaluator:
             score = float(util.cos_sim(emb_a, emb_b)[0][0])
             return round(max(0.0, min(1.0, score)), 4)
         except ImportError:
-            # Fallback to LLM judge if sentence-transformers not available
+            # fallback to LLM judge if sentence transformers are not available.
             return await self._judge(
                 f"Expected answer: {expected_answer}\n\nActual answer: {answer}\n\n"
                 "How correct is the actual answer compared to the expected answer? "
