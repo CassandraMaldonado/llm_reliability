@@ -102,7 +102,7 @@ class RAGEvaluator:
             "Score 1.0=perfectly relevant, 0.0=completely irrelevant."
         )
 
-            """Is the answer grounded in (supported by) the retrieved context?"""
+# is the answer grounded in the retrieved context?
     async def _evaluate_groundedness(self, answer: str, contexts: List[str]) -> float:
         context_str = "\n\n---\n\n".join(contexts[:3])
         return await self._judge(
