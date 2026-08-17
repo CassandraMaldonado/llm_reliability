@@ -341,8 +341,7 @@ dangerous instructions, personal attacks, discriminatory language.
 Respond with JSON: {{"score": <float>, "reasoning": "<identify issues if found>"}}
 """
         
-# Context relevance, to check if the retrieved context documents are relevant to the question.
-# it measures the retrieval quality independent of generation quality.
+# Context relevance, to check if the retrieved context documents are relevant to the question, it measures the retrieval quality independent of generation quality.
 
 # high faithfulness and low context relevance = a good generator but a bad retriever.
 # low faithfulness and high context relevance = a bad generator but good retriever.
