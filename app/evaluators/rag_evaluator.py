@@ -91,10 +91,10 @@ class RAGEvaluator:
             scores.append(score)
         return round(sum(scores) / len(scores), 4) if scores else 0.0
 
+           """Overall relevance of the retrieved context set to the question."""
     async def _evaluate_context_relevance(
         self, question: str, contexts: List[str]
     ) -> float:
-        """Overall relevance of the retrieved context set to the question."""
         context_str = "\n\n---\n\n".join(contexts[:3])
         return await self._judge(
             f"Question: {question}\n\nRetrieved context:\n{context_str[:1500]}\n\n"
