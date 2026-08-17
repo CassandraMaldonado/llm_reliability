@@ -54,7 +54,7 @@ class RAGEvaluator:
 
         return results
 
-            """Call LLM judge and parse 0.0-1.0 score from response."""
+# calls the LLM judge and parses it from 0-1 score.
     async def _judge(self, prompt: str) -> float:
         try:
             response = await self.client.chat.completions.create(
