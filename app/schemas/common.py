@@ -1,5 +1,4 @@
 # Shared Pydantic primitives used across all schemas.
-
 # pagination strategy is cursor based.
 
 import uuid
@@ -11,21 +10,16 @@ from pydantic import BaseModel, ConfigDict, Field
 # type alias for UUID fields that serialize as strings in JSON.
 UUIDStr = uuid.UUID
 
-
 T = TypeVar("T")
 
-
 # standard paginated list response, all list endpoints return this shape.
-    
     #Example response:
-    #{
         #"items": [...],
         #"total": 1523,
         #"page": 1,
         #"page_size": 20,
         #"has_next": true,
         #"next_cursor": "eyJpZCI6IjEyMyJ9"
-    #}
 
 class PaginatedResponse(BaseModel, Generic[T]):
     items: List[T]
@@ -44,7 +38,7 @@ class CursorPage(BaseModel):
 class ErrorResponse(BaseModel):
     error: str                          
     message: str                        
-    details: Optional[Dict[str, Any]] = None   # optional structured details.
+    details: Optional[Dict[str, Any]] = None
     request_id: Optional[str] = None   
 
 # success acknowledgment for operations that don't return data.
