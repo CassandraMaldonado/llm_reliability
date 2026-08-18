@@ -61,7 +61,7 @@ class MetricWindow:
 class DriftResult:
     is_drift: bool
     drift_type: DriftType
-    drift_score: float                 # ks statistic, z-score, or 0/1 for threshold.
+    drift_score: float                 # ks statistic, z-score or 0/1 for threshold.
     p_value: Optional[float]
     baseline: MetricWindow
     current: MetricWindow
@@ -90,8 +90,8 @@ class DriftDetector:
             "unit": "USD",
         },
         "hallucination_score": {
-            "higher_is_worse": False,      # higher = less hallucination.
-            "threshold_critical": 0.6,     # below 0.6 = lots of hallucinations.
+            "higher_is_worse": False,      # higher=less hallucination.
+            "threshold_critical": 0.6,     # below 0.6=lots of hallucinations.
             "threshold_warning": 0.75,
             "description": "Hallucination rate",
             "unit": "score",
@@ -196,8 +196,7 @@ class DriftDetector:
         return float(statistic), float(p_value)
 
 # z-score of the mean vs baseline distribution, it is more sensitive to the mean shift than KS test.
-
-       # Z-score > threshold = current mean is unusually far from baseline mean.
+ # Z-score > threshold = current mean is unusually far from baseline mean.
 
     def _zscore_anomaly(self, baseline: MetricWindow, current: MetricWindow) -> float:
         if not baseline.values or not current.values:
@@ -334,7 +333,7 @@ class DriftDetector:
                     metadata={"threshold_value": check_value, "metric_config": metric_config},
                 )
 
-        return None  # no drift detected.
+        return None  # means no drift detected.
 
     async def detect_all(
         self,
