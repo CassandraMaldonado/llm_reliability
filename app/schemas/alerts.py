@@ -1,10 +1,10 @@
-# Alerts.
+# alerts.
+
 import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
-# condition format: <metric> <operator> <threshold>
 # avg_hallucination_score > 0.6
 # avg_latency_ms > 5000
 # failure_rate > 0.05
