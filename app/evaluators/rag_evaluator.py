@@ -1,6 +1,6 @@
 # Tools for evaluating the quality of the RAG pipeline.
 
-# The evaluator combines LLM-based scoring with semantic similarity checks to measure both retrieval quality and answer quality.
+# The evaluator combines LLM scoring with semantic similarity checks to measure both retrieval quality and answer quality.
 
 # retrieval_precision: how many of the retrieved chunks are actually relevant to the question.
 # retrieval_recall: how much of the information needed for the answer was successfully retrieved.
