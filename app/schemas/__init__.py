@@ -1,8 +1,7 @@
 # Pydantic schemas used for request validation and API responses.
 
 # - Keeps API schemas separate from SQLAlchemy models.
-# - Use Create, Update, and Response schemas for each resource.
-# - Response schemas use `from_attributes=True` for ORM conversion.
+# - Use Create, Update and Response schemas for each resource.
 
 from app.schemas.common import (
     PaginatedResponse,
