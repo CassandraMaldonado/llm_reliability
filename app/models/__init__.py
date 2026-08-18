@@ -73,7 +73,6 @@ class User(Base, TimestampMixin):
 
 
 # API key.
-
 class APIKey(Base):
     __tablename__ = "api_keys"
 
@@ -255,7 +254,6 @@ class EvaluationResult(Base):
 
 
 # alert rule.
-
 class AlertRule(Base, TimestampMixin):
     __tablename__ = "alert_rules"
 
