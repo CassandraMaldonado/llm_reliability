@@ -15,7 +15,7 @@ class EvaluationResultResponse(BaseModel):
     score: Optional[float]
     passed: Optional[bool]
     threshold: Optional[float]
-    reasoning: Optional[str]   # LLM judge explanation
+    reasoning: Optional[str]   # LLM judge explanation.
     raw_output: Dict[str, Any]
     latency_ms: Optional[float]
     created_at: datetime
@@ -24,6 +24,6 @@ class EvaluationResultResponse(BaseModel):
 class EvaluationSummary(BaseModel):
     run_id: str
     total_evaluated: int
-    metrics: Dict[str, Dict[str, float]]  # metric_name -> {mean, p50, p95, pass_rate}
+    metrics: Dict[str, Dict[str, float]]  # metric_name.
     overall_pass_rate: float
     cost_usd: float
