@@ -38,7 +38,7 @@ class ExperimentResponse(BaseModel):
     updated_at: Optional[datetime]
 
 
-# experiment runs, the hyperparameters are stored in JSONB.
+# experiment runs.
 class ExperimentRunCreate(BaseModel):
 
     experiment_id: uuid.UUID
@@ -104,5 +104,5 @@ class RunCompareResponse(BaseModel):
     run_ids: List[str]
     runs: List[ExperimentRunResponse]
     metric_comparisons: List[RunMetricComparison]
-    overall_winner_run_id: Optional[str]  #run that wins most metrics.
+    overall_winner_run_id: Optional[str]  #run that wins the most metrics.
     summary: str                        
