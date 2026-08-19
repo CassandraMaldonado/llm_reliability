@@ -25,7 +25,7 @@ class DriftReportResponse(BaseModel):
     baseline_window_hours: int
     current_window_hours: int
     drift_detected: bool
-    drift_score: float           #0-1 composite drift score.
+    drift_score: float           #0-1 drift score.
     metrics_analyzed: int
     metrics_drifted: int
     metric_details: List[DriftMetricDetail]
