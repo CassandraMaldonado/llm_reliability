@@ -70,5 +70,5 @@ class RAGGroupStats(BaseModel):
 class RAGCompareResponse(BaseModel):
     group_by: str
     groups: List[RAGGroupStats]
-    winner: str   #group_value of the best performing config.
+    winner: str   #group value of the best performing config.
     recommendation: str 
