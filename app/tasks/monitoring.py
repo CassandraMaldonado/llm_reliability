@@ -2,7 +2,7 @@
 # Alert evaluation: check all active alert rules against current metrics.
 
 # Alert rules are stored in DB, beat task gets all active rules and evaluates each against the latest metric value.
-# - Notifications: webhook and email.
+# Notifications: webhook and email.
 
 
 import asyncio
