@@ -1,13 +1,9 @@
-# requirements.txt — Production dependencies
-# Pin exact versions for reproducibility (critical in ML/AI systems where
-# library updates can change evaluation behavior or introduce regressions)
-
-# ── Web Framework ─────────────────────────────────────────────────────────────
+# web framework.
 fastapi==0.115.0
 uvicorn[standard]==0.30.6
 gunicorn==23.0.0
-python-multipart==0.0.12        # Form data parsing (file uploads)
-httpx==0.27.2                   # Async HTTP client (LLM API calls + testing)
+python-multipart==0.0.12        # form data parsing.
+httpx==0.27.2            
 
 # ── Database & ORM ────────────────────────────────────────────────────────────
 sqlalchemy[asyncio]==2.0.36
