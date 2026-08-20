@@ -33,7 +33,7 @@ METRIC_TO_TRACE_FIELD = {
     "hallucination_score": None,   
     "answer_relevance": None,      
     "faithfulness": None,        
-    "failure_rate": None,          # error_count / total
+    "failure_rate": None,          # error_count/total.
     "feedback_score": "user_feedback_score",
 }
 
