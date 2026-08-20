@@ -50,7 +50,6 @@ async def lifespan(app: FastAPI):
 
     yield
 
-    # shutdown: close DB connection pool.
     await engine.dispose()
     log.info("MANGOS shut down cleanly")
 
@@ -78,7 +77,7 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
-    # request ID middleware, injects X-Request-ID header on every response.
+    # request ID middleware, injects X Request ID header on every response.
     @app.middleware("http")
     async def add_request_id(request: Request, call_next):
         request_id = request.headers.get("X-Request-ID", str(uuid.uuid4()))
