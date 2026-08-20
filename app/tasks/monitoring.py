@@ -1,9 +1,7 @@
 # Metrics aggregation: roll up raw traces into MonitoringMetric records.
 # Alert evaluation: check all active alert rules against current metrics.
 
-# Alert architecture:
-# - Alert rules are stored in DB.
-# - Beat task gets all active rules and evaluates each against the latest metric value.
+# Alert rules are stored in DB, beat task gets all active rules and evaluates each against the latest metric value.
 # - Notifications: webhook and email.
 
 
