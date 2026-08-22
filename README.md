@@ -153,21 +153,3 @@ uvicorn app.main:app --reload
 ```
 
 ---
-
-## Environment variables
-
-See [`.env.example`](.env.example) for the full list. Required to get started:
-
-| Variable | Description |
-|---|---|
-| `SECRET_KEY` | 64-char random string for JWT signing |
-| `DATABASE_URL` | PostgreSQL async URL |
-| `REDIS_URL` | Redis URL |
-| `OPENAI_API_KEY` | Used by LLM-as-judge evaluations |
-
-Optional (enables more features):
-- `ANTHROPIC_API_KEY` — run evaluations against Claude models
-- `SENTRY_DSN` — error tracking
-- `SENDGRID_API_KEY` — email alerts
-
-
