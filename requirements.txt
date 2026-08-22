@@ -18,10 +18,10 @@ flower==2.0.1                   # celery monitoring UI.
 
 # validation and settings.
 pydantic==2.9.2
-pydantic-settings==2.5.2        # .env file support for Pydantic v2
+pydantic-settings==2.5.2
 email-validator==2.2.0
 
-# ── Authentication ────────────────────────────────────────────────────────────
+# authentication.
 python-jose[cryptography]==3.3.0  # JWT tokens
 passlib[bcrypt]==1.7.4           # Password hashing
 
