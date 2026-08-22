@@ -1,8 +1,7 @@
 # LLM Reliability Platform
 
-**Monitor. Analyze. Navigate. Guard. Observe. Score.**
-
 An open-source, production garde platform for LLM evaluation, observability and reliability.
+
 ---
 
 ## What it does
