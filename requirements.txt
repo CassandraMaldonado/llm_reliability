@@ -11,7 +11,7 @@ asyncpg==0.30.0                 # PostgreSQL driver.
 alembic==1.13.3            
 psycopg2-binary==2.9.10     
 
-# ── Caching & Task Queue ───────────────────────────────────────────────────────
+# caching and task queue.
 redis[hiredis]==5.1.1           # Redis client (hiredis = C parser, faster)
 celery[redis]==5.4.0            # Async task queue
 flower==2.0.1                   # Celery monitoring UI
