@@ -40,9 +40,9 @@ openai==1.52.0
 anthropic==0.37.1
 google-generativeai==0.8.3
 
-# ── Logging & Observability ───────────────────────────────────────────────────
-structlog==24.4.0               # Structured logging (JSON in prod)
-sentry-sdk[fastapi]==2.17.0    # Error tracking (Sentry integration)
+# logging and observability.
+structlog==24.4.0               # structured logging.
+sentry-sdk[fastapi]==2.17.0    # error tracking.
 
 # utilities.
 python-dateutil==2.9.0
