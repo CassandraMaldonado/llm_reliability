@@ -35,7 +35,7 @@ scipy==1.14.1                   # Statistical tests (KS test for drift detection
 scikit-learn==1.5.2             # Utility metrics, preprocessing
 transformers==4.45.2            # HuggingFace models
 
-# ── LLM Provider SDKs ─────────────────────────────────────────────────────────
+# LLM provider SDKs.
 openai==1.52.0
 anthropic==0.37.1
 google-generativeai==0.8.3
