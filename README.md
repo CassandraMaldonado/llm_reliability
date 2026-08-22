@@ -2,8 +2,7 @@
 
 **Monitor. Analyze. Navigate. Guard. Observe. Score.**
 
-An open-source, production garde platform for LLM evaluation, observability and reliability. It combines the best ideas from LangSmith, DeepEval, W&B, Datadog and Arize Phoenix into a single  stack.
-
+An open-source, production garde platform for LLM evaluation, observability and reliability.
 ---
 
 ## What it does
