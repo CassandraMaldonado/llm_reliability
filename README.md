@@ -107,30 +107,6 @@ The SDK is **fire-and-forget** — trace submission happens in a background task
 
 ---
 
-## API overview
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/api/v1/auth/register` | Register user (+ optional new org) |
-| `POST` | `/api/v1/auth/login` | Email/password → JWT tokens |
-| `POST` | `/api/v1/experiments` | Create experiment |
-| `POST` | `/api/v1/experiments/{id}/runs` | Start evaluation run (202 Accepted) |
-| `POST` | `/api/v1/runs/compare` | Side-by-side run comparison |
-| `POST` | `/api/v1/traces` | Log an LLM trace (SDK calls this) |
-| `POST` | `/api/v1/traces/{id}/feedback` | Submit user feedback |
-| `POST` | `/api/v1/datasets` | Create evaluation dataset |
-| `POST` | `/api/v1/rag/evaluations` | Submit RAG pipeline for evaluation |
-| `POST` | `/api/v1/rag/compare` | Compare RAG configs |
-| `GET`  | `/api/v1/monitoring/metrics` | Dashboard KPIs + time-series |
-| `POST` | `/api/v1/alerts/rules` | Create alert rule |
-| `GET`  | `/api/v1/alerts` | Active (unresolved) alerts |
-| `GET`  | `/api/v1/drift/summary` | Dashboard drift health indicator |
-| `POST` | `/api/v1/drift/run` | Trigger on-demand drift check |
-
-Full interactive docs at `/docs` when running locally.
-
----
-
 ## Evaluation metrics
 
 | Metric | Method | Cost |
