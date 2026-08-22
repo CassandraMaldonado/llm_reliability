@@ -22,8 +22,8 @@ pydantic-settings==2.5.2
 email-validator==2.2.0
 
 # authentication.
-python-jose[cryptography]==3.3.0  # JWT tokens
-passlib[bcrypt]==1.7.4           # Password hashing
+python-jose[cryptography]==3.3.0  # JWT tokens.
+passlib[bcrypt]==1.7.4           # password hashing.
 
 # ── ML / Evaluation ──────────────────────────────────────────────────────────
 deepeval==1.4.7                 # LLM eval framework (metrics + datasets)
