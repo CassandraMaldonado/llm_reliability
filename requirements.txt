@@ -12,9 +12,9 @@ alembic==1.13.3
 psycopg2-binary==2.9.10     
 
 # caching and task queue.
-redis[hiredis]==5.1.1           # Redis client (hiredis = C parser, faster)
-celery[redis]==5.4.0            # Async task queue
-flower==2.0.1                   # Celery monitoring UI
+redis[hiredis]==5.1.1  
+celery[redis]==5.4.0            # task queue.
+flower==2.0.1                   # celery monitoring UI.
 
 # ── Validation & Settings ─────────────────────────────────────────────────────
 pydantic==2.9.2
