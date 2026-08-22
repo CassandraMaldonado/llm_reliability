@@ -31,9 +31,9 @@ sentence-transformers==3.2.1   # local embedding models (semantic similarity).
 torch==2.4.1 ; platform_machine != "arm64"  # PyTorch.
 torch==2.4.1 ; platform_machine == "arm64"  # ARM.
 numpy==2.1.2
-scipy==1.14.1                   # Statistical tests (KS test for drift detection)
-scikit-learn==1.5.2             # Utility metrics, preprocessing
-transformers==4.45.2            # HuggingFace models
+scipy==1.14.1                   # Statistical tests (KS test for drift detection).
+scikit-learn==1.5.2             # Utility metrics, preprocessing.
+transformers==4.45.2            # HuggingFace models.
 
 # LLM provider SDKs.
 openai==1.52.0
