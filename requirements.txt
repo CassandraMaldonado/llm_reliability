@@ -16,7 +16,7 @@ redis[hiredis]==5.1.1
 celery[redis]==5.4.0            # task queue.
 flower==2.0.1                   # celery monitoring UI.
 
-# ── Validation & Settings ─────────────────────────────────────────────────────
+# validation and settings.
 pydantic==2.9.2
 pydantic-settings==2.5.2        # .env file support for Pydantic v2
 email-validator==2.2.0
